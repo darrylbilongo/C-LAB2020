@@ -1,4 +1,4 @@
-# CLAB2020
+# C-LAB
 Projet de développement d'une application Web
 
 Auteurs : 
