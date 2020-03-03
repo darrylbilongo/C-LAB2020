@@ -3,8 +3,8 @@ Projet de développement d'une application Web
 
 Auteurs : 
 
-Darryl Bilongo
+Darryl BILONGO
 
-Souhaib Azzouz
+Souhaib AZZOUZ
 
-Bilel 
+Bilel BOUQUOYOUE
