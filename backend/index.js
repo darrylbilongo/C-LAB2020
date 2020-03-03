@@ -1,30 +1,30 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const bodyParser = require('body-parser')
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json())
 
 // Port d'ecoute
 var port = process.env.PORT || 8080;
-//const uri = process.env.SRV_URI;
-const uri = "mongodb://localhost:27017/test"; // uri de la db
+const uri = "mongodb://localhost:27017/test"; 
+// uri de la db
 
 // Connection à MongoDB
-mongoose
+ mongoose
   .connect(uri, {useNewUrlParser: true,
-                  useCreateIndex: true,
                   useUnifiedTopology: true})
   .then(() => {
-    const connection = mongoose.connection;
-    connection.once('open', () => {
-      console.log("MongoDB database connection established successfully");
+    let db = mongoose.connection;
+    db.on('error', (error) => console.error(error));
+    db.once('open', () => {
+      console.log("Connected to database");
     })
 })
 
-// Modeles et routage
-const postRouter = require('./routes/post')
+//Modeles et routage
+const postRouter = require('./routes/posts')
 app.use('/posts', postRouter);
 
 app.get('/', (req, res) => {
