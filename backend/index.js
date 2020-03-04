@@ -12,7 +12,7 @@ const uri = "mongodb://localhost:27017/test";
 // uri de la db
 
 // Connection à MongoDB
- mongoose
+mongoose
   .connect(uri, {useNewUrlParser: true,
                   useUnifiedTopology: true})
   .then(() => {
@@ -25,7 +25,10 @@ const uri = "mongodb://localhost:27017/test";
 
 //Modeles et routage
 const postRouter = require('./routes/posts')
+const userRouter = require('./routes/users')
+
 app.use('/posts', postRouter);
+app.use('/users', userRouter);
 
 app.get('/', (req, res) => {
   res.send('<h2>Hello World!</h2>')
