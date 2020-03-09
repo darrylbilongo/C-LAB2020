@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  background-image: url("cassette2_edited.jpg");
+  background-size: cover;
+}
+
+.formulaire{
+  background-color:rgba(134,134,134, 0.3);
+}
+
+.inscription{
+  background-color:rgba(82,82,82, 0.5);
+}
