@@ -6,9 +6,9 @@ class App extends Component {
 
   render(){
     return (
-        <div className="App">
+        <span className="App">
           <PageLogin></PageLogin>
-        </div>
+        </span>
     );
   }
   
