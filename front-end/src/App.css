@@ -114,3 +114,35 @@ form {
   color: white;
 }
 
+ul#menu
+{
+	height: 35px ;
+	margin: 0 ;
+	padding: 0 ;
+	list-style-type: none ;
+}
+
+ul#menu li
+{
+	float: right ;
+	text-align: center ;
+}
+
+ul#menu li a
+{
+	width: 130px ;
+	line-height: 25px ;
+	font-size: 1.2em ;
+	font-weight: bold ;
+	letter-spacing: 2px ;
+	color: #fff ;
+	display: block ;
+	text-decoration: none ;
+	border-left: 2px solid #dea ;
+}
+
+.description{
+  color: white;
+  position: center
+  
+}
