@@ -62,6 +62,7 @@ exports.login = (req, res) => {
                     });
                     //res.send(token)
                     res.json({
+                        token: token,
                         message: 'Bienvenue!!!',
                     })
                 }
