@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PageLogin from "./components/PageLogin"
+import PageRegister from "./components/PageRegister"
 import PageAccueil from "./components/PageAccueil"
 import {BrowserRouter as Router, Route } from 'react-router-dom'; 
 
@@ -11,7 +11,7 @@ class App extends Component {
     return (
         <Router>
             <div className="App">
-              <Route exact path="/login" component={PageLogin}/>
+              <Route exact path="/login" component={PageRegister}/>
               <Route exact path="/" component={PageAccueil}/>
             </div>
         </Router>
