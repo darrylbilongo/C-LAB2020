@@ -12,7 +12,6 @@ class Navigation extends Component{
       super(props);
   }
 
-  
 
     render(){
 
@@ -58,15 +57,11 @@ class Navigation extends Component{
           <div>
               <nav>
                 <ul id="menu">
-                {localStorage.usertoken ? logoutLink : null}
-                {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? null : loginLink}
-                {localStorage.usertoken ? null: regLink}
+                {localStorage.usertoken ? null : regLink}
+                {localStorage.usertoken ? profileLink : null}
+                {localStorage.usertoken ? logoutLink : null}
                 {homeLink}
-                
-                
-                
-                
                 </ul>
                 {/*<p className="description">C-LAB est une plateforme visant à réunir les différents artistes afin
                   de leur permettre de créer des projets à plusieurs. Fini l'époque où tu étais
