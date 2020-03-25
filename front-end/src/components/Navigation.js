@@ -69,8 +69,8 @@ class Navigation extends Component{
                 <ul id="menu">
                 {localStorage.usertoken ? null : loginLink}
                 {localStorage.usertoken ? null : regLink}
-                {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? logoutLink : null}
+                {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? catalogueLink : null}
                 {homeLink}
                 </ul>
