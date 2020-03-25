@@ -10,9 +10,9 @@ class PageAccueil extends Component{
                 <nav>
                   <ul id="menu">
                     <li><a href="#">Infos</a></li>
-                    <li><a href="#">S'inscrire</a></li>
+                    <li><a href="http://localhost:3000/register">S'inscrire</a></li>
                     <li><a href="#">Sessions</a></li>
-                    <li><a href="#">Catalogue</a></li>
+                    <li><a href="http://localhost:3000/catalogue">Catalogue</a></li>
                     <li><a href="#">Accueil</a></li>
                   </ul>
                   <p className="description">C-LAB est une plateforme visant à réunir les différents artistes afin
