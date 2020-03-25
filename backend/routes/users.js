@@ -6,6 +6,8 @@ const User = db.users;
 const Op = db.Sequelize.Op;
 let users = require('../controllers/user.controller');
 
+// routes pour les users
+
 router.use(cors())
 
 router.route('/').get(async (req, res) => {

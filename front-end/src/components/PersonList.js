@@ -15,8 +15,11 @@ export default class PersonList extends React.Component{
     }
     render(){
         return (
-        <ul className='ListeNom'>{this.state.persons.map(person => <li>{person.first_name} {person.last_name}</li>)}  
-        </ul>
+            <div>
+                <h1 className="titre">C-LAB</h1>
+                <ul className='ListeNom'>{this.state.persons.map(person => <li>{person.first_name} {person.last_name}</li>)}  
+                </ul>
+            </div>
         );
     }
 }

@@ -34,6 +34,10 @@ body{
   font-size:90%;
 }
 
+h1 {
+  color: #C0C0C0;
+}
+
 .formulaire{
   background-color:rgba(203,56,203, 0.4);
   position:absolute;
@@ -145,4 +149,10 @@ ul#menu li a
   color: white;
   position: center
   
+}
+
+.ListeNom{
+  font-size: 2em;
+  color: white;
+  text-align: left;
 }
