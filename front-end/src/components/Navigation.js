@@ -12,14 +12,13 @@ class Navigation extends Component{
       super(props);
   }
 
-  
 
     render(){
 
       const loginLink = (
         <li className="nav-item">
                     <Link to="/login" className="nav-link">
-                        Connexion
+                        Login
                     </Link>
         </li>
     )
@@ -27,14 +26,14 @@ class Navigation extends Component{
      const regLink = (
         <li className="nav-item">
                     <Link to="/register" className="nav-link">
-                        S'enregistrer
+                        Register
                     </Link>
                 </li>
     ) 
     const homeLink = (
         <li className="nav-item">
                         <Link to="/" className="nav-link">
-                            Acceuil
+                            Home
                         </Link>
             </li>
     )
@@ -42,14 +41,14 @@ class Navigation extends Component{
     const profileLink = (
         <li className="nav-item">
                 <Link to="/profile" className="nav-link">
-                    Profil
+                    Profile
                 </Link>
         </li>
     )
     const logoutLink = (
         <li className="nav-item">
                 <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                   Deconnexion
+                   Logout
                 </a>
         </li>
     )
@@ -58,11 +57,11 @@ class Navigation extends Component{
           <div>
               <nav>
                 <ul id="menu">
-                {homeLink}
                 {localStorage.usertoken ? null : loginLink}
-                {localStorage.usertoken ? profileLink: regLink}
+                {localStorage.usertoken ? null : regLink}
                 {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? logoutLink : null}
+                {homeLink}
                 </ul>
                 {/*<p className="description">C-LAB est une plateforme visant à réunir les différents artistes afin
                   de leur permettre de créer des projets à plusieurs. Fini l'époque où tu étais
