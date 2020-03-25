@@ -53,6 +53,16 @@ class Navigation extends Component{
         </li>
     )
 
+    const catalogueLink = (
+        <li className="nav-item">
+                        <Link to="/Catalogue" className="nav-link">
+                            Catalog
+                        </Link>
+            </li>
+    )
+
+    
+
       return(
           <div>
               <nav>
@@ -61,6 +71,7 @@ class Navigation extends Component{
                 {localStorage.usertoken ? null : regLink}
                 {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? logoutLink : null}
+                {localStorage.usertoken ? catalogueLink : null}
                 {homeLink}
                 </ul>
                 {/*<p className="description">C-LAB est une plateforme visant à réunir les différents artistes afin
