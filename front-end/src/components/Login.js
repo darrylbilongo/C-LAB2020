@@ -47,10 +47,11 @@ class Login extends Component {
     render() {
         return (
             <div>
+                <h1 className="titre">C-LAB</h1>
                 <Navigation />
                 <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
-                        <form noValidate onSubmit={this.handleSubmit}>
+                        <form className="formulaire" noValidate onSubmit={this.handleSubmit}>
                             <h1 className="h3">Connectez vous!</h1>
                             <div className="form-group">
                                 <label htmlFor="email">Email: </label>

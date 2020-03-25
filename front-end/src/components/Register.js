@@ -45,17 +45,18 @@ class Register extends React.Component {
     render() {
       return (
         <div>
+          <h1 className="titre">C-LAB</h1>
           <Navigation />
         <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
-                        <form noValidate onSubmit={this.onSubmit}>
+                        <form className= "formulaire" noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mn-3">Nouveau ? enregistrez vous !</h1>
                             <div className="form-group">
                                 <label htmlFor="last_name">Nom: </label>
                                 <input type="text"
                                     name="first_name"
                                     className="form-control"
-                                    placeholder="Entrez votre first_name"
+                                    placeholder="Entrez votre nom"
                                     value={this.state.first_name}
                                     onChange={this.onChange}
                                 />
