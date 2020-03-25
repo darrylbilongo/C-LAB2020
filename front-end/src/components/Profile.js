@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
 import Logo from './Logo'
+import Entete from "./Entete";
 
 class Profile extends Component{
     render(){
         return(
             <div>
-                <h1 className="titre">C-LAB</h1>
+                <Entete/>
                 <Navigation />
                 <h1>Hello</h1>
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { register } from './UserFonctions';
 import Navigation from "./Navigation";
+import Entete from "./Entete";
 
 class Register extends React.Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class Register extends React.Component {
     render() {
       return (
         <div>
-          <h1 className="titre">C-LAB</h1>
+          <Entete/>
           <Navigation />
         <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
