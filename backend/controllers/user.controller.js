@@ -49,27 +49,21 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
 
     User.findOne({
-        email: req.body.email
+        where : {
+            email: req.body.email
+        }
     })
         .then(user => {
             if(user) {
-                if(bcrypt.compareSync(req.body.password, user.password)){
+                if(bcrypt.compare(req.body.password, user.password)){
                     // Mots de Passe compatibles
-                    const verif = {
-                        _id: user._id,
-                        first_name : req.body.first_name,
-                        last_name : req.body.last_name,
-                        email : req.body.email,
-                        password: req.body.password
-                    };
-                    let token = jwt.sign(verif, process.env.SECRET_KEY, {
+                    let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                         expiresIn: 1440
                     });
                     //res.send(token)
                     res.json({
                         token: token,
                         message: 'Bienvenue!!!',
-                        utilisateur: user
                     })
                 }
                 else{
