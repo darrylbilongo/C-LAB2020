@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
-import Logo from './Logo'
 import Entete from "./Entete";
+import userFonction from "./UserFonctions";
 
 class Profile extends Component{
     render(){
@@ -9,7 +9,8 @@ class Profile extends Component{
             <div>
                 <Entete/>
                 <Navigation />
-                <h1>Hello</h1>
+                <h1>Utilisateur : </h1>
+                
             </div>
         )
     }
