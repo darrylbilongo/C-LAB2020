@@ -55,20 +55,20 @@ class Register extends React.Component {
                             <div className="form-group">
                                 <label htmlFor="last_name">Nom: </label>
                                 <input type="text"
-                                    name="first_name"
+                                    name="last_name"
                                     className="form-control"
                                     placeholder="Entrez votre nom"
-                                    value={this.state.first_name}
+                                    value={this.state.last_name}
                                     onChange={this.onChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="first_name">Prénom: </label>
                                 <input type="text"
-                                    name="last_name"
+                                    name="first_name"
                                     className="form-control"
                                     placeholder="Entrez votre prénom"
-                                    value={this.state.last_name}
+                                    value={this.state.first_name}
                                     onChange={this.onChange}
                                 />
                             </div>
