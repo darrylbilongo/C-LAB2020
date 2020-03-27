@@ -8,6 +8,39 @@ let users = require('../controllers/user.controller');
 
 // routes pour les users
 
+
+/**
+ * @swagger
+ * /users/login:
+ *  post:
+ *    tags:
+ *       - Users
+ *    name: Login
+ *    summary: Logs in a user
+ *    produces:
+ *      - application/json
+ *    consumes : 
+ *      - application/json
+ *    parameters:
+ *      - name: body
+ *        in: body
+ *        schema:
+ *          $ref: '#/definitions/User'
+ *          type: object
+ *          properties:
+ *            email: 
+ *              type: string
+ *            password:
+ *              type: string
+ *              format: password
+ *            required:
+ *              - email
+ *              - password
+ *    responses:
+ *     '200': 
+*         description: User found and logged successfully
+ * 
+ */
 router.use(cors())
 
 router.route('/').get(async (req, res) => {
