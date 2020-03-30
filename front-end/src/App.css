@@ -164,5 +164,13 @@ ul#menu li a
   display: table;
   color: white;
   background-color:rgba(203,56,203, 0.7);
+  width: 30%;
+}
+
+.formulaire2{
+  background-color: rgba(203,56,203, 0.2);
+  margin-top: 5%;
+  margin-left: 75%;
+   border-radius: 10px;
 }
 

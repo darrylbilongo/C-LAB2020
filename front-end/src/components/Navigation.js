@@ -61,6 +61,14 @@ class Navigation extends Component{
             </li>
     )
 
+    const compteLink = (
+        <li className="nav-item">
+                    <Link to="/compte" className="nav-link">
+                        Account
+                    </Link>
+                </li>
+    ) 
+
     
 
       return(
@@ -70,6 +78,7 @@ class Navigation extends Component{
                 {localStorage.usertoken ? null : loginLink}
                 {localStorage.usertoken ? null : regLink}
                 {localStorage.usertoken ? logoutLink : null}
+                {localStorage.usertoken ? compteLink : null}
                 {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? catalogueLink : null}
                 {homeLink}

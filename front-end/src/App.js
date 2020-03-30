@@ -3,6 +3,7 @@ import Register from "./components/Register"
 import PageAccueil from "./components/PageAccueil"
 import Login from './components/Login'
 import Profile from './components/Profile';
+import Compte from './components/Compte'
 import {BrowserRouter as Router, Route } from 'react-router-dom'; 
 
 import './App.css';
@@ -21,6 +22,7 @@ class App extends Component {
               <Route exact path="/catalogue" component={PersonList}/>
               <Route exact path="/" component={PageAccueil}/>
               <Route exact path="/liste" component={listeTri}/>
+              <Route exact path="/compte" component={Compte}/>
             </div>
         </Router>
     );

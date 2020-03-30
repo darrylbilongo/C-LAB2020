@@ -9,13 +9,14 @@ class Profile extends Component{
             <div>
                 <Entete/>
                 <Navigation />
-                <div className="detailsProfil">
                     <div className="video">
-                        <h2>Votre vidéo :</h2> 
-                        <ReactPlayer url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>
+                    <h2>Votre vidéo :</h2> 
+                    <ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>
+                     </div>
+                     <div className="details">
+                    <h2>Votre description</h2>
                     </div>
                 </div>
-            </div>
         )
     }
 }
