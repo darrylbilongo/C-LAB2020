@@ -1,3 +1,22 @@
+/**
+ * @swagger
+ * definitions:
+ *  User:
+ *    type: object
+ *    properties:
+ *      id:
+ *        type: integer
+ *      first_name:
+ *        type: string
+ *      last_name:
+ *        type: string
+ *      email:
+ *        type: string
+ *      password:
+ *        type: string
+ * 
+ */
+
 module.exports = (sequelize, Sequilize) => {
   const User = sequelize.define('User', {
     id : {

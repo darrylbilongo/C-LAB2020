@@ -1,16 +1,49 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
 const cors = require('cors')
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
-var corsOptions = {
-  origin: "http://localhost:3000"
+app.use(cors());
+
+/**
+ * Documentation avec swagger
+ */
+const swaggerDefinition = {
+  info : {
+    title : 'C-LAB API',
+    version: '1.0.0',
+    description: 'EndPoints to test'
+  },
+  host : 'localhost:8080',
+  basePath: '/',
+  securityDefinitions: {
+    bearerAuth: {
+      type: 'apikey',
+      name: 'Authorization',
+      scheme: 'bearer',
+      in: 'header'
+    },
+  },
 };
 
-app.use(cors(corsOptions));
+const options = {
+  swaggerDefinition,
+  apis: ['./routes/*.js'],
+}
+
+const swaggerSpec = swaggerJSDoc(options);
+
+app.get('/swagger.json', (req,res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+})
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
