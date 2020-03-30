@@ -158,3 +158,11 @@ ul#menu li a
   margin-left: 30px;
 }
 
+.video{
+  margin-left: 100px;
+  margin-top: 100px;
+  display: table;
+  color: white;
+  background-color:rgba(203,56,203, 0.7);
+}
+

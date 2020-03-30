@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { register } from './UserFonctions';
 import Navigation from "./Navigation";
 import Entete from "./Entete";

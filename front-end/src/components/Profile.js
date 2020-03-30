@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
 import Entete from "./Entete";
-import userFonction from "./UserFonctions";
+import ReactPlayer from 'react-player'
 
 class Profile extends Component{
     render(){
@@ -9,11 +9,15 @@ class Profile extends Component{
             <div>
                 <Entete/>
                 <Navigation />
-                <h1>Utilisateur : </h1>
-                
+                <div className="detailsProfil">
+                    <div className="video">
+                        <h2>Votre vidéo :</h2> 
+                        <ReactPlayer url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
-export default  Profile;
+export default Profile;

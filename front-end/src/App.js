@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 import PersonList from './components/PersonList';
+import listeTri from './components/listeTri';
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
               <Route exact path="/register" component={Register}/>
               <Route exact path="/catalogue" component={PersonList}/>
               <Route exact path="/" component={PageAccueil}/>
+              <Route exact path="/liste" component={listeTri}/>
             </div>
         </Router>
     );
