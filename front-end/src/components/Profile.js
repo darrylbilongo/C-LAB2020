@@ -9,13 +9,20 @@ class Profile extends Component{
             <div>
                 <Entete/>
                 <Navigation />
+                <div className="videode">
                     <div className="video">
                     <h2>Votre vidéo :</h2> 
                     <ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>
                      </div>
                      <div className="details">
                     <h2>Votre description</h2>
+                    <ul className="list-group">
+                        <li class="list-group-item">First item</li>
+                        <li class="list-group-item">Second item</li>
+                        <li class="list-group-item">Third item</li>
+                    </ul>
                     </div>
+                </div>
                 </div>
         )
     }

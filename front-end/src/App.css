@@ -159,18 +159,39 @@ ul#menu li a
 }
 
 .video{
-  margin-left: 100px;
-  margin-top: 100px;
-  display: table;
   color: white;
-  background-color:rgba(203,56,203, 0.7);
-  width: 30%;
+  background-color:rgba(203,56,203, 0.6);
+  width: 35%;
+  float: left;
+  border-radius: 20px;
 }
 
 .formulaire2{
   background-color: rgba(203,56,203, 0.2);
   margin-top: 5%;
   margin-left: 75%;
-   border-radius: 10px;
+  border-radius: 10px;
 }
+
+.details{
+  color: white;
+  background-color: rgba(203,56,203, 0.6);
+  width: 40%;
+  float: right;
+  border-radius: 20px;
+}
+
+.videode{
+  margin-top: 5%;
+  margin-left:5%;
+  margin-right: 5%;
+}
+
+.list-group{
+  color: black;
+  font-size: 1.4em;
+}
+
+
+
 

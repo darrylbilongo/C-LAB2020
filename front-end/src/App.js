@@ -4,7 +4,7 @@ import PageAccueil from "./components/PageAccueil"
 import Login from './components/Login'
 import Profile from './components/Profile';
 import Compte from './components/Compte'
-import {BrowserRouter as Router, Route } from 'react-router-dom'; 
+import {BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 import PersonList from './components/PersonList';
