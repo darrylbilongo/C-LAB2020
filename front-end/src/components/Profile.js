@@ -17,9 +17,11 @@ class Profile extends Component{
                      <div className="details">
                     <h2>Votre description</h2>
                     <ul className="list-group">
-                        <li class="list-group-item">First item</li>
-                        <li class="list-group-item">Second item</li>
-                        <li class="list-group-item">Third item</li>
+                        <li class="list-group-item">Nom :</li>
+                        <li class="list-group-item">Prénom :</li>
+                        <li class="list-group-item">Adresse Mail :</li>
+                        <li class="list-group-item">Age :</li>
+                        <li class="list-group-item">Description :</li>
                     </ul>
                     </div>
                 </div>
