@@ -1,18 +1,20 @@
 import axios from 'axios';
 
-export const register = newUser => {
+export const register = async newUser => {
 
 
-    return axios   
-        .post('http://localhost:8080/users/register', {
-            first_name : newUser.first_name,
-            last_name : newUser.last_name,
-            email : newUser.email,
-            password : newUser.password,
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    try {
+        return axios
+            .post('http://localhost:8080/users/register', {
+                first_name: newUser.first_name,
+                last_name: newUser.last_name,
+                email: newUser.email,
+                password: newUser.password,
+            });
+    }
+    catch (err) {
+        console.log(err);
+    }
 }
 
 export const login = user => {
