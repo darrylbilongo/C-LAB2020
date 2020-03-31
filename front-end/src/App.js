@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import PageLogin from "./components/PageLogin"
+import Register from "./components/Register"
 import PageAccueil from "./components/PageAccueil"
-import {BrowserRouter as Router, Route } from 'react-router-dom'; 
+import Login from './components/Login'
+import Profile from './components/Profile';
+import Compte from './components/Compte'
+import {BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
+import PersonList from './components/PersonList';
+import listeTri from './components/listeTri';
 
 class App extends Component {
 
@@ -11,14 +16,17 @@ class App extends Component {
     return (
         <Router>
             <div className="App">
-              <Route exact path="/login" component={PageLogin}/>
+              <Route exact path="/login" component={Login}/>
+              <Route exact path="/profile" component={Profile}/>
+              <Route exact path="/register" component={Register}/>
+              <Route exact path="/catalogue" component={PersonList}/>
               <Route exact path="/" component={PageAccueil}/>
+              <Route exact path="/liste" component={listeTri}/>
+              <Route exact path="/compte" component={Compte}/>
             </div>
         </Router>
     );
   }
-  
-    
 }
 
 export default App;
