@@ -62,11 +62,13 @@ exports.login = (req, res) => {
                     });
                     //res.send(token)
                     res.json({
+                        token: token,
                         message: 'Bienvenue!!!',
                     })
                 }
                 else{
                     //Mots de Passe pas identiques
+                    res.status(401).send('Mot de passe éroné')
                     res.json({message: 'Utilisateur avec mot de passe erroné!'})
                 }
             }
