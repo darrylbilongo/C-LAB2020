@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import Navigation from './Navigation';
-import axios from 'axios'
-import Entete from "./Entete";
 
 class PageAccueil extends Component{
     render(){
         return(
             <div>
-                <Entete/>
                 <div className="container">
                     <div className="row">
                         <div className="description1">

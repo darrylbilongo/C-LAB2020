@@ -8,11 +8,6 @@ class Navigation extends Component{
       this.props.history.push('/');
     }
 
-    constructor(props) {
-      super(props);
-  }
-
-
     render(){
 
       const loginLink = (
@@ -32,7 +27,7 @@ class Navigation extends Component{
     ) 
     const homeLink = (
         <li className="nav-item">
-                        <Link to="/" className="nav-link">
+                        <Link to="/home" className="nav-link">
                             Home
                         </Link>
             </li>
@@ -55,7 +50,7 @@ class Navigation extends Component{
 
     const catalogueLink = (
         <li className="nav-item">
-                        <Link to="/Catalogue" className="nav-link">
+                        <Link to="/catalogue" className="nav-link">
                             Catalog
                         </Link>
             </li>

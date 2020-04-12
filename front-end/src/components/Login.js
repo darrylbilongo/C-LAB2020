@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {login} from './UserFonctions';
-import Navigation from "./Navigation";
-import Entete from "./Entete";
 
 class Login extends Component {
     constructor(props) {
@@ -48,8 +46,6 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <Entete/>
-                <Navigation />
                 <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
                         <form className="formulaire" noValidate onSubmit={this.handleSubmit}>

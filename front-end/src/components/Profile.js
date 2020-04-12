@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
-import Entete from "./Entete";
 import ReactPlayer from 'react-player'
 
 class Profile extends Component{
     render(){
         return(
             <div>
-                <Entete/>
-                <Navigation />
                 <div className="videode">
                     <div className="video">
                     <h2>Votre vidéo :</h2> 
