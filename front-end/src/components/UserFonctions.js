@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const register = async newUser => {
 
-
     try {
         return axios
             .post('http://localhost:8080/users/register', {
@@ -10,6 +9,7 @@ export const register = async newUser => {
                 last_name: newUser.last_name,
                 email: newUser.email,
                 password: newUser.password,
+                role: newUser.role
             });
     }
     catch (err) {

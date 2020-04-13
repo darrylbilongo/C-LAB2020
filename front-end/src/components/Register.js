@@ -8,7 +8,8 @@ class Register extends React.Component {
         first_name: '',
         last_name: '',
         password: '',
-        email: ''
+        email: '',
+        role: ''
       };
   
       this.onChange = this.onChange.bind(this);
@@ -29,6 +30,7 @@ class Register extends React.Component {
           password: this.state.password,
           first_name: this.state.first_name,
           last_name: this.state.last_name,
+          role: this.state.role
       }
 
       register(user).then(res => {
@@ -41,6 +43,7 @@ class Register extends React.Component {
     // eslint-disable-next-line
     {document.getElementById('mdp').value === document.getElementById('confmdp').value ? alert("bon") : alert("mauvais")}
   }
+
     render() {
       return (
         <div>
@@ -85,6 +88,18 @@ class Register extends React.Component {
                                     placeholder="Entrez votre mot de passe"
                                     onChange={this.onChange}
                                 />
+                            </div>
+                            <div className="form-group">
+                              <label> Choisissez votre rôle </label>
+                              <select class="form-control form-control-lg"
+                                  onSelect={this.onChange}
+                                  onChange={this.onChange}
+                                  name="role"
+                              >
+                                <option>Rappeur</option>
+                                <option>Bass</option>
+                                <option>Producteur</option>
+                              </select>
                             </div>
                             <button type="submit"
                             className="btn btn-block btn-lg btn-light">

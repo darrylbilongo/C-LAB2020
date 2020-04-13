@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navigation from './Navigation';
-import axios from 'axios'
 import Entete from "./Entete";
 import Carousel from 'react-bootstrap/Carousel'
 import Souhaib from '../images/souhaib.png'
