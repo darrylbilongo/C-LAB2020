@@ -17,8 +17,8 @@
  * 
  */
 
-module.exports = (sequelize, Sequilize) => {
-  const User = sequelize.define('User', {
+module.exports = (sequilize, Sequilize) => {
+  const User = sequilize.define('User', {
     id : {
       type: Sequilize.INTEGER,
       primaryKey: true,

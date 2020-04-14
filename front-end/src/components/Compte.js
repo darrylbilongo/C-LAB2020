@@ -47,7 +47,7 @@ class Compte extends React.Component {
         <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
                         <form className= "formulaire2" noValidate onSubmit={this.onSubmit}>
-                            <h1 className="h3 mn-3">Vos informations</h1>
+                            <h1 className="h3 mn-3">Modifiez vos informations</h1>
                             <div className="form-group">
                                 <label htmlFor="last_name">Nom: </label>
                                 <input type="text"
