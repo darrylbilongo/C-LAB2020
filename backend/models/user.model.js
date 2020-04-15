@@ -28,7 +28,7 @@ module.exports = (sequilize, Sequilize) => {
     last_name: Sequilize.STRING,
     email: Sequilize.STRING,
     password: Sequilize.STRING,
-    role: Sequilize.STRING
+    role: Sequilize.STRING,
   }, {
     timestamps: false
   });

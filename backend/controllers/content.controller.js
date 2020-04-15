@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Content
 exports.create = (req, res) => {
     // Validation
-  if (!req.body.title) {
+  if (!req.body.link) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,8 +14,8 @@ exports.create = (req, res) => {
 
   // Create a content
   const content = {
-    title: req.body.title,
-    description: req.body.description,
+    id: req.body.id,
+    link: req.body.link,
     published: req.body.published ? req.body.published : false
   };
 
