@@ -38,8 +38,8 @@ class ProfilVisiteur extends Component{
                      <div className="details">
                     <h2>Votre description</h2>
                     <ul className="list-group">
-                        <li class="list-group-item">Nom : {this.persons.last_name}</li>
-                        <li class="list-group-item">Prénom : {this.persons.first_name}</li>
+                        <li class="list-group-item">Nom : {this.state.last_name}</li>
+                        <li class="list-group-item">Prénom : {this.state.first_name}</li>
                         <li class="list-group-item">Adresse Mail : {this.state.email}</li>
                         <li class="list-group-item">Role : {this.state.role}</li>
                         <li class="list-group-item">Description :</li>
