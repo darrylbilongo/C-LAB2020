@@ -1,19 +1,32 @@
 import React from "react";
 import { register } from './UserFonctions';
+import jwt_decode from 'jwt-decode'
 
 class Compte extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        first_name: '',
-        last_name: '',
-        password: '',
-        email: ''
-      };
-  
-      this.onChange = this.onChange.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    const token = localStorage.usertoken;
+    const decoded = jwt_decode(token);
+    this.state = {
+      first_name: decoded.first_name,
+      last_name: decoded.last_name,
+      password: decoded.password,
+      email: decoded.email,
+      role: decoded.role
+    }; 
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+}
+
+componentDidMount(){
+
+    this.setState({
+        first_name: this.state.first_name,
+        last_name: this.state_name,
+        email: this.state.email,
+        role: this.state.role
+    })
+   }
   
     onChange(event) {
       let nam = event.target.name;
@@ -25,7 +38,7 @@ class Compte extends React.Component {
       event.preventDefault();
 
       const user = {
-          email: this.state.email,
+          first_name : this.state.email,
           password: this.state.password,
           first_name: this.state.first_name,
           last_name: this.state.last_name,
@@ -33,7 +46,7 @@ class Compte extends React.Component {
 
       register(user).then(res => {
           if(res){
-              this.props.history.push('/login')
+            this.props.history.push('/login')
           }
       })
     }
@@ -47,7 +60,7 @@ class Compte extends React.Component {
         <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
                         <form className= "formulaire2" noValidate onSubmit={this.onSubmit}>
-                            <h1 className="h3 mn-3">Modifiez vos informations</h1>
+                            <h1 className="h3 mn-3">Vos informations</h1>
                             <div className="form-group">
                                 <label htmlFor="last_name">Nom: </label>
                                 <input type="text"

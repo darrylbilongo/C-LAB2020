@@ -100,7 +100,7 @@ export default class PersonList extends React.Component{
 
 
     componentDidMount() {
-        axios.get('http://localhost:8080/users/', {params: {first_name: 'Bilel'}}).then(res => {
+        axios.get('http://localhost:8080/users').then(res => {
             this.setState({ 
                 persons: res.data,
              });
