@@ -11,6 +11,7 @@ import PersonList from './components/PersonList';
 import Home from './components/Home'
 import Navigation from './components/Navigation';
 import Entete from './components/Entete';
+import ProfilVisiteur from './components/ProfilVisiteur'
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
               <Route exact path="/" component={PageAccueil}/>
               <Route exact path="/home" component={Home} />
               <Route exact path="/compte" component={Compte}/>
+              <Route exact path="/ProfilVisiteur" component={ProfilVisiteur}/>
             </div>
         </Router>
     );

@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import ReactPlayer from 'react-player'
-import jwt_decode from 'jwt-decode'
+import axios from 'axios';
 
-class Profile extends Component{
+class ProfilVisiteur extends Component{
+
+    state = {
+        persons: [],
+    }
 
     constructor(props) {
         super(props);
@@ -16,18 +20,13 @@ class Profile extends Component{
     }
     
     componentDidMount(){
-        const token = localStorage.usertoken;
-        const decoded = jwt_decode(token);
-
-        this.setState({
-            first_name: decoded.first_name,
-            last_name: decoded.last_name,
-            email: decoded.email,
-            role: decoded.role
+        axios.get('http://localhost:8080/users/', {params: {first_name: 'Bilel'}}).then(res => {
+            this.setState({ 
+                persons: res.data,
+             });
         })
 
     }
-
     render(){
         return(
             <div>
@@ -52,4 +51,4 @@ class Profile extends Component{
     }
 }
 
-export default Profile;
+export default ProfilVisiteur;

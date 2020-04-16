@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt_decode from 'jwt-decode'
 
 export const register = async newUser => {
 
@@ -16,6 +17,7 @@ export const register = async newUser => {
         console.log(err);
     }
 }
+
 
 export const login = user => {
     return axios

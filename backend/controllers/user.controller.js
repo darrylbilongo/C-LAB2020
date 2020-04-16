@@ -43,9 +43,7 @@ exports.register = (req, res) => {
         }
     }).catch(err => {
         res.status(400).json({message: 'Error: ' + err})
-    })
-
-    
+    })  
 }
 
 exports.login = (req, res) => {
@@ -83,3 +81,27 @@ exports.login = (req, res) => {
         });
     
 }
+
+exports.delete = (req, res) => {
+    const id = req.params.id;
+
+    Post.destroy({
+      where: { id: id }
+    })
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Compte supprimé!"
+          });
+        } else {
+          res.send({
+            message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Impossible de supprimer le user avec id=" + id
+        });
+      });
+};

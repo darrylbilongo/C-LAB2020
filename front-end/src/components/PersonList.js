@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {Link, withRouter} from 'react-router-dom';
 
 const Item = function ({item}) {
     return <tr>
@@ -9,7 +10,13 @@ const Item = function ({item}) {
     <td>{item.role}</td>
     <td>{item.email}</td>
     <td>2</td>
-    <td><button>Voir profil</button></td>
+    <td>
+        <Link to="/ProfilVisiteur" className="nav-link">
+            <button>
+                Voir profil
+            </button>
+        </Link>
+</td>
     </tr>;
 }
 
@@ -98,7 +105,6 @@ export default class PersonList extends React.Component{
                 persons: res.data,
              });
         })
-
     }
 
     render(){
