@@ -17,18 +17,19 @@
  * 
  */
 
-module.exports = (sequelize, Sequilize) => {
+module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define('User', {
     id : {
-      type: Sequilize.INTEGER,
+      type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    first_name: Sequilize.STRING,
-    last_name: Sequilize.STRING,
-    email: Sequilize.STRING,
-    password: Sequilize.STRING,
-    role: Sequilize.STRING,
+    first_name: Sequelize.STRING,
+    last_name: Sequelize.STRING,
+    email: Sequelize.STRING,
+    password: Sequelize.STRING,
+    role: Sequelize.STRING,
+    description: Sequelize.TEXT
   }, {
     timestamps: false
   });

@@ -38,7 +38,7 @@ let users = require('../controllers/user.controller');
  *              - password
  *    responses:
  *     '200': 
-*         description: User found and logged successfully
+ *         description: User found and logged successfully
  * 
  */
 router.use(cors())

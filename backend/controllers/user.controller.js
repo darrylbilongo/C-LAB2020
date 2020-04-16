@@ -14,7 +14,8 @@ exports.register = (req, res) => {
         last_name : req.body.last_name,
         email : req.body.email,
         password: req.body.password,
-        role: req.body.role
+        role: req.body.role,
+        description: req.body.description
     }
 
     User.findOne({
