@@ -5,6 +5,7 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id : '',
             email: '',
             password: '',
             errors: {}
@@ -31,13 +32,14 @@ class Login extends Component {
         e.preventDefault();
 
         const user = {
+            id: this.state.id,
             email: this.state.email,
             password: this.state.password
         }
         
         login(user).then(res => {
             if(res){
-                this.props.history.push('/profile')
+                this.props.history.push('/home')
             }
         })
     }

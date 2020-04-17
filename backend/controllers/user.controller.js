@@ -85,7 +85,7 @@ exports.login = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Post.destroy({
+    User.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -104,4 +104,18 @@ exports.delete = (req, res) => {
           message: "Impossible de supprimer le user avec id=" + id
         });
       });
+};
+
+exports.getUser = (req, res) => {
+    const id = req.params.id 
+
+    User.findByPk(id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Impossible d'avoir l'utilisateur avec l'id" + id
+            })
+        });
 };

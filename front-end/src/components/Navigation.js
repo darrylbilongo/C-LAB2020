@@ -1,11 +1,32 @@
 import React, { Component } from "react";
 import {Link, withRouter} from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 class Navigation extends Component{
+
+    state = {
+        user: '',
+    }
+
     logOut(e){
       e.preventDefault();
       localStorage.removeItem('usertoken');
       this.props.history.push('/');
+    }
+
+
+    componentDidUpdate() {
+        try {
+            const token = localStorage.getItem('usertoken');
+            const decoded = jwt_decode(token);
+
+            this.setState({
+                user: decoded,
+            })
+        }
+        catch(error) {
+            console.log('pas connecté')
+        }
     }
 
     render(){
@@ -35,7 +56,10 @@ class Navigation extends Component{
 
     const profileLink = (
         <li className="nav-item">
-                <Link to="/profile" className="nav-link">
+                <Link to={{
+                    pathname: `/profile/${this.state.user.id}`
+                }} 
+                className="nav-link">
                     Profile
                 </Link>
         </li>

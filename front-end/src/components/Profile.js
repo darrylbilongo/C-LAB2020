@@ -1,30 +1,27 @@
 import React, { Component } from "react";
 import ReactPlayer from 'react-player'
-import jwt_decode from 'jwt-decode'
+import axios from 'axios'
 
 class Profile extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
-          first_name: '',
-          last_name: '',
-          password: '',
-          email: '',
-          role: ''
+          user: ''
         };
     }
     
     componentDidMount(){
-        const token = localStorage.usertoken;
-        const decoded = jwt_decode(token);
 
-        this.setState({
-            first_name: decoded.first_name,
-            last_name: decoded.last_name,
-            email: decoded.email,
-            role: decoded.role
-        })
+        const { id } = this.props.match.params
+
+        axios.get('http://localhost:8080/users/' + id)
+            .then((res) => {
+                this.setState({
+                    user: res.data
+                })
+            });
+
 
     }
 
@@ -39,11 +36,11 @@ class Profile extends Component{
                      <div className="details">
                     <h2>Votre description</h2>
                     <ul className="list-group">
-                        <li class="list-group-item">Nom : {this.state.last_name}</li>
-                        <li class="list-group-item">Prénom : {this.state.first_name}</li>
-                        <li class="list-group-item">Adresse Mail : {this.state.email}</li>
-                        <li class="list-group-item">Role : {this.state.role}</li>
-                        <li class="list-group-item">Description :</li>
+                        <li className="list-group-item">Nom : {this.state.user.last_name}</li>
+                        <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
+                        <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
+                        <li className="list-group-item">Role : {this.state.user.role}</li>
+                        <li className="list-group-item">Description :</li>
                     </ul>
                     </div>
                 </div>
