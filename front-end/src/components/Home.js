@@ -6,6 +6,7 @@ import Bilel from '../images/bilel.png'
 
 
 class PageAccueil2 extends Component{
+
     render(){
         return(
             <div>

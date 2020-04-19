@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const multer = require('multer')
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const cors = require('cors')
@@ -56,6 +57,32 @@ var port = process.env.PORT || 8080;
 const db = require("../backend/models");
 db.sequelize.sync();
 
+// Gestion des fichiers
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' +file.originalname )
+  }
+})
+
+var upload = multer({ storage: storage }).single('file')
+
+app.post('/upload',function(req, res) {
+     
+  upload(req, res, function (err) {
+         if (err instanceof multer.MulterError) {
+             return res.status(500).json(err)
+         } else if (err) {
+             return res.status(500).json(err)
+         }
+    return res.status(200).send(req.file)
+
+  })
+
+});
 
 //Routage
 const postRouter = require('./routes/posts')
