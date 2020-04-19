@@ -1,32 +1,20 @@
 import React from "react";
-import { register } from './UserFonctions';
-import jwt_decode from 'jwt-decode'
+import { update } from './UserFonctions';
 
 class Compte extends React.Component {
-  constructor(props) {
-    super(props);
-    const token = localStorage.usertoken;
-    const decoded = jwt_decode(token);
-    this.state = {
-      first_name: decoded.first_name,
-      last_name: decoded.last_name,
-      password: decoded.password,
-      email: decoded.email,
-      role: decoded.role
-    }; 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-}
-
-componentDidMount(){
-
-    this.setState({
-        first_name: this.state.first_name,
-        last_name: this.state_name,
-        email: this.state.email,
-        role: this.state.role
-    })
-   }
+    constructor(props) {
+      super(props);
+      this.state = {
+        first_name: '',
+        last_name: '',
+        password: '',
+        email: '',
+        role: ''
+      };
+  
+      this.onChange = this.onChange.bind(this);
+      this.onSubmit = this.onSubmit.bind(this);
+    }
   
     onChange(event) {
       let nam = event.target.name;
@@ -38,15 +26,16 @@ componentDidMount(){
       event.preventDefault();
 
       const user = {
-          email : this.state.email,
+          email: this.state.email,
           password: this.state.password,
           first_name: this.state.first_name,
           last_name: this.state.last_name,
+          role: this.state.role
       }
 
-      register(user).then(res => {
+      update(user).then(res => {
           if(res){
-            this.props.history.push('/login')
+              this.props.history.push('/:id')
           }
       })
     }
@@ -54,13 +43,14 @@ componentDidMount(){
     // eslint-disable-next-line
     {document.getElementById('mdp').value === document.getElementById('confmdp').value ? alert("bon") : alert("mauvais")}
   }
+
     render() {
       return (
         <div>
         <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
-                        <form className= "formulaire2" noValidate onSubmit={this.onSubmit}>
-                            <h1 className="h3 mn-3">Vos informations</h1>
+                        <form className= "formulaire" noValidate onSubmit={this.onSubmit}>
+                            <h1 className="h3 mn-3">Nouveau ? enregistrez vous !</h1>
                             <div className="form-group">
                                 <label htmlFor="last_name">Nom: </label>
                                 <input type="text"
@@ -98,6 +88,19 @@ componentDidMount(){
                                     placeholder="Entrez votre mot de passe"
                                     onChange={this.onChange}
                                 />
+                            </div>
+                            <div className="form-group">
+                              <label> Choisissez votre rôle </label>
+                              <select class="form-control form-control-lg"
+                                  onSelect={this.onChange}
+                                  onChange={this.onChange}
+                                  defaultValue='Rappeur'
+                                  name="role"
+                              required>
+                                <option>Rappeur</option>
+                                <option>Bass</option>
+                                <option>Producteur</option>
+                              </select>
                             </div>
                             <button type="submit"
                             className="btn btn-block btn-lg btn-light">

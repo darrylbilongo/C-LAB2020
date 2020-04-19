@@ -32,3 +32,20 @@ export const login = user => {
             console.log(err)
         })
 }
+
+export const update = async newUser => {
+
+    try {
+        return axios
+            .put('http://localhost:8080/users/:id', {
+                first_name: newUser.first_name,
+                last_name: newUser.last_name,
+                email: newUser.email,
+                password: newUser.password,
+                role: newUser.role
+            });
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
