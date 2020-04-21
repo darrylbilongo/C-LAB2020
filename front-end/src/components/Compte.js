@@ -28,10 +28,6 @@ componentDidUpdate() {
       console.log('pas connecté')
   }
 }
-
-  
-      
-    
   
     onChange(event) {
       let nam = event.target.name;

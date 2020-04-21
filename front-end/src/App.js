@@ -28,7 +28,7 @@ class App extends Component {
               <Route exact path="/catalogue" component={PersonList}/>
               <Route exact path="/PageAccueil" component={PageAccueil}/>
               <Route exact path="/home" component={Home} />
-              <Route exact path="/Paramètre" component={Link}/>
+              <Route exact path="/settings" component={Link}/>
               <Route exact path="/ProfilVisiteur" component={ProfilVisiteur}/>
             </div>
         </Router>

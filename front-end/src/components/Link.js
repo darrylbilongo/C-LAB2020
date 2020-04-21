@@ -42,29 +42,30 @@ class Link extends React.Component {
                               <div className="form-group">
                                   <label htmlFor="youtube">Youtube </label>
                                   <input type="text"
-                                      name="youtube"
+                                      name="lienYoutube"
                                       className="form-control"
                                       placeholder="Entrez votre nom"
-                                      value={this.state.last_name}
+                                      value={this.state.lienYoutube}
                                       onChange={this.onChange}
                                   />
                               </div>
                               <div className="form-group">
                                   <label htmlFor="first_name">Instagram </label>
                                   <input type="text"
-                                      name="first_name"
+                                      name="lienInsta"
                                       className="form-control"
                                       placeholder="Entrez votre prénom"
-                                      value={this.state.first_name}
+                                      value={this.state.lienInsta}
                                       onChange={this.onChange}
                                   />
                               </div>
                               <div className="form-group">
                                   <label htmlFor="email">Autre Lien </label>
                                   <input type="email"
-                                      name="email"
+                                      name="lienAutre"
                                       className="form-control"
                                       placeholder="Entrez votre email"
+                                      value={this.state.lienAutre}
                                       onChange={this.onChange}
                                   />
                               </div>

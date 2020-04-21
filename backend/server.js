@@ -87,9 +87,11 @@ app.post('/upload',function(req, res) {
 //Routage
 const postRouter = require('./routes/posts')
 const userRouter = require('./routes/users')
+const linkRouter = require('./routes/links')
 
 app.use('/posts', postRouter);
 app.use('/users', userRouter);
+app.use('/links', linkRouter);
 
 app.get('/', (req, res) => {
   res.send(`<h2>Hello World!</h2>

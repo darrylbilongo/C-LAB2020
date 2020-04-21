@@ -1,14 +1,21 @@
 const db = require("../models");
-const User = db.links;
+const Link = db.links;
 const Op = db.Sequelize.Op;
 
-exports.register = (req, res) => {
-    const userData = {
+exports.registerLink = (req, res) => {
+    const link = {
         lienYoutube: req.body.lienYoutube,
         lienInsta: req.body.lienInsta,
         lienAutre: req.body.lienAutre
     }
+    Link.create(link)
+    .then(data => {
+      res.send(data);
+    })
     .catch(err => {
-        res.status(400).json({message: 'Error: ' + err})
-    })  
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the post in the database."
+      });
+    })
 }
