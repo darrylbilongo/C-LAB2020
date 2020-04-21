@@ -55,4 +55,6 @@ router.post('/register', users.register);
 
 router.get('/:id', users.getUser)
 
+router.put('/:id', users.update)
+
 module.exports = router;

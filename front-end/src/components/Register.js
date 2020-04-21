@@ -94,9 +94,9 @@ class Register extends React.Component {
                               <select class="form-control form-control-lg"
                                   onSelect={this.onChange}
                                   onChange={this.onChange}
-                                  defaultValue="Rappeur"
+                                  defaultValue='Rappeur'
                                   name="role"
-                              >
+                              required>
                                 <option>Rappeur</option>
                                 <option>Bass</option>
                                 <option>Producteur</option>

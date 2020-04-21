@@ -14,6 +14,10 @@
  *        type: string
  *      password:
  *        type: string
+ *      role:
+ *        type: string
+ *      description:
+ *        type: text
  * 
  */
 
