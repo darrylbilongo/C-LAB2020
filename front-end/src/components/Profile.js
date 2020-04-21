@@ -10,9 +10,10 @@ class Profile extends Component{
 
         this.state = {
           user: '',
-          score: 0,
+          like: false,
           selectedFile: null,
-          loaded: 0
+          loaded: 0,
+          bouton:"Je n'aime pas"
         };
       
         this.vote=this.vote.bind(this);
@@ -56,8 +57,19 @@ class Profile extends Component{
         console.log(event.target.files[0])
     }
 
+    vote (){
+        this.setState({
+            like: !(this.state.like),
+            bouton: this.state.like ? "Je n'aime pas" : "J'aime"
+        });
+      }
 
     render(){
+
+        let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
+        let bouton = this
+
+
         return(
             <div>
                 <div className="videode">
@@ -73,13 +85,13 @@ class Profile extends Component{
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
                         <li className="list-group-item">
-                            Si tu as aimé cet artiste:  {this.state.score}
+                            As-tu apprécié cet artiste?  {this.state.like}
                             <button
                                 onClick={this.vote} 
                                 type="submit"
-                                className="btn btn-block btn-lg btn-success"
+                                className= {btn_class}
                                 >
-                                Clique ici
+                              {this.state.bouton}      
                             </button>
                         </li>
                     </ul>
@@ -105,11 +117,7 @@ class Profile extends Component{
         )
     }
 
-    vote (){
-        this.setState({
-          score: this.state.score + 1,
-        });
-      }
+
 }
 
 export default Profile;
