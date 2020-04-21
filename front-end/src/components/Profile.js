@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import {Progress} from 'reactstrap';
 
 class Profile extends Component{
 
@@ -8,9 +7,10 @@ class Profile extends Component{
         super(props);
 
         this.state = {
-          user: '',
+          user: {},
           like: false,
           selectedFile: null,
+          note: 0,
           loaded: 0,
           bouton:"Je n'aime pas"
         };
@@ -22,7 +22,6 @@ class Profile extends Component{
 
     
     componentDidMount(){
-
         const { id } = this.props.match.params
 
         axios.get('http://localhost:8080/users/' + id)
@@ -60,14 +59,18 @@ class Profile extends Component{
     vote (){
         this.setState({
             like: !(this.state.like),
-            bouton: this.state.like ? "Je n'aime pas" : "J'aime"
+            bouton: this.state.like ? "Je n'aime pas" : "J'aime" 
         });
-      }
+
+        axios.put('http://localhost:8080/users/' + this.state.user.id, {
+            note : this.state.like ? this.state.user.note + 1 : this.state.user.note - 1
+        })
+  
+    }
 
     render(){
 
         let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
-        let bouton = this
 
 
         return(
@@ -84,8 +87,9 @@ class Profile extends Component{
                         <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
+                        <li className="list-group-item">Note : {this.state.user.note}</li>
                         <li className="list-group-item">
-                            As-tu apprécié cet artiste?  {this.state.like}
+                            As-tu apprécié cet artiste? {this.state.like ? 0 : 1}
                             <button
                                 onClick={this.vote} 
                                 type="submit"
