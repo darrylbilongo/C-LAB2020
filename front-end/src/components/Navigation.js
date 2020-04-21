@@ -90,8 +90,8 @@ class Navigation extends Component{
 
     const compteLink = (
         <li className="nav-item">
-                    <Link to="/compte" className="nav-link">
-                        Account
+                    <Link to="/Paramètre" className="nav-link">
+                        Settings
                     </Link>
                 </li>
     ) 

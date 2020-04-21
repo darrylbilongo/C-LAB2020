@@ -17,6 +17,21 @@ export const register = async newUser => {
     }
 }
 
+export const link = async newUser => {
+
+    try {
+        return axios
+            .post('http://localhost:8080/link/registerLink', {
+                lienYoutube: newUser.lienYoutube,
+                lienInsta: newUser.lienInsta,
+                lienAutre: newUser.lienAutre
+            });
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 
 export const login = user => {
     return axios

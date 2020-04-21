@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Profile from './components/Profile';
 import Compte from './components/Compte'
 import {BrowserRouter as Router, Route } from 'react-router-dom';
+import Link from "./components/Link"
 
 import './App.css';
 import PersonList from './components/PersonList';
@@ -27,7 +28,7 @@ class App extends Component {
               <Route exact path="/catalogue" component={PersonList}/>
               <Route exact path="/PageAccueil" component={PageAccueil}/>
               <Route exact path="/home" component={Home} />
-              <Route exact path="/compte" component={Compte}/>
+              <Route exact path="/Paramètre" component={Link}/>
               <Route exact path="/ProfilVisiteur" component={ProfilVisiteur}/>
             </div>
         </Router>

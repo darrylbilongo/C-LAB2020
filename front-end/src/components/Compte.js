@@ -1,20 +1,37 @@
 import React from "react";
 import { update } from './UserFonctions';
+import jwt_decode from 'jwt-decode';
 
 class Compte extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        first_name: '',
-        last_name: '',
-        password: '',
-        email: '',
-        role: ''
-      };
+    
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: '',
+
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+}
+
+componentDidUpdate() {
+  try {
+      const token = localStorage.getItem('usertoken');
+      const decoded = jwt_decode(token);
+
+      this.setState({
+          user: decoded,
+      })
+  }
+  catch(error) {
+      console.log('pas connecté')
+  }
+}
+
   
-      this.onChange = this.onChange.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
-    }
+      
+    
   
     onChange(event) {
       let nam = event.target.name;
@@ -35,14 +52,11 @@ class Compte extends React.Component {
 
       update(user).then(res => {
           if(res){
-              this.props.history.push('/:id')
+              this.props.history.push('/:' + this.state.user.id)
           }
       })
     }
-  handlemdp = () => {
-    // eslint-disable-next-line
-    {document.getElementById('mdp').value === document.getElementById('confmdp').value ? alert("bon") : alert("mauvais")}
-  }
+
 
     render() {
       return (

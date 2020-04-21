@@ -208,6 +208,12 @@ ul#menu li a
   max-height: 1%;
 }
 
+.formulaire3{
+  background-color: rgba(0,0,0, 0.7);
+  margin-top: 5%;
+  margin-left: 80%;
+  border-radius: 15px;
+}
 
 
 
