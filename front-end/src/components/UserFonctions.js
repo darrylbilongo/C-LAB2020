@@ -21,7 +21,7 @@ export const link = async newUser => {
 
     try {
         return axios
-            .post('http://localhost:8080/link/registerLink', {
+            .post('http://localhost:8080/links/compte', {
                 lienYoutube: newUser.lienYoutube,
                 lienInsta: newUser.lienInsta,
                 lienAutre: newUser.lienAutre

@@ -22,7 +22,9 @@ db.sequelize = sequelize;
 db.posts = require("./post.model.js")(sequelize, Sequelize);
 db.users = require("./user.model.js")(sequelize, Sequelize);
 db.contents = require("./content.model.js")(sequelize, Sequelize);
-db.link = require("./Link.model.js")(sequelize, Sequelize);
+db.links = require("./Link.model.js")(sequelize, Sequelize);
 // Relations
+
+db.users.hasOne(db.links);
 
 module.exports = db;

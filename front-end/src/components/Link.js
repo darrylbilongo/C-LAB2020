@@ -1,5 +1,6 @@
 import React from "react";
 import { link } from './UserFonctions';
+import jwt_decode from 'jwt-decode';
 
 class Link extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class Link extends React.Component {
         lienYoutube: '',
         lienInsta: '',
         lienAutre: '',
+        user: ''
       };
   
       this.onChange = this.onChange.bind(this);
@@ -19,17 +21,30 @@ class Link extends React.Component {
       let val = event.target.value;
       this.setState({[nam]: val});
     }
+
+    /*Erreur si on le met
+    componentDidUpdate() {
+            const token = localStorage.getItem('usertoken');
+            const decoded = jwt_decode(token);
+
+            this.setState({
+                user: decoded,
+            })
+        
+    }
+    */
   
     onSubmit(event) {
       event.preventDefault();
 
-      const user = {
+      const newLink = {
           lienYoutube: this.state.lienYoutube,
           lienInsta: this.state.lienInsta,
           lienAutre: this.state.lienAutre,
+          UserId: this.state.user.id
       }
 
-      link(user)
+      link(newLink)
     }
 
     render() {
@@ -42,29 +57,30 @@ class Link extends React.Component {
                               <div className="form-group">
                                   <label htmlFor="youtube">Youtube </label>
                                   <input type="text"
-                                      name="youtube"
+                                      name="lienYoutube"
                                       className="form-control"
                                       placeholder="Entrez votre nom"
-                                      value={this.state.last_name}
+                                      value={this.state.lienYoutube}
                                       onChange={this.onChange}
                                   />
                               </div>
                               <div className="form-group">
                                   <label htmlFor="first_name">Instagram </label>
                                   <input type="text"
-                                      name="first_name"
+                                      name="lienInsta"
                                       className="form-control"
                                       placeholder="Entrez votre prénom"
-                                      value={this.state.first_name}
+                                      value={this.state.lienInsta}
                                       onChange={this.onChange}
                                   />
                               </div>
                               <div className="form-group">
                                   <label htmlFor="email">Autre Lien </label>
                                   <input type="email"
-                                      name="email"
+                                      name="lienAutre"
                                       className="form-control"
                                       placeholder="Entrez votre email"
+                                      value={this.state.lienAutre}
                                       onChange={this.onChange}
                                   />
                               </div>
