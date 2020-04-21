@@ -10,7 +10,7 @@ class Profile extends Component{
 
         this.state = {
           user: '',
-          score: 0
+          score: 0,
           selectedFile: null,
           loaded: 0
         };
