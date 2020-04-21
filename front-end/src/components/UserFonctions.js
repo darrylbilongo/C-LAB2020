@@ -24,7 +24,8 @@ export const link = async newUser => {
             .post('http://localhost:8080/links/compte', {
                 lienYoutube: newUser.lienYoutube,
                 lienInsta: newUser.lienInsta,
-                lienAutre: newUser.lienAutre
+                lienAutre: newUser.lienAutre,
+                UserId: newUser.UserId
             });
     }
     catch (err) {

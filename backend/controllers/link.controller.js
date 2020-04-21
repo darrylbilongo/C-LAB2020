@@ -7,7 +7,7 @@ exports.registerLink = (req, res) => {
         lienYoutube: req.body.lienYoutube,
         lienInsta: req.body.lienInsta,
         lienAutre: req.body.lienAutre,
-        UserId: req.body.id
+        UserId: req.body.UserId
     }
     Link.create(link)
     .then(data => {

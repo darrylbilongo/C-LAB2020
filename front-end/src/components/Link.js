@@ -5,34 +5,34 @@ import jwt_decode from 'jwt-decode';
 class Link extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-        lienYoutube: '',
-        lienInsta: '',
-        lienAutre: '',
-        user: ''
-      };
+      
   
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
     }
-  
+    state = {
+        lienYoutube: '',
+        lienInsta: '',
+        lienAutre: '',
+        user: ''
+    };
     onChange(event) {
       let nam = event.target.name;
       let val = event.target.value;
       this.setState({[nam]: val});
     }
 
-    /*Erreur si on le met
-    componentDidUpdate() {
-            const token = localStorage.getItem('usertoken');
+
+    async componentDidMount() {
+            const token = await localStorage.getItem('usertoken');
             const decoded = jwt_decode(token);
 
             this.setState({
                 user: decoded,
             })
-        
+            console.log(this.state.user);
     }
-    */
+    
   
     onSubmit(event) {
       event.preventDefault();
@@ -43,7 +43,6 @@ class Link extends React.Component {
           lienAutre: this.state.lienAutre,
           UserId: this.state.user.id
       }
-
       link(newLink)
     }
 
