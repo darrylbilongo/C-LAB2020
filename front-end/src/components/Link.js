@@ -1,5 +1,6 @@
 import React from "react";
 import { link } from './UserFonctions';
+import jwt_decode from 'jwt-decode';
 
 class Link extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class Link extends React.Component {
         lienYoutube: '',
         lienInsta: '',
         lienAutre: '',
+        user: ''
       };
   
       this.onChange = this.onChange.bind(this);
@@ -19,17 +21,30 @@ class Link extends React.Component {
       let val = event.target.value;
       this.setState({[nam]: val});
     }
+
+    /*Erreur si on le met
+    componentDidUpdate() {
+            const token = localStorage.getItem('usertoken');
+            const decoded = jwt_decode(token);
+
+            this.setState({
+                user: decoded,
+            })
+        
+    }
+    */
   
     onSubmit(event) {
       event.preventDefault();
 
-      const user = {
+      const newLink = {
           lienYoutube: this.state.lienYoutube,
           lienInsta: this.state.lienInsta,
           lienAutre: this.state.lienAutre,
+          UserId: this.state.user.id
       }
 
-      link(user)
+      link(newLink)
     }
 
     render() {
