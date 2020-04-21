@@ -12,10 +12,10 @@ class Profile extends Component{
           selectedFile: null,
           note: 0,
           loaded: 0,
-          bouton:"Je n'aime pas"
         };
       
-        this.vote=this.vote.bind(this);
+        this.voteAime=this.voteAime.bind(this);
+        this.voteAimePas=this.voteAimePas.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this)
         this.onClickHandler = this.onClickHandler.bind(this)
     }
@@ -56,16 +56,25 @@ class Profile extends Component{
         console.log(event.target.files[0])
     }
 
-    vote (){
+    voteAime (){
         this.setState({
-            like: !(this.state.like),
-            bouton: this.state.like ? "Je n'aime pas" : "J'aime" 
+            like: true,
         });
 
         axios.put('http://localhost:8080/users/' + this.state.user.id, {
-            note : this.state.like ? this.state.user.note + 1 : this.state.user.note - 1
+            note : this.state.like = this.state.user.note + 1
         })
   
+    }
+
+    voteAimePas(){
+        this.setState({
+            like: false,
+        });
+
+        axios.put('http://localhost:8080/users/' + this.state.user.id, {
+            note : this.state.like = this.state.user.note - 1
+        })
     }
 
     render(){
@@ -88,16 +97,25 @@ class Profile extends Component{
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
                         <li className="list-group-item">Note : {this.state.user.note}</li>
-                        <li className="list-group-item">
-                            As-tu apprécié cet artiste? {this.state.like ? 0 : 1}
-                            <button
-                                onClick={this.vote} 
-                                type="submit"
-                                className= {btn_class}
+                        <div>
+                            <li className="list-group-item">
+                                As-tu apprécié cet artiste? {this.state.like ? "Tu as aimé ce profil" : "Tu n'as pas aimé"}
+                                <button
+                                    onClick={this.voteAime} 
+                                    type="submit"
+                                    className= "btn btn-block btn-lg btn-success"
                                 >
-                              {this.state.bouton}      
-                            </button>
-                        </li>
+                                J'aime      
+                                </button>
+                                <button
+                                    onClick={this.voteAimePas} 
+                                    type="submit"
+                                    className= "btn btn-block btn-lg btn-danger"
+                                >
+                                Je n'aime pas     
+                                </button>
+                            </li>
+                        </div>
                     </ul>
                     </div>
                     
