@@ -10,12 +10,7 @@ exports.registerLink = (req, res) => {
         lienAutre: req.body.lienAutre,
         UserId: req.body.UserId
     }
-    Link.create(link, {
-      include: [{
-        association: User,
-        as: 'UserId'
-      }]
-    })
+    Link.create(link)
     .then(data => {
       res.send(data);
     })
