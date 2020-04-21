@@ -9,7 +9,7 @@ const Item = function ({item}) {
     <td>{item.last_name}</td>
     <td>{item.role}</td>
     <td>{item.email}</td>
-    <td>2</td>
+    <td>{item.note}</td>
     <td>
         <Link to={{
                     pathname: `/profile/` + item.id

@@ -1,24 +1,27 @@
 import React, { Component } from "react";
-import ReactPlayer from 'react-player'
 import axios from 'axios'
-import {Progress} from 'reactstrap';
 
 class Profile extends Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-          user: '',
-          selectedFile: null,
-          loaded: 0
-        };
 
+        this.state = {
+          user: {},
+          like: false,
+          selectedFile: null,
+          note: 0,
+          loaded: 0,
+          bouton:"Je n'aime pas"
+        };
+      
+        this.vote=this.vote.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this)
         this.onClickHandler = this.onClickHandler.bind(this)
     }
+
     
     componentDidMount(){
-
         const { id } = this.props.match.params
 
         axios.get('http://localhost:8080/users/' + id)
@@ -31,6 +34,7 @@ class Profile extends Component{
 
     onClickHandler = () => {
         const data = new FormData() 
+        data.append('id', this.state.user.id)
         data.append('file', this.state.selectedFile)
 
         axios.post("http://localhost:8080/upload", data, { 
@@ -52,7 +56,23 @@ class Profile extends Component{
         console.log(event.target.files[0])
     }
 
+    vote (){
+        this.setState({
+            like: !(this.state.like),
+            bouton: this.state.like ? "Je n'aime pas" : "J'aime" 
+        });
+
+        axios.put('http://localhost:8080/users/' + this.state.user.id, {
+            note : this.state.like ? this.state.user.note + 1 : this.state.user.note - 1
+        })
+  
+    }
+
     render(){
+
+        let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
+
+
         return(
             <div>
                 <div className="videode">
@@ -67,6 +87,17 @@ class Profile extends Component{
                         <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
+                        <li className="list-group-item">Note : {this.state.user.note}</li>
+                        <li className="list-group-item">
+                            As-tu apprécié cet artiste? {this.state.like ? 0 : 1}
+                            <button
+                                onClick={this.vote} 
+                                type="submit"
+                                className= {btn_class}
+                                >
+                              {this.state.bouton}      
+                            </button>
+                        </li>
                     </ul>
                     </div>
                     
@@ -82,13 +113,15 @@ class Profile extends Component{
                             onClick={this.onClickHandler}
                             className="btn-lg"> Importer 
                     </button>
-                    <div class="form-group">
+                    <div className="form-group">
         {/*<Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>*/}
                     </div>
                 </div>
             </div>
         )
     }
+
+
 }
 
 export default Profile;

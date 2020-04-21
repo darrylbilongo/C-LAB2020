@@ -1,3 +1,18 @@
+/**
+ * @swagger
+ * definitions:
+ *  content:
+ *    type: object
+ *    properties:
+ *      id:
+ *        type: integer
+ *      link:
+ *        type: string
+ *      published:
+ *        type: boolean
+ * 
+ */
+
 module.exports = (sequelize, Sequelize) => {
     const Content = sequelize.define("content", {
       id: {

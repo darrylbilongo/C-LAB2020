@@ -3,7 +3,7 @@ import Register from "./components/Register"
 import PageAccueil from "./components/PageAccueil"
 import Login from './components/Login'
 import Profile from './components/Profile';
-import Compte from './components/Compte'
+
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import Link from "./components/Link"
 

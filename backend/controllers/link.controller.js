@@ -1,5 +1,6 @@
 const db = require("../models");
 const Link = db.links;
+const User = db.users;
 const Op = db.Sequelize.Op;
 
 exports.registerLink = (req, res) => {
@@ -9,7 +10,12 @@ exports.registerLink = (req, res) => {
         lienAutre: req.body.lienAutre,
         UserId: req.body.UserId
     }
-    Link.create(link)
+    Link.create(link, {
+      include: [{
+        association: User,
+        as: 'UserId'
+      }]
+    })
     .then(data => {
       res.send(data);
     })
