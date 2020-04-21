@@ -5,7 +5,7 @@ class PageAccueil extends Component{
         return(
             <div>
                 <div className="container">
-                    <div className="row">
+                    <div>
                         <div className="description1">
                             <h7 className="text-left  text-white">
                             <p><span className="text-success font-weight-bold">C-LAB</span> est une plateforme web visant à mettre en relation des musiciens, artistes, producteurs, … 

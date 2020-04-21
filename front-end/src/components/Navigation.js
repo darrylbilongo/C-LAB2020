@@ -54,6 +54,14 @@ class Navigation extends Component{
             </li>
     )
 
+    const homeLink2 = (
+        <li className="nav-item">
+                        <Link to="/PageAccueil" className="nav-link">
+                            Home
+                        </Link>
+            </li>
+    )
+
     const profileLink = (
         <li className="nav-item">
                 <Link to={{
@@ -100,7 +108,8 @@ class Navigation extends Component{
                 {localStorage.usertoken ? compteLink : null}
                 {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? catalogueLink : null}
-                {homeLink}
+                {localStorage.usertoken ? homeLink : null}
+                {localStorage.usertoken ? null : homeLink2}
                 </ul>
                 {/*<p className="description">C-LAB est une plateforme visant à réunir les différents artistes afin
                   de leur permettre de créer des projets à plusieurs. Fini l'époque où tu étais
