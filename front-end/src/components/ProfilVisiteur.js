@@ -15,8 +15,12 @@ class ProfilVisiteur extends Component{
           last_name: '',
           password: '',
           email: '',
-          role: ''
+          role: '',
+          score: 0
         };
+
+        this.vote=this.vote.bind(this);
+
     }
     
     componentDidMount(){
@@ -27,6 +31,7 @@ class ProfilVisiteur extends Component{
         })
 
     }
+
     render(){
         return(
             <div>
@@ -43,12 +48,29 @@ class ProfilVisiteur extends Component{
                         <li class="list-group-item">Adresse Mail : {this.state.email}</li>
                         <li class="list-group-item">Role : {this.state.role}</li>
                         <li class="list-group-item">Description :</li>
+                        <li className="list-group-item">
+                            Si tu as aimé cet artiste: {this.state.score}
+                            <button
+                                onClick={this.vote.bind(this)} 
+                                type="submit"
+                                className="btn btn-block btn-lg btn-success"
+                                >
+                                Clique ici
+                            </button>
+                        </li>
                     </ul>
                     </div>
                 </div>
                 </div>
         )
     }
+
+    
+    vote (){
+        this.setState({
+          score: this.state.score + 1,
+        });
+      }
 }
 
 export default ProfilVisiteur;

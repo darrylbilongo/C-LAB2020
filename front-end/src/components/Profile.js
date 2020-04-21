@@ -7,15 +7,19 @@ class Profile extends Component{
 
     constructor(props) {
         super(props);
+
         this.state = {
           user: '',
+          score: 0
           selectedFile: null,
           loaded: 0
         };
-
+      
+        this.vote=this.vote.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this)
         this.onClickHandler = this.onClickHandler.bind(this)
     }
+
     
     componentDidMount(){
 
@@ -52,6 +56,7 @@ class Profile extends Component{
         console.log(event.target.files[0])
     }
 
+
     render(){
         return(
             <div>
@@ -67,6 +72,16 @@ class Profile extends Component{
                         <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
+                        <li className="list-group-item">
+                            Si tu as aimé cet artiste:  {this.state.score}
+                            <button
+                                onClick={this.vote} 
+                                type="submit"
+                                className="btn btn-block btn-lg btn-success"
+                                >
+                                Clique ici
+                            </button>
+                        </li>
                     </ul>
                     </div>
                     
@@ -89,6 +104,12 @@ class Profile extends Component{
             </div>
         )
     }
+
+    vote (){
+        this.setState({
+          score: this.state.score + 1,
+        });
+      }
 }
 
 export default Profile;
