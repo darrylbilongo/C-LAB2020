@@ -33,7 +33,8 @@ module.exports = (sequelize, Sequelize) => {
     email: Sequelize.STRING,
     password: Sequelize.STRING,
     role: Sequelize.STRING,
-    description: Sequelize.TEXT
+    description: Sequelize.TEXT,
+    note: Sequelize.INTEGER
   }, {
     timestamps: false
   });
