@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactPlayer from 'react-player'
 import axios from 'axios'
 import {Progress} from 'reactstrap';
 
@@ -31,6 +30,7 @@ class Profile extends Component{
 
     onClickHandler = () => {
         const data = new FormData() 
+        data.append('id', this.state.user.id)
         data.append('file', this.state.selectedFile)
 
         axios.post("http://localhost:8080/upload", data, { 
@@ -82,7 +82,7 @@ class Profile extends Component{
                             onClick={this.onClickHandler}
                             className="btn-lg"> Importer 
                     </button>
-                    <div class="form-group">
+                    <div className="form-group">
         {/*<Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>*/}
                     </div>
                 </div>

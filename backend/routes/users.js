@@ -39,7 +39,7 @@ let users = require('../controllers/user.controller');
  *    responses:
  *     '200': 
  *         description: User found and logged successfully
- * 
+ *  
  */
 router.use(cors())
 

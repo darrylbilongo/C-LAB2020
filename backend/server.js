@@ -58,13 +58,16 @@ const db = require("../backend/models");
 db.sequelize.sync();
 
 // Gestion des fichiers
+const DIR = 'public/files'
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public')
+    cb(null, DIR)
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' +file.originalname )
+    const idUser = req.id
+    //cb(null, idUser + Date.now() + '-' +file.originalname )
+    cb(null, idUser + '-' +file.originalname )
   }
 })
 
