@@ -81,8 +81,8 @@ let users = require('../controllers/user.controller');
  *     '200': 
  *         description: User registered successfully
  * 
- * /users/getUser:
- *  post:
+ * /users/{id}:
+ *  get:
  *    tags:
  *       - Users
  *    name: GetUser
@@ -92,19 +92,15 @@ let users = require('../controllers/user.controller');
  *    consumes : 
  *      - application/json
  *    parameters:
- *      - name: body
- *        in: body
+ *      - name: id
+ *        in: path
  *        schema:
- *          $ref: '#/definitions/User'
- *          type: object
- *          properties:
- *            id: 
- *              type: integer
- *            required:
- *              - id
+ *          type: integer
+ *          required: true
+ *          description: Numeric ID of the user to get
  *    responses:
  *     '200': 
- *         description: User found and logged successfully
+ *         description: User found and returned
  */
 router.use(cors())
 
