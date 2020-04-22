@@ -144,3 +144,9 @@ exports.update = (req, res) => {
         });
       });
   };
+
+exports.getFiles = (req, res) => {
+  const id = req.params.id
+
+  
+}

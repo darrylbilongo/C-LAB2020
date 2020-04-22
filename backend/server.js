@@ -4,10 +4,13 @@ const multer = require('multer')
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const cors = require('cors')
+const axios = require('axios')
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
+
+app.use(express.static('public'));
 
 app.use(cors());
 
@@ -58,16 +61,26 @@ const db = require("../backend/models");
 db.sequelize.sync();
 
 // Gestion des fichiers
-const DIR = 'public/files'
+const DIR = 'public/files/'
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, DIR)
   },
   filename: function (req, file, cb) {
-    const idUser = req.id
+    idUser = req.body.id;
     //cb(null, idUser + Date.now() + '-' +file.originalname )
     cb(null, idUser + '-' +file.originalname )
+
+    axios.post('http://localhost:8080/contents/', {
+      link : DIR + idUser + '-' +file.originalname,
+      published: false,
+      UserId: idUser
+    })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch()
   }
 })
 
@@ -84,18 +97,18 @@ app.post('/upload',function(req, res) {
     return res.status(200).send(req.file)
 
   })
-
 });
 
 //Routage
 const postRouter = require('./routes/posts')
 const userRouter = require('./routes/users')
 const linkRouter = require('./routes/links')
+const contentRouter = require('./routes/contents')
 
 app.use('/posts', postRouter);
 app.use('/users', userRouter);
 app.use('/links', linkRouter);
-
+app.use('/contents', contentRouter)
 app.get('/', (req, res) => {
   res.send(`<h2>Hello World!</h2>
             <div>

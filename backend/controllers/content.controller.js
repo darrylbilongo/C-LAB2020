@@ -16,7 +16,8 @@ exports.create = (req, res) => {
   const content = {
     id: req.body.id,
     link: req.body.link,
-    published: req.body.published ? req.body.published : false
+    published: req.body.published ? req.body.published : false,
+    UserId: req.body.UserId
   };
 
   // Save Content in the db
@@ -27,7 +28,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the post in the database."
+          err.message || "Some error occurred while creating the content in the database."
       });
     });
   
@@ -38,7 +39,9 @@ exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-    Content.findAll({ where : {} })
+    Content.findAll({ where : {
+      UserId : req.query.UserId
+    } })
     .then(data => {
       res.send(data);
     })

@@ -25,6 +25,7 @@ db.contents = require("./content.model.js")(sequelize, Sequelize);
 db.links = require("./Link.model.js")(sequelize, Sequelize);
 // Relations
 db.users.hasOne(db.links);
+db.contents.belongsTo(db.users);
 
 
 module.exports = db;
