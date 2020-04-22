@@ -8,7 +8,7 @@ const posts = require("../controllers/post.controller.js");
  * /posts:
  *  post:
  *    tags:
- *       - posts
+ *       - Posts
  *    name: User Post
  *    summary: Post for a user
  *    produces:
@@ -33,7 +33,7 @@ const posts = require("../controllers/post.controller.js");
  *              - description
  *    responses:
  *     '200': 
- *         description: Post Create and published successfully
+ *         description: Post created and published successfully
  * 
  */
 
