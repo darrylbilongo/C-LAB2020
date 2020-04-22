@@ -25,7 +25,7 @@ class Navigation extends Component{
             })
         }
         catch(error) {
-            console.log('pas connecté')
+           
         }
     }
 
