@@ -49,7 +49,7 @@ class Link extends React.Component {
     render() {
         return (
           <div>
-          <div className="row">
+                <div className="row">
                       <div className="col-md-6 mt-5 mx-auto">
                           <form className= "formulaire3" noValidate onSubmit={this.onSubmit}>
                               <h1 className="h3 mn-3">Enregistrer vos réseaux!</h1>
@@ -90,6 +90,7 @@ class Link extends React.Component {
                           </form>
                       </div>
                   </div>
+                  
         </div>
         );
       }

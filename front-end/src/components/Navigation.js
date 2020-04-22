@@ -56,7 +56,7 @@ class Navigation extends Component{
 
     const homeLink2 = (
         <li className="nav-item">
-                        <Link to="/PageAccueil" className="nav-link">
+                        <Link to="/" className="nav-link">
                             Home
                         </Link>
             </li>

@@ -210,8 +210,7 @@ ul#menu li a
 
 .formulaire3{
   background-color: rgba(0,0,0, 0.7);
-  margin-top: 5%;
-  margin-left: 80%;
+ float: left;
   border-radius: 15px;
 }
 

@@ -9,7 +9,7 @@ class Register extends React.Component {
         last_name: '',
         password: '',
         email: '',
-        role: ''
+        role: 'Rappeur'
       };
   
       this.onChange = this.onChange.bind(this);
@@ -94,7 +94,6 @@ class Register extends React.Component {
                               <select class="form-control form-control-lg"
                                   onSelect={this.onChange}
                                   onChange={this.onChange}
-                                  defaultValue='Rappeur'
                                   name="role"
                               required>
                                 <option>Rappeur</option>

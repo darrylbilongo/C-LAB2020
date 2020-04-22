@@ -17,7 +17,7 @@ class Compte extends React.Component {
 
 componentDidUpdate() {
   try {
-      const token = localStorage.getItem('usertoken');
+      const token = await localStorage.getItem('usertoken');
       const decoded = jwt_decode(token);
 
       this.setState({
