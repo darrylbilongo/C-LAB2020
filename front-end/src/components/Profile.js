@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios'
+import Form from 'react-bootstrap/Form'
+
 
 class Profile extends Component{
 
@@ -8,15 +10,17 @@ class Profile extends Component{
 
         this.state = {
           user: {},
-          like: false,
+          showNote: false,
+          showAvis: false,
+          hideCollab: true,
           selectedFile: null,
           note: 0,
           loaded: 0,
         };
       
-        this.voteAime=this.voteAime.bind(this);
-        this.voteAimePas=this.voteAimePas.bind(this);
-        this.onChangeHandler = this.onChangeHandler.bind(this)
+        this.collabore=this.collabore.bind(this);
+        this.pasCollabore=this.pasCollabore.bind(this);
+        this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onClickHandler = this.onClickHandler.bind(this)
     }
 
@@ -56,9 +60,10 @@ class Profile extends Component{
         console.log(event.target.files[0])
     }
 
-    voteAime (){
+    collabore (){
         this.setState({
-            like: true,
+            showAvis: true,
+            hideCollab: false,
         });
 
         axios.put('http://localhost:8080/users/' + this.state.user.id, {
@@ -67,15 +72,13 @@ class Profile extends Component{
   
     }
 
-    voteAimePas(){
+    pasCollabore(){
         this.setState({
-            like: false,
+            showNote: true,
+            hideCollab: false
         });
-
-        axios.put('http://localhost:8080/users/' + this.state.user.id, {
-            note : this.state.like = this.state.user.note - 1
-        })
     }
+
 
     render(){
 
@@ -96,26 +99,56 @@ class Profile extends Component{
                         <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
-                        <li className="list-group-item">Note : {this.state.user.note}</li>
+                        {
+                        this.state.hideCollab?
                         <div>
                             <li className="list-group-item">
-                                As-tu apprécié cet artiste? {this.state.like ? "Tu as aimé ce profil" : "Tu n'as pas aimé"}
+                                As-tu collaboré avec cet artiste?
                                 <button
-                                    onClick={this.voteAime} 
+                                    onClick={this.collabore} 
                                     type="submit"
                                     className= "btn btn-block btn-lg btn-success"
                                 >
-                                J'aime      
+                                Oui      
                                 </button>
                                 <button
-                                    onClick={this.voteAimePas} 
+                                    onClick={this.pasCollabore} 
                                     type="submit"
                                     className= "btn btn-block btn-lg btn-danger"
                                 >
-                                Je n'aime pas     
+                                Non     
                                 </button>
                             </li>
                         </div>
+                        :null
+                        }
+                        {
+                        this.state.showNote?
+                        <div>
+                            <li className="list-group-item">
+                                Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
+                            </li>
+                        </div>
+                        :null
+                        }
+                        
+                        {
+                        this.state.showAvis?
+                        <div>
+                            <li className="list-group-item">
+                                <form>
+                                    <label>
+                                        <p className="text-dark">Avis</p>
+                                        <textarea/>
+                                    </label>
+                                    <button className="danger" type="submit">
+                                        Envoyer
+                                    </button>
+                                </form>
+                            </li>
+                        </div>
+                        :null
+                        }
                     </ul>
                     </div>
                     
@@ -138,8 +171,5 @@ class Profile extends Component{
             </div>
         )
     }
-
-
 }
-
 export default Profile;
