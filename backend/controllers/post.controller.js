@@ -1,6 +1,5 @@
 const db = require("../models");
 const Post = db.posts;
-const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {

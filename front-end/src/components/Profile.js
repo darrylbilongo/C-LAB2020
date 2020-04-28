@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import axios from 'axios'
-import Form from 'react-bootstrap/Form'
-
+import axios from 'axios';
+import ReactAudioPlayer from 'react-audio-player';
+import jwt_decode from 'jwt-decode';
 
 class Profile extends Component{
 
@@ -13,9 +13,12 @@ class Profile extends Component{
           showNote: false,
           showAvis: false,
           hideCollab: true,
+          currentUser :'',
+          like: false,
           selectedFile: null,
           note: 0,
           loaded: 0,
+          contents: [],
         };
       
         this.collabore=this.collabore.bind(this);
@@ -24,8 +27,21 @@ class Profile extends Component{
         this.onClickHandler = this.onClickHandler.bind(this)
     }
 
+    async componentWillMount() {
+        const { id } = this.props.match.params
+
+
+        await axios.get('http://localhost:8080/contents/', {
+            UserId : id
+        }).then(res => {
+            this.setState({
+                contents : res.data
+            })
+        })
+
+    }
     
-    componentDidMount(){
+  async componentDidMount(){
         const { id } = this.props.match.params
 
         axios.get('http://localhost:8080/users/' + id)
@@ -34,6 +50,22 @@ class Profile extends Component{
                     user: res.data
                 })
             });
+
+        const token = await localStorage.getItem('usertoken');
+        const decoded = jwt_decode(token);
+
+        this.setState({
+            currentUser: decoded,
+        })
+
+        /*axios.get('http://localhost:8080/contents/', {
+            UserId : id
+        }).then(res => {
+            console.log(res)
+            this.setState({
+                contents : res.data
+            })
+        })*/
     }
 
     onClickHandler = () => {
@@ -67,7 +99,7 @@ class Profile extends Component{
         });
 
         axios.put('http://localhost:8080/users/' + this.state.user.id, {
-            note : this.state.like = this.state.user.note + 1
+            note : this.state.user.note + 1
         })
   
     }
@@ -82,8 +114,44 @@ class Profile extends Component{
 
     render(){
 
-        let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
+        axios.put('http://localhost:8080/users/' + this.state.user.id, {
+            note :  this.state.user.note - 1
+        })
+    }
 
+    
+
+    render(){
+
+        //let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
+
+        const Vote = () => { 
+
+            if (this.state.currentUser.id === this.state.user.id) {
+                return null;
+            }
+
+            return (
+                    <li className="list-group-item">
+                        As-tu apprécié cet artiste? {this.state.like ? "Tu as aimé ce profil" : "Tu n'as pas aimé"}
+                        <button
+                            onClick={this.voteAime} 
+                            type="submit"
+                            className= "btn btn-block btn-lg btn-success"
+                        >
+                        J'aime      
+                        </button>
+                        <button
+                            onClick={this.voteAimePas} 
+                            type="submit"
+                            className= "btn btn-block btn-lg btn-danger"
+                        >
+                        Je n'aime pas     
+                        </button>
+                    </li>
+            )
+
+        }
 
         return(
             <div>
@@ -167,6 +235,15 @@ class Profile extends Component{
                     <div className="form-group">
         {/*<Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>*/}
                     </div>
+                </div>
+                <div className="container">
+                    {this.state.contents.map(content => {
+                        return <ReactAudioPlayer
+                        src={content.link}
+                        autoPlay="false"
+                        controls
+                      />
+                    })}
                 </div>
             </div>
         )

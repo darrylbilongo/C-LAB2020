@@ -3,11 +3,9 @@ const router = express.Router();
 const cors = require('cors')
 const db = require("../models");
 const User = db.users;
-const Op = db.Sequelize.Op;
 let users = require('../controllers/user.controller');
 
 // routes pour les users
-
 
 /**
  * @swagger
@@ -39,7 +37,70 @@ let users = require('../controllers/user.controller');
  *    responses:
  *     '200': 
  *         description: User found and logged successfully
- *  
+ * /users/register:
+ *  post:
+ *    tags:
+ *       - Users
+ *    name: Register
+ *    summary: Registers a new user
+ *    produces:
+ *      - application/json
+ *    consumes : 
+ *      - application/json
+ *    parameters:
+ *      - name: body
+ *        in: body
+ *        schema:
+ *          $ref: '#/definitions/User'
+ *          type: object
+ *          properties:
+ *            first_name:
+ *              type: string
+ *            last_name:
+ *              type: string
+ *            email: 
+ *              type: string
+ *            password:
+ *              type: string
+ *              format: password
+ *            role:
+ *              type: string
+ *            description:
+ *              type: string
+ *            note:
+ *              type: integer
+ *            required:
+ *              - first_name
+ *              - last_name
+ *              - email
+ *              - password
+ *              - role
+ *              - description
+ *              - note
+ *    responses:
+ *     '200': 
+ *         description: User registered successfully
+ * 
+ * /users/{id}:
+ *  get:
+ *    tags:
+ *       - Users
+ *    name: GetUser
+ *    summary: Returns a user with a specific id
+ *    produces:
+ *      - application/json
+ *    consumes : 
+ *      - application/json
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        schema:
+ *          type: integer
+ *          required: true
+ *          description: Numeric ID of the user to get
+ *    responses:
+ *     '200': 
+ *         description: User found and returned
  */
 router.use(cors())
 

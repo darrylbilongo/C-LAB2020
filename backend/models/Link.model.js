@@ -1,5 +1,20 @@
 
-
+/**
+ * @swagger
+ * definitions:
+ *  post:
+ *    type: object
+ *    properties:
+ *      id:
+ *        type: integer
+ *      lienYoutube:
+ *        type: string
+ *      lienInsta:
+ *        type: string
+ *      lienAutre:
+ *        type: string
+ * 
+ */
 module.exports = (sequelize, Sequelize) => {
     const Link = sequelize.define("Link", {
         id : {
