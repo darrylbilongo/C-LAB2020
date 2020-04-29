@@ -1,7 +1,5 @@
 const db = require("../models");
 const Link = db.links;
-const User = db.users;
-
 
 exports.registerLink = (req, res) => {
     const link = {

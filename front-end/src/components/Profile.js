@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios'
 import ReactAudioPlayer from 'react-audio-player';
 import jwt_decode from 'jwt-decode';
+import {Link} from 'react-router-dom';
 
 class Profile extends Component{
 
@@ -116,6 +117,29 @@ class Profile extends Component{
 
         //let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
 
+
+        const Chat = () => {
+            const { id } = this.props.match.params
+
+            if (this.state.currentUser.id === this.state.user.id) {
+                return null;
+            }
+
+            return (
+                <li>
+                        <Link to={{
+                                    pathname: `/chat/` + id
+                                }} 
+                            className="nav-link"
+                        >
+                            <button className="btn btn-block">
+                                Chat
+                            </button>
+                        </Link>
+                    </li>
+            )
+        }
+
         const Vote = () => { 
 
             if (this.state.currentUser.id === this.state.user.id) {
@@ -140,9 +164,11 @@ class Profile extends Component{
                         Je n'aime pas     
                         </button>
                     </li>
+                    
             )
 
         }
+
 
         return(
             <div>
@@ -155,11 +181,11 @@ class Profile extends Component{
                             <ul className="list-group">
                                 <li className="list-group-item">Nom : {this.state.user.last_name}</li>
                                 <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
-                                <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                                 <li className="list-group-item">Role : {this.state.user.role}</li>
                                 <li className="list-group-item">Description :</li>
                                 <li className="list-group-item">Note : {this.state.user.note}</li> 
-                                {Vote()}  
+                                {Vote()}
+                                {Chat()}
                             </ul>
                             
                     </div>
