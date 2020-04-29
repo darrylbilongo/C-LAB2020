@@ -123,9 +123,6 @@ class Profile extends Component{
 
     render(){
 
-        //let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
-
-
         const Chat = () => {
             const { id } = this.props.match.params
 
@@ -155,45 +152,8 @@ class Profile extends Component{
             }
 
             return (
-                    <li className="list-group-item">
-                        As-tu apprécié cet artiste? {this.state.like ? "Tu as aimé ce profil" : "Tu n'as pas aimé"}
-                        <button
-                            onClick={this.voteAime} 
-                            type="submit"
-                            className= "btn btn-block btn-lg btn-success"
-                        >
-                        J'aime      
-                        </button>
-                        <button
-                            onClick={this.voteAimePas} 
-                            type="submit"
-                            className= "btn btn-block btn-lg btn-danger"
-                        >
-                        Je n'aime pas     
-                        </button>
-                    </li>
-                    
-            )
-
-        }
-
-
-        return(
-            <div>
-                <div className="videode">
-                    <div className="video">
-                    {/*<ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>*/}
-                     </div>
-                     <div className="details">
-                    <h2>Votre description</h2>
-                    <ul className="list-group">
-                        <li className="list-group-item">Nom : {this.state.user.last_name}</li>
-                        <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
-                        <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
-                        <li className="list-group-item">Role : {this.state.user.role}</li>
-                        <li className="list-group-item">Description :</li>
-                        {
-                        this.state.hideCollab?
+                
+                    this.state.hideCollab ?
                         <div>
                             <li className="list-group-item">
                                 As-tu collaboré avec cet artiste?
@@ -214,34 +174,77 @@ class Profile extends Component{
                             </li>
                         </div>
                         :null
-                        }
-                        {
-                        this.state.showNote?
-                        <div>
-                            <li className="list-group-item">
-                                Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
-                            </li>
-                        </div>
-                        :null
-                        }
+                    )        
+                    /*this.state.showNote?
+                    <div>
+                        <li className="list-group-item">
+                            Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
+                        </li>
+                    </div>
+                    :null
+                    }
+                    
+                    {
+                    this.state.showAvis?
+                    <div>
+                        <li className="list-group-item">
+                            <form>
+                                <label>
+                                    <p className="text-dark">Avis</p>
+                                    <textarea/>
+                                </label>
+                                <button className="danger" type="submit">
+                                    Envoyer
+                                </button>
+                            </form>
+                        </li>
+                    </div>
+                    :null*/
+
+        }
+
+
+        return(
+            <div>
+                <div className="videode">
+                    <div className="video">
+                    {/*<ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>*/}
+                     </div>
+                     <div className="details">
+                    <h2>Votre description</h2>
+                    <ul className="list-group">
+                        <li className="list-group-item">Nom : {this.state.user.last_name}</li>
+                        <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
+                        {this.state.currentUser.id === this.state.user.id && <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>}
+                        <li className="list-group-item">Role : {this.state.user.role}</li>
+                        <li className="list-group-item">Description :</li>
+                        {Vote()}
+                        {this.state.showNote?
+                            <div>
+                                <li className="list-group-item">
+                                    Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
+                                </li>
+                            </div>
+                            :null
+                            }
+                            
+                            {
+                            this.state.showAvis?
+                            <div>
+                                <li className="list-group-item">
+                                    <form>
+                                        <label>
+                                            <p className="text-dark">Avis</p>
+                                            <textarea/>
+                                        </label>
+                                        <button className="danger" type="submit">
+                                            Envoyer
+                                        </button>
+                                    </form>
+                                </li>
+                            </div>
+                            :null}
                         
-                        {
-                        this.state.showAvis?
-                        <div>
-                            <li className="list-group-item">
-                                <form>
-                                    <label>
-                                        <p className="text-dark">Avis</p>
-                                        <textarea/>
-                                    </label>
-                                    <button className="danger" type="submit">
-                                        Envoyer
-                                    </button>
-                                </form>
-                            </li>
-                        </div>
-                        :null
-                        }
                     </ul>
                     {Chat()}
                     </div>
