@@ -9,18 +9,28 @@ class Chat extends Component{
         super(props);
 
         this.state = {
-          message: 'Hello and welcome',
+          message: '',
           messages: [],
-          currentUser: ''
+          currentUser: '',
+          user: ''
         };
 
         this.onChange = this.onChange.bind(this)
         this.onClick = this.onClick.bind(this)
     }
 
+
     async componentDidMount() {
 
         const { id } = this.props.match.params
+
+
+        axios.get('http://localhost:8080/users/' + id)
+            .then((res) => {
+                this.setState({
+                    user: res.data
+                })
+        });
 
         const token = await localStorage.getItem('usertoken');
         const decoded = jwt_decode(token);
@@ -29,7 +39,7 @@ class Chat extends Component{
             currentUser: decoded,
         })
 
-        await axios.get('http://localhost:8080/messages/' + id, {
+        await axios.post('http://localhost:8080/messages/get/' + id, {
             authorId : decoded.id
         }).then(res => {
             this.setState({
@@ -71,20 +81,20 @@ class Chat extends Component{
     render() {
         return (
             <div>
-                <div>
+                <div className="container">
                     <ul className="list-group">
+                        <li class="list-group-item active">Chat avec {this.state.user.first_name}</li>
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
                             return (
-                                <li className="list-group-item">{msg.message}</li>
-                            )
-                            
+                                <li key={msg.id} className="list-group-item">{msg.message}</li>
+                            )               
                         })}
                     </ul>
                     
                 </div>
                 <div>
                     <input value={this.state.message} name="message" onChange={this.onChange}></input>
-                    <button onClick={() => this.onClick()}> Envoyer !</button>
+                    <button className='btn btn-primary' onClick={() => this.onClick()}> Envoyer !</button>
                 </div>
                 
             </div>

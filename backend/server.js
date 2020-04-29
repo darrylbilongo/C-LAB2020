@@ -110,6 +110,9 @@ const db = require("../backend/models");
 db.sequelize.sync();
 
 // Gestion des fichiers
+app.use(express.static('public'));
+app.use('/public', express.static('public'));
+
 const DIR = 'public/files/'
 
 var storage = multer.diskStorage({

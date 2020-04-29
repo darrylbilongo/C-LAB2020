@@ -4,6 +4,6 @@ const messages = require("../controllers/message.controller.js");
 
 router.post('/', messages.create );
 
-router.get('/:id', messages.findAll);
+router.post('/get/:id', messages.findAll);
 
 module.exports = router;
