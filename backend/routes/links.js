@@ -8,6 +8,7 @@ let links = require('../controllers/link.controller');
 
 
 router.post('/compte', links.registerLink);
+router.get('/profil', links.findAll);
 
 
 module.exports = router;

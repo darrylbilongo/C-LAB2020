@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from 'axios'
 import ReactAudioPlayer from 'react-audio-player';
 import jwt_decode from 'jwt-decode';
+import Youtube from '../images/youtube.png'
+import Insta from '../images/Insta.png'
+import Twitter from '../images/Twitter_Logo.png'
 
 class Profile extends Component{
 
@@ -15,7 +18,8 @@ class Profile extends Component{
           selectedFile: null,
           note: 0,
           loaded: 0,
-          contents: []
+          contents: [],
+          lien: {}
         };
       
         this.voteAime=this.voteAime.bind(this);
@@ -35,6 +39,8 @@ class Profile extends Component{
                 contents : res.data
             })
         })
+
+
 
     }
     
@@ -161,7 +167,9 @@ class Profile extends Component{
                                 <li className="list-group-item">Note : {this.state.user.note}</li> 
                                 {Vote()}  
                             </ul>
-                            
+                            <a href="https://twitter.com/home"><img src={Twitter} width="50" height="50"></img></a>
+                            <a href="https://www.instagram.com/"><img src={Insta} width="50" height="50"></img></a>
+                            <a href="https://www.youtube.com/"><img src={Youtube} width="50" height="50"></img></a>
                     </div>
                     
                 </div>

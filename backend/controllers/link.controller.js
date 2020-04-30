@@ -1,7 +1,7 @@
 const db = require("../models");
 const Link = db.links;
 const User = db.users;
-
+const Op = db.Sequelize.Op;
 
 exports.registerLink = (req, res) => {
     const link = {
@@ -21,3 +21,16 @@ exports.registerLink = (req, res) => {
       });
     })
 }
+
+exports.findAll = (req, res) => {
+  Link.findAll({ where : {UserId: req.body.UserId} })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving posts."
+    });
+  });
+};

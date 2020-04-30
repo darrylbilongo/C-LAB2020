@@ -1,6 +1,9 @@
 import React from "react";
 import { link } from './UserFonctions';
 import jwt_decode from 'jwt-decode';
+import Youtube from '../images/youtube.png'
+import Insta from '../images/Insta.png'
+import Twitter from '../images/Twitter_Logo.png'
 
 class Link extends React.Component {
     constructor(props) {
@@ -54,31 +57,31 @@ class Link extends React.Component {
                           <form className= "formulaire3" noValidate onSubmit={this.onSubmit}>
                               <h1 className="h3 mn-3">Enregistrer vos réseaux!</h1>
                               <div className="form-group">
-                                  <label htmlFor="youtube">Youtube </label>
+                                  <label htmlFor="youtube">Youtube <a href="https://www.youtube.com/"><img src={Youtube} width="30" height="30"></img></a></label>
                                   <input type="text"
                                       name="lienYoutube"
                                       className="form-control"
-                                      placeholder="Entrez votre nom"
+                                      placeholder="Entrez votre lien youtube"
                                       value={this.state.lienYoutube}
                                       onChange={this.onChange}
                                   />
                               </div>
                               <div className="form-group">
-                                  <label htmlFor="first_name">Instagram </label>
+                                  <label htmlFor="first_name">Instagram <a href="https://www.instagram.com/"><img src={Insta} width="30" height="30"></img></a></label>
                                   <input type="text"
                                       name="lienInsta"
                                       className="form-control"
-                                      placeholder="Entrez votre prénom"
+                                      placeholder="Entrez votre lien instagram"
                                       value={this.state.lienInsta}
                                       onChange={this.onChange}
                                   />
                               </div>
                               <div className="form-group">
-                                  <label htmlFor="email">Autre Lien </label>
+                                  <label htmlFor="email">Twitter <a href="https://twitter.com/home"><img src={Twitter} width="30" height="30"></img></a></label>
                                   <input type="email"
                                       name="lienAutre"
                                       className="form-control"
-                                      placeholder="Entrez votre email"
+                                      placeholder="Entrez votre lien twitter"
                                       value={this.state.lienAutre}
                                       onChange={this.onChange}
                                   />
@@ -88,9 +91,9 @@ class Link extends React.Component {
                                   Envoyer
                               </button>
                           </form>
-                      </div>
-                  </div>
-                  
+                    </div>
+                </div>
+                
         </div>
         );
       }
