@@ -13,6 +13,7 @@ import Home from './components/Home'
 import Navigation from './components/Navigation';
 import Entete from './components/Entete';
 import ProfilVisiteur from './components/ProfilVisiteur'
+import Chat from './components/Chat'
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
               <Route exact path="/catalogue" component={PersonList}/>
               <Route exact path="/" component={PageAccueil}/>
               <Route exact path="/home" component={Home} />
+              <Route exact path="/chat/:id" component={Chat} />
               <Route exact path="/settings" component={Link}/>
               <Route exact path="/ProfilVisiteur" component={ProfilVisiteur}/>
             </div>

@@ -5,6 +5,6 @@ const contents = require("../controllers/content.controller.js");
 
 router.post('/', contents.create );
 
-router.get('/', contents.findAll);
+router.post('/get', contents.findAll);
 
 module.exports = router;

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios'
+import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
 import jwt_decode from 'jwt-decode';
-import Youtube from '../images/youtube.png'
-import Insta from '../images/Insta.png'
-import Twitter from '../images/Twitter_Logo.png'
+import {Link} from 'react-router-dom';
 
 class Profile extends Component{
 
@@ -13,26 +11,27 @@ class Profile extends Component{
 
         this.state = {
           user: {},
+          showNote: false,
+          showAvis: false,
+          hideCollab: true,
           currentUser :'',
           like: false,
           selectedFile: null,
           note: 0,
           loaded: 0,
           contents: [],
-          lien: {}
         };
       
-        this.voteAime=this.voteAime.bind(this);
-        this.voteAimePas=this.voteAimePas.bind(this);
-        this.onChangeHandler = this.onChangeHandler.bind(this)
+        this.collabore=this.collabore.bind(this);
+        this.pasCollabore=this.pasCollabore.bind(this);
+        this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onClickHandler = this.onClickHandler.bind(this)
     }
 
     async componentWillMount() {
         const { id } = this.props.match.params
-
-
-        await axios.get('http://localhost:8080/contents/', {
+        
+        await axios.post('http://localhost:8080/contents/get', {
             UserId : id
         }).then(res => {
             this.setState({
@@ -60,7 +59,7 @@ class Profile extends Component{
         this.setState({
             currentUser: decoded,
         })
-
+        
         /*axios.get('http://localhost:8080/contents/', {
             UserId : id
         }).then(res => {
@@ -95,9 +94,10 @@ class Profile extends Component{
         console.log(event.target.files[0])
     }
 
-    voteAime (){
+    collabore (){
         this.setState({
-            like: true,
+            showAvis: true,
+            hideCollab: false,
         });
 
         axios.put('http://localhost:8080/users/' + this.state.user.id, {
@@ -106,10 +106,15 @@ class Profile extends Component{
   
     }
 
-    voteAimePas(){
+    pasCollabore(){
         this.setState({
-            like: false,
+            showNote: true,
+            hideCollab: false
         });
+    }
+
+
+    render(){
 
         axios.put('http://localhost:8080/users/' + this.state.user.id, {
             note :  this.state.user.note - 1
@@ -120,7 +125,27 @@ class Profile extends Component{
 
     render(){
 
-        //let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
+        const Chat = () => {
+            const { id } = this.props.match.params
+
+            if (this.state.currentUser.id === this.state.user.id) {
+                return null;
+            }
+
+            return (
+                <li>
+                        <Link to={{
+                                    pathname: `/chat/` + id
+                                }} 
+                            className="nav-link"
+                        >
+                            <button className="btn btn-block btn-ln btn-light">
+                                Chat
+                            </button>
+                        </Link>
+                    </li>
+            )
+        }
 
         const Vote = () => { 
 
@@ -129,26 +154,57 @@ class Profile extends Component{
             }
 
             return (
-                    <li className="list-group-item">
-                        As-tu apprécié cet artiste? {this.state.like ? "Tu as aimé ce profil" : "Tu n'as pas aimé"}
-                        <button
-                            onClick={this.voteAime} 
-                            type="submit"
-                            className= "btn btn-block btn-lg btn-success"
-                        >
-                        J'aime      
-                        </button>
-                        <button
-                            onClick={this.voteAimePas} 
-                            type="submit"
-                            className= "btn btn-block btn-lg btn-danger"
-                        >
-                        Je n'aime pas     
-                        </button>
-                    </li>
-            )
+                
+                    this.state.hideCollab ?
+                        <div>
+                            <li className="list-group-item">
+                                As-tu collaboré avec cet artiste?
+                                <button
+                                    onClick={this.collabore} 
+                                    type="submit"
+                                    className= "btn btn-block btn-lg btn-success"
+                                >
+                                Oui      
+                                </button>
+                                <button
+                                    onClick={this.pasCollabore} 
+                                    type="submit"
+                                    className= "btn btn-block btn-lg btn-danger"
+                                >
+                                Non     
+                                </button>
+                            </li>
+                        </div>
+                        :null
+                    )        
+                    /*this.state.showNote?
+                    <div>
+                        <li className="list-group-item">
+                            Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
+                        </li>
+                    </div>
+                    :null
+                    }
+                    
+                    {
+                    this.state.showAvis?
+                    <div>
+                        <li className="list-group-item">
+                            <form>
+                                <label>
+                                    <p className="text-dark">Avis</p>
+                                    <textarea/>
+                                </label>
+                                <button className="danger" type="submit">
+                                    Envoyer
+                                </button>
+                            </form>
+                        </li>
+                    </div>
+                    :null*/
 
         }
+
 
         return(
             <div>
@@ -157,19 +213,42 @@ class Profile extends Component{
                     {/*<ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>*/}
                      </div>
                      <div className="details">
-                        <h2>Votre description</h2>
-                            <ul className="list-group">
-                                <li className="list-group-item">Nom : {this.state.user.last_name}</li>
-                                <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
-                                <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
-                                <li className="list-group-item">Role : {this.state.user.role}</li>
-                                <li className="list-group-item">Description :</li>
-                                <li className="list-group-item">Note : {this.state.user.note}</li> 
-                                {Vote()}  
-                            </ul>
-                            <a href="https://twitter.com/home"><img src={Twitter} width="50" height="50"></img></a>
-                            <a href="https://www.instagram.com/"><img src={Insta} width="50" height="50"></img></a>
-                            <a href="https://www.youtube.com/"><img src={Youtube} width="50" height="50"></img></a>
+                    <h2>Votre description</h2>
+                    <ul className="list-group">
+                        <li className="list-group-item">Nom : {this.state.user.last_name}</li>
+                        <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
+                        {this.state.currentUser.id === this.state.user.id && <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>}
+                        <li className="list-group-item">Role : {this.state.user.role}</li>
+                        <li className="list-group-item">Description :</li>
+                        {Vote()}
+                        {this.state.showNote?
+                            <div>
+                                <li className="list-group-item">
+                                    Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
+                                </li>
+                            </div>
+                            :null
+                            }
+                            
+                            {
+                            this.state.showAvis?
+                            <div>
+                                <li className="list-group-item">
+                                    <form>
+                                        <label>
+                                            <p className="text-dark">Avis</p>
+                                            <textarea/>
+                                        </label>
+                                        <button className="danger" type="submit">
+                                            Envoyer
+                                        </button>
+                                    </form>
+                                </li>
+                            </div>
+                            :null}
+                        
+                    </ul>
+                    {Chat()}
                     </div>
                     
                 </div>
@@ -191,7 +270,7 @@ class Profile extends Component{
                 <div className="container">
                     {this.state.contents.map(content => {
                         return <ReactAudioPlayer
-                        src={content.link}
+                        src={'http://localhost:8080/' + content.link}
                         autoPlay="false"
                         controls
                       />
@@ -200,8 +279,5 @@ class Profile extends Component{
             </div>
         )
     }
-
-
 }
-
 export default Profile;

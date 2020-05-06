@@ -6,13 +6,62 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const cors = require('cors')
 const axios = require('axios')
 
+
+/* EXPRESS */
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
-
 app.use(cors());
+
+/* MODELS */
+const models = require("../backend/models");
+
+/* SOCKET*/
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+// WARNING: app.listen(80) will NOT work here!
+let interval;
+
+io.on('connection', (socket) => {
+  console.log('new user connected')
+
+  if (interval) {
+    clearInterval(interval);
+  }
+
+  interval = setInterval(() => getApiAndEmit(socket), 1000);
+
+  socket.on('message', async data => {
+    console.log('I received a private message by ', data.from, ' saying ', data.message, 'to', data.to);
+    
+    try {
+      const Message = models.messages
+
+      const newMessage = await Message.create({
+        authorId: data.from,
+        message: data.message,
+        destinationId: data.to
+      })
+      io.emit('message', newMessage)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  });
+
+  socket.on('disconnect', () => {
+    io.emit('user disconnected');
+  });
+});
+
+const getApiAndEmit = socket => {
+  const response = new Date();
+  // Emitting a new message. Will be consumed by the client
+  socket.emit("FromAPI", response);
+};
 
 /**
  * Documentation avec swagger
@@ -61,6 +110,9 @@ const db = require("../backend/models");
 db.sequelize.sync();
 
 // Gestion des fichiers
+app.use(express.static('public'));
+app.use('/public', express.static('public'));
+
 const DIR = 'public/files/'
 
 var storage = multer.diskStorage({
@@ -103,12 +155,15 @@ app.post('/upload',function(req, res) {
 const postRouter = require('./routes/posts')
 const userRouter = require('./routes/users')
 const linkRouter = require('./routes/links')
+const messageRouter = require('./routes/messages')
 const contentRouter = require('./routes/contents')
 
 app.use('/posts', postRouter);
 app.use('/users', userRouter);
 app.use('/links', linkRouter);
 app.use('/contents', contentRouter)
+app.use('/messages', messageRouter)
+
 app.get('/', (req, res) => {
   res.send(`<h2>Hello World!</h2>
             <div>
@@ -118,6 +173,10 @@ app.get('/', (req, res) => {
 });
 
 // Lancement du serveur
-app.listen(port, () => {
+/*app.listen(port, () => {
   console.log('Example app listening on port ' + port + '!')
+});*/
+
+server.listen(port, () => {
+  console.log('listening on *:3000');
 });

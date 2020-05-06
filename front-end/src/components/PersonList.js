@@ -8,7 +8,6 @@ const Item = function ({item}) {
     <td>{item.first_name}</td>
     <td>{item.last_name}</td>
     <td>{item.role}</td>
-    <td>{item.email}</td>
     <td>{item.note}</td>
     <td>
         <Link to={{
@@ -19,7 +18,7 @@ const Item = function ({item}) {
                 Voir profil
             </button>
         </Link>
-</td>
+    </td>
     </tr>;
 }
 
@@ -32,7 +31,6 @@ const ItemList = ({ list }) => {
                 <th scope="col">First</th>
                 <th scope="col">Last</th>
                 <th scope="col">Role</th>
-                <th scope="col">Contact</th>
                 <th scope="col">Note</th>
                 <th scope="col">Profil</th>
                 </tr>

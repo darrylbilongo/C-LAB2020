@@ -212,7 +212,8 @@ ul#menu li a
   background-color: rgba(0,0,0, 0.7);
   border-radius: 15px;
   margin-top: 5%;
-  margin-left: 80%;
+  margin-left: 100%;
+  size: 80%;
 }
 
 

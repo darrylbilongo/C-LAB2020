@@ -1,7 +1,5 @@
 const db = require("../models");
 const Link = db.links;
-const User = db.users;
-const Op = db.Sequelize.Op;
 
 exports.registerLink = (req, res) => {
     const link = {
