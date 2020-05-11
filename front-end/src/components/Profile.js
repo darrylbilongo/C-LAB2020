@@ -150,9 +150,6 @@ class Profile extends Component{
 
     render(){
 
-        //let btn_class = this.state.like ? "btn btn-block btn-lg btn-success" : "btn btn-block btn-lg btn-danger";
-
-
         const Chat = () => {
             const { id } = this.props.match.params
 
