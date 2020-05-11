@@ -31,7 +31,7 @@ const ItemList = ({ list }) => {
                 <th scope="col">First</th>
                 <th scope="col">Last</th>
                 <th scope="col">Role</th>
-                <th scope="col">Note</th>
+                <th scope="col">Nbre Collaborateur</th>
                 <th scope="col">Profil</th>
                 </tr>
             </thead>
