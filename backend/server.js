@@ -157,12 +157,15 @@ const userRouter = require('./routes/users')
 const linkRouter = require('./routes/links')
 const messageRouter = require('./routes/messages')
 const contentRouter = require('./routes/contents')
+const opinionRouter = require('./routes/opinion')
+
 
 app.use('/posts', postRouter);
 app.use('/users', userRouter);
 app.use('/links', linkRouter);
 app.use('/contents', contentRouter)
 app.use('/messages', messageRouter)
+app.use('/opinion', opinionRouter)
 
 app.get('/', (req, res) => {
   res.send(`<h2>Hello World!</h2>

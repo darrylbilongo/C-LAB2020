@@ -24,10 +24,10 @@ class Profile extends Component{
       
         this.collabore=this.collabore.bind(this);
         this.avis=this.avis.bind(this);
-        this.conditonNoCollab=this.conditonNoCollab.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.onClickHandler = this.onClickHandler.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.onClickHandler = this.onClickHandler.bind(this);
     }
 
     async componentWillMount() {
@@ -110,37 +110,34 @@ class Profile extends Component{
     }
 
     avis(){
-        this.setState({
 
+        axios.post('/opinion', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+    }
+
+    handleChange(e){
+        this.setState({   
+            avis: e.target.value
         });
     }
 
-    handleChange(event){
-        this.setState({value: event.target.value});
-    }
+    handleSubmit(event){
+        event.preventDefault();
+        console.log(this.state.user.id, this.state.avis)
+        axios.post('/opinions', {
+            user: this.state.user.id,
+            avis: this.state.avis,
+          })
 
-    handleSubmit(e){
-        console.log(e.currentTarget)
-        e.preventDefault();
-    }
-
-    conditonNoCollab(){
-        const noCollab = this.state.user.note 
-        if (noCollab == 0){
-            return (<li className="list-group-item">
-                        Cet utilisateur n'a jamais eu de collaboration, soyez le premier!
-                    </li>)
-        }else if(noCollab == 1){
-            return (<li className="list-group-item">
-                        Cet utilisateur a déjà collaboré avec {this.state.user.note} artiste, ne ratez pas votre chance!
-                    </li>)
-        }else{
-            return (<li className="list-group-item">
-                        Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
-                    </li>)
-        }
-
-    }
+          .then(function (res) {
+            console.log(res);
+          })
+      }
 
     render(){
 
@@ -235,13 +232,6 @@ class Profile extends Component{
                         </div>
                         :null
                         }
-                        {
-                        this.state.showNote?
-                        <div>
-                            {this.conditonNoCollab()}
-                        </div>
-                        :null
-                        }
                         
                         {
                         this.state.showAvis?
@@ -250,15 +240,13 @@ class Profile extends Component{
                                 <form
                                 onClick={(e) => {this.handleSubmit(e)}}>
                                     <label>
-                                        <p className="text-dark">Avis</p>
                                         <input 
                                             type="text" 
                                             value={this.state.value} 
                                             onChange={this.handleChange} 
-                                            className="form-control"
                                             rows="5"/>
                                     </label>
-                                    <button onClick={(e) => e.preventDefault()} className="danger" type="submit">
+                                    <button onClick={(e) => e.preventDefault()} className="btn btn-block btn-lg btn-danger" type="submit">
                                         Envoyer
                                     </button>
                                 </form>
