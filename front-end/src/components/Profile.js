@@ -23,9 +23,11 @@ class Profile extends Component{
         };
       
         this.collabore=this.collabore.bind(this);
-        this.pasCollabore=this.pasCollabore.bind(this);
+        this.avis=this.avis.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.onClickHandler = this.onClickHandler.bind(this)
+        this.onClickHandler = this.onClickHandler.bind(this);
     }
 
     async componentWillMount() {
@@ -37,7 +39,7 @@ class Profile extends Component{
             this.setState({
                 contents : res.data
             })
-        })
+        }).catch(err => console.log(err))
 
 
 
@@ -48,10 +50,12 @@ class Profile extends Component{
 
         axios.get('http://localhost:8080/users/' + id)
             .then((res) => {
+                console.log(res.data)
                 this.setState({
                     user: res.data
                 })
-            });
+            })
+            .catch(err => console.log(err));
 
         const token = await localStorage.getItem('usertoken');
         const decoded = jwt_decode(token);
@@ -84,6 +88,7 @@ class Profile extends Component{
             .then(res => { // then print response status
                 console.log(res.statusText)
             })
+            .catch(err => console.log(err))
     }
 
     onChangeHandler (event) {
@@ -106,13 +111,35 @@ class Profile extends Component{
   
     }
 
-    pasCollabore(){
-        this.setState({
-            showNote: true,
-            hideCollab: false
+    avis(){
+
+        axios.post('/opinion', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+    }
+
+    handleChange(e){
+        this.setState({   
+            avis: e.target.value
         });
     }
 
+    handleSubmit(event){
+        event.preventDefault();
+        console.log(this.state.user.id, this.state.avis)
+        axios.post('/opinions', {
+            user: this.state.user.id,
+            avis: this.state.avis,
+          })
+
+          .then(function (res) {
+            console.log(res);
+          })
+      }
 
     render(){
 
@@ -154,54 +181,25 @@ class Profile extends Component{
             }
 
             return (
-                
-                    this.state.hideCollab ?
-                        <div>
-                            <li className="list-group-item">
-                                As-tu collaboré avec cet artiste?
-                                <button
-                                    onClick={this.collabore} 
-                                    type="submit"
-                                    className= "btn btn-block btn-lg btn-success"
-                                >
-                                Oui      
-                                </button>
-                                <button
-                                    onClick={this.pasCollabore} 
-                                    type="submit"
-                                    className= "btn btn-block btn-lg btn-danger"
-                                >
-                                Non     
-                                </button>
-                            </li>
-                        </div>
-                        :null
-                    )        
-                    /*this.state.showNote?
-                    <div>
-                        <li className="list-group-item">
-                            Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
-                        </li>
-                    </div>
-                    :null
-                    }
+                    <li className="list-group-item">
+                        As-tu apprécié cet artiste? {this.state.like ? "Tu as aimé ce profil" : "Tu n'as pas aimé"}
+                        <button
+                            onClick={this.voteAime} 
+                            type="submit"
+                            className= "btn btn-block btn-lg btn-success"
+                        >
+                        J'aime      
+                        </button>
+                        <button
+                            onClick={this.voteAimePas} 
+                            type="submit"
+                            className= "btn btn-block btn-lg btn-danger"
+                        >       
+                        Je n'aime pas     
+                        </button>
+                    </li>
                     
-                    {
-                    this.state.showAvis?
-                    <div>
-                        <li className="list-group-item">
-                            <form>
-                                <label>
-                                    <p className="text-dark">Avis</p>
-                                    <textarea/>
-                                </label>
-                                <button className="danger" type="submit">
-                                    Envoyer
-                                </button>
-                            </form>
-                        </li>
-                    </div>
-                    :null*/
+            )
 
         }
 
@@ -217,36 +215,44 @@ class Profile extends Component{
                     <ul className="list-group">
                         <li className="list-group-item">Nom : {this.state.user.last_name}</li>
                         <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
-                        {this.state.currentUser.id === this.state.user.id && <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>}
+                        <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
-                        {Vote()}
-                        {this.state.showNote?
-                            <div>
-                                <li className="list-group-item">
-                                    Cet utilisateur a déjà collaboré avec {this.state.user.note} artistes, ne ratez pas votre chance!
-                                </li>
-                            </div>
-                            :null
-                            }
-                            
-                            {
-                            this.state.showAvis?
-                            <div>
-                                <li className="list-group-item">
-                                    <form>
-                                        <label>
-                                            <p className="text-dark">Avis</p>
-                                            <textarea/>
-                                        </label>
-                                        <button className="danger" type="submit">
-                                            Envoyer
-                                        </button>
-                                    </form>
-                                </li>
-                            </div>
-                            :null}
+                        {
+                        this.state.hideCollab?
+                         <div>
+                            <button
+                                onClick={this.collabore} 
+                                type="submit"
+                                className= "btn btn-block btn-lg btn-primary"
+                                >
+                                Clique-ici pour écrire un avis sur cet artiste     
+                            </button>
+                        </div>
+                        :null
+                        }
                         
+                        {
+                        this.state.showAvis?
+                        <div>
+                            <li className="list-group-item">
+                                <form
+                                onClick={(e) => {this.handleSubmit(e)}}>
+                                    <label>
+                                        <input 
+                                            type="text" 
+                                            value={this.state.value} 
+                                            onChange={this.handleChange} 
+                                            rows="5"/>
+                                    </label>
+                                    <button onClick={(e) => e.preventDefault()} className="btn btn-block btn-lg btn-danger" type="submit">
+                                        Envoyer
+                                    </button>
+                                </form>
+                            </li>
+                        </div>
+                        :null
+                        }
                     </ul>
                     {Chat()}
                     </div>

@@ -158,6 +158,7 @@ const linkRouter = require('./routes/links')
 const messageRouter = require('./routes/messages')
 const contentRouter = require('./routes/contents')
 
+
 app.use('/posts', postRouter);
 app.use('/users', userRouter);
 app.use('/links', linkRouter);

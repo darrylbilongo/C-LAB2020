@@ -17,6 +17,7 @@ export const register = async newUser => {
     }
 }
 
+
 export const link = async newUser => {
 
     try {
