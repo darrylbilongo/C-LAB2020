@@ -1,5 +1,6 @@
 const db = require("../models");
 const User = db.users;
+const Avis = db.avis;
 const Op = db.Sequelize.Op;
 
 // import
@@ -149,4 +150,41 @@ exports.getFiles = (req, res) => {
   const id = req.params.id
 
   
+}
+
+exports.registerAvis = (req, res) => {
+  const avis = {
+    auteurId: req.body.auteurId,
+    contenu: req.body.contenu,
+    artisteId: req.body.artisteId,
+  }
+
+  Avis.create(avis)
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving advices."
+    });
+  });
+}
+
+exports.getAvis = (req, res) => {
+  const id = req.query.artisteId
+  var condition = {
+    artisteId: id 
+  }
+
+  Avis.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving advices."
+      });
+    });
 }
