@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
 import jwt_decode from 'jwt-decode';
 import {Link} from 'react-router-dom';
+import {avis} from './UserFonctions';
 
 class Profile extends Component{
 
@@ -13,6 +14,7 @@ class Profile extends Component{
           user: {},
           showNote: false,
           showAvis: false,
+          showAlert:false,
           hideCollab: true,
           currentUser :'',
           like: false,
@@ -20,6 +22,7 @@ class Profile extends Component{
           note: 0,
           loaded: 0,
           contents: [],
+          contenu: '',
         };
       
         this.collabore=this.collabore.bind(this);
@@ -70,6 +73,7 @@ class Profile extends Component{
                 contents : res.data
             })
         })*/
+
     }
 
     onClickHandler = () => {
@@ -120,23 +124,29 @@ class Profile extends Component{
           })
     }
 
-    handleChange(e){
-        this.setState({   
-            avis: e.target.value
-        });
+    handleChange(event){
+        let nam = event.target.name;
+        let val = event.target.value;
+        this.setState({[nam]: val});
     }
 
     handleSubmit(event){
         event.preventDefault();
-        console.log(this.state.user.id, this.state.avis)
-        axios.post('/opinions', {
-            user: this.state.user.id,
-            avis: this.state.avis,
-          })
 
-          .then(function (res) {
-            console.log(res);
-          })
+        const newAvis = {
+            auteurId: this.state.currentUser.id,
+            contenu: this.state.contenu,
+            artisteId: this.props.match.params.id,
+        }
+
+        avis(newAvis)
+
+        this.setState({
+            showAvis: false,
+            showAlert: true,
+        });
+        
+
       }
 
     render(){
@@ -229,21 +239,31 @@ class Profile extends Component{
                         </div>
                         :null
                         }
+                        {
+                        this.state.showAlert?
+                        <div>
+                            <li className="list-group-item list-group-item-dark">
+                                Vous avez parfaitement émis votre avis sur cet artiste!
+                            </li>
+                        </div>
+                        :null
+                        }
                         
                         {
                         this.state.showAvis?
                         <div>
                             <li className="list-group-item">
-                                <form
-                                onClick={(e) => {this.handleSubmit(e)}}>
+                                <form>
                                     <label>
                                         <input 
+                                            name= "contenu"
                                             type="text" 
-                                            value={this.state.value} 
+                                            value={this.state.contenu} 
                                             onChange={this.handleChange} 
-                                            rows="5"/>
+                                            rows="5"
+                                            placeholder="Entrez un avis"/>
                                     </label>
-                                    <button onClick={(e) => e.preventDefault()} className="btn btn-block btn-lg btn-danger" type="submit">
+                                    <button onClick={(e) => {this.handleSubmit(e)}} className="btn btn-block btn-lg btn-danger" type="submit">
                                         Envoyer
                                     </button>
                                 </form>
