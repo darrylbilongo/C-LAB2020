@@ -118,4 +118,8 @@ router.get('/:id', users.getUser)
 
 router.put('/:id', users.update)
 
+router.get('/avis', users.getAvis)
+
+router.post('/avis', users.registerAvis)
+
 module.exports = router;

@@ -24,7 +24,7 @@ db.users = require("./user.model.js")(sequelize, Sequelize);
 db.messages = require("./message.model")(sequelize, Sequelize);
 db.contents = require("./content.model.js")(sequelize, Sequelize);
 db.links = require("./Link.model.js")(sequelize, Sequelize);
-db.opinion = require("./opinion.model.js")(sequelize, Sequelize);
+db.avis = require("./avis.model.js")(sequelize, Sequelize);
 
 // Relations
 db.users.hasOne(db.links);
