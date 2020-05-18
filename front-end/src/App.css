@@ -181,6 +181,42 @@ ul#menu li a
   border-radius: 20px;
 }
 
+.apropos{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.apropos2{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.aproposImg{
+  max-width: 20%;
+  max-height: 1%;
+  border-radius: 25px;
+}
+
+.aproposText{
+    position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.description2{
+  margin-top: 2%;
+  margin-left: 0%;
+  color: white;
+  background-color: rgba(203,56,203, 0.6);
+  width: 100%;
+  float: center;
+  border-radius: 5px;
+}
+
+
 .description1{
   margin-top: 8%;
   margin-left: 0%;
