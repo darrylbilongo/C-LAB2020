@@ -102,6 +102,7 @@ class Profile extends Component{
         })
         console.log(event.target.files[0])
     }
+    
 
     collabore (){
         this.setState({
@@ -297,7 +298,6 @@ class Profile extends Component{
                     {this.state.contents.map(content => {
                         return <ReactAudioPlayer
                         src={'http://localhost:8080/' + content.link}
-                        autoPlay="false"
                         controls
                       />
                     })}
