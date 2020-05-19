@@ -96,6 +96,14 @@ class Navigation extends Component{
                 </li>
     ) 
 
+    const aPropos = (
+        <li className="nav-item">
+                    <Link to="/about_us" className="nav-link">
+                        About us
+                    </Link>
+                </li>
+    ) 
+
     
 
       return(
@@ -105,6 +113,7 @@ class Navigation extends Component{
                 {localStorage.usertoken ? null : loginLink}
                 {localStorage.usertoken ? null : regLink}
                 {localStorage.usertoken ? logoutLink : null}
+                {localStorage.usertoken ? aPropos : null}
                 {localStorage.usertoken ? compteLink : null}
                 {localStorage.usertoken ? profileLink : null}
                 {localStorage.usertoken ? catalogueLink : null}
