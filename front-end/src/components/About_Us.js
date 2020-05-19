@@ -9,8 +9,8 @@ class About_Us extends Component{
             <div className="justify-content-center">
                 <div className="description2">
                     <p>La musique est un art où bien souvent les plus grands sont bien au dessus et où il est très difficile de se faire une place.</p>
-                    <p>C'est le constat qu'on fait 3 étudiant avant de se lancer dans la création de <span className="text-danger font-weight-bold">"C-LAB"</span></p> 
-                    C-Lab est un projet qui a pour but d'aider les musiciens en manque de visibilité à se faire remarquer par d'autres personnes issus de ce domaine.
+                    <p>C'est le constat qu'on fait 3 étudiants avant de se lancer dans la création de <span className="text-danger font-weight-bold">"C-LAB"</span></p> 
+                    C-Lab est un projet qui a pour but d'aider les musiciens en manque de visibilité à se faire remarquer par d'autres personnes issues de ce domaine.
                 </div>
                 <div className="apropos">
                     <div className="">
