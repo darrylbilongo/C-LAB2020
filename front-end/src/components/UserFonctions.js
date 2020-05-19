@@ -67,6 +67,23 @@ export const update = async newUser => {
     }
 }
 
+export const updateLink = async newLink => {
+
+    try {
+        return axios
+            .put('http://localhost:8080/links/:id', {
+                lienInsta: newLink.first_name,
+                lienYoutube: newLink.last_name,
+                lienAutre: newLink.email,
+            });
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+
+
 export const avis = async newUser => {
 
     try {

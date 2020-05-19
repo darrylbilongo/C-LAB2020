@@ -260,9 +260,6 @@ class Profile extends Component{
                                 >
                                 Clique-ici pour écrire un avis sur cet artiste     
                             </button>
-                            <label htmlFor="youtube"><a href={this.state.liens.lienYoutube}><img src={Youtube} width="30" height="30"></img></a></label>
-                            <label htmlFor="insta"><a href={this.state.liens.lienInsta}><img src={Insta} width="30" height="30"></img></a></label>
-                            <label htmlFor="twitter"><a href={this.state.liens.lienAutre}><img src={Twitter} width="30" height="30"></img></a></label>
                         </div>
                         :null
                         }
@@ -300,6 +297,9 @@ class Profile extends Component{
                         }
                     </ul>
                     {Chat()}
+                    <label htmlFor="youtube"><a href={this.state.liens.lienYoutube}><img src={Youtube} width="60" height="60"></img></a></label>
+                            <label htmlFor="insta"><a href={this.state.liens.lienInsta}><img src={Insta} width="60" height="60"></img></a></label>
+                            <label htmlFor="twitter"><a href={this.state.liens.lienAutre}><img src={Twitter} width="60" height="60"></img></a></label>
                     </div>
                     
                 </div>
