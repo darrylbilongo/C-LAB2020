@@ -32,3 +32,22 @@ exports.findAll = (req, res) => {
     });
   });
 };
+
+
+exports.getLink = (req, res) => {
+  const id = req.params.id 
+
+  Link.findOne({
+    where: {
+      UserId: id
+    }
+  })
+      .then(data => {
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Impossible d'avoir le lien avec l'id" + id
+          })
+      });
+};

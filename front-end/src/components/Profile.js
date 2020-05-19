@@ -4,6 +4,9 @@ import ReactAudioPlayer from 'react-audio-player';
 import jwt_decode from 'jwt-decode';
 import {Link} from 'react-router-dom';
 import {avis} from './UserFonctions';
+import Youtube from '../images/youtube.png'
+import Insta from '../images/Insta.png'
+import Twitter from '../images/Twitter_Logo.png'
 
 class Profile extends Component{
 
@@ -23,6 +26,7 @@ class Profile extends Component{
           loaded: 0,
           contents: [],
           contenu: '',
+          liens: []
         };
       
         this.collabore=this.collabore.bind(this);
@@ -39,12 +43,11 @@ class Profile extends Component{
         await axios.post('http://localhost:8080/contents/get', {
             UserId : id
         }).then(res => {
+            console.log(this.states.liens);
             this.setState({
                 contents : res.data
             })
         }).catch(err => console.log(err))
-
-
 
     }
     
@@ -56,6 +59,15 @@ class Profile extends Component{
                 console.log(res.data)
                 this.setState({
                     user: res.data
+                })
+            })
+            .catch(err => console.log(err));
+
+            axios.get('http://localhost:8080/links/' + id)
+            .then((res) => {
+                console.log(res.data)
+                this.setState({
+                    liens: res.data
                 })
             })
             .catch(err => console.log(err));
@@ -75,6 +87,15 @@ class Profile extends Component{
                 contents : res.data
             })
         })*/
+
+        axios.get('http://localhost:8080/contents/', {
+            UserId : id
+        }).then(res => {
+            console.log(res)
+            this.setState({
+                contents : res.data
+            })
+        })
 
     }
 
@@ -239,6 +260,9 @@ class Profile extends Component{
                                 >
                                 Clique-ici pour écrire un avis sur cet artiste     
                             </button>
+                            <label htmlFor="youtube"><a href={this.state.liens.lienYoutube}><img src={Youtube} width="30" height="30"></img></a></label>
+                            <label htmlFor="insta"><a href={this.state.liens.lienInsta}><img src={Insta} width="30" height="30"></img></a></label>
+                            <label htmlFor="twitter"><a href={this.state.liens.lienAutre}><img src={Twitter} width="30" height="30"></img></a></label>
                         </div>
                         :null
                         }
