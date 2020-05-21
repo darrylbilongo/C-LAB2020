@@ -50,10 +50,8 @@ class Link extends React.Component {
 
     render() {
         return (
-          <div>
-                <div className="row">
-                      <div className="col-md-6 mt-5 mx-auto">
-                          <form className= "formulaire3" noValidate onSubmit={this.onSubmit}>
+                <div className="setting">
+                        <form className= "formulaire3" noValidate onSubmit={this.onSubmit}>
                               <h1 className="h3 mn-3">Enregistrer vos réseaux!</h1>
                               <div className="form-group">
                                   <label htmlFor="youtube">Youtube <a href="https://www.youtube.com/"><img src={Youtube} width="30" height="30"></img></a></label>
@@ -90,10 +88,57 @@ class Link extends React.Component {
                                   Envoyer
                               </button>
                           </form>
+                          <form className= "formulaire4" noValidate onSubmit={this.onSubmit}>
+                          <h3 class="text-dark">Modifier vos données</h3>
+                            <div className="form-group">
+                                <label className="inscrip"><h6>Nom </h6></label>
+                                <input type="text"
+                                    name="last_name"
+                                    className="form-control"
+                                    placeholder="Entrez votre nom"
+                                    value={this.state.last_name}
+                                    onChange={this.onChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="inscrip"><h6>Prénom</h6> </label>
+                                <input type="text"
+                                    name="first_name"
+                                    className="form-control"
+                                    placeholder="Entrez votre prénom"
+                                    value={this.state.first_name}
+                                    onChange={this.onChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="inscrip"><h6>Email</h6> </label>
+                                <input type="email"
+                                    name="email"
+                                    className="form-control"
+                                    placeholder="Entrez votre email"
+                                    onChange={this.onChange}
+                                />
+                            </div>
+                            
+                            <div className="form-group">
+                              <label className="inscrip"><h6> Choisissez votre rôle </h6></label>
+                              <select class="form-control form-control-lg"
+                                  onSelect={this.onChange}
+                                  onChange={this.onChange}
+                                  name="role"
+                              required>
+                                <option>Rappeur</option>
+                                <option>Bass</option>
+                                <option>Producteur</option>
+                              </select>
+                            </div>
+                            <button type="submit"
+                            className="btn btn-block btn-lg btn-light">
+                                Envoyer
+                            </button>
+                        </form>
                     </div>
-                </div>
                 
-        </div>
         );
       }
     }

@@ -247,9 +247,10 @@ ul#menu li a
 .formulaire3{
   background-color: rgba(0,0,0, 0.7);
   border-radius: 15px;
-  margin-top: 5%;
-  margin-left: 100%;
-  size: 80%;
+  margin-top: 3%;
+  margin-left:10%;
+  height: 50%;
+  width: 30%;
 }
 
 .homepage1{
@@ -260,6 +261,23 @@ ul#menu li a
   font-size: 95%;
 }
 
+.setting{
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+}
 
+.formulaire4{
+  background-color: rgba(255,255,255, 0.6);
+  text-decoration-color: black;
+  margin-top: 3%;
+  border-radius: 15px;
+  margin-left: 19%;
+  width: 30%;
+}
+
+.inscrip{
+  color: black;
+}
 
 
