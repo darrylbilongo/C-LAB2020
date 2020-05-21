@@ -97,11 +97,13 @@ class Navigation extends Component{
     ) 
 
     const aPropos = (
-        <li className="nav-item">
-                    <Link to="/about_us" className="nav-link">
-                        About us
-                    </Link>
-                </li>
+        <div className="aboutus">
+            <li className="nav-item">
+                <Link to="/about_us" className="nav-link">
+                    About us
+                </Link>
+            </li>
+        </div>
     ) 
 
     

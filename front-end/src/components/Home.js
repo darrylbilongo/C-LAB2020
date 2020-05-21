@@ -9,7 +9,7 @@ class PageAccueil2 extends Component{
 
     render(){
         return(
-            <div>
+            <div className="homepage1">
                 <div className="jumbotron bg-dark"> 
                 <h1>Nouveau sur C-LAB</h1><br></br>
                     <Carousel>
