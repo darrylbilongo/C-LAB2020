@@ -11,7 +11,7 @@ const Item = function ({item}) {
     <td>{item.note}</td>
     <td>
         <Link to={{
-                    pathname: `/profile/` + item.id
+                    pathname: `/profilVisiteur/` + item.id
                 }} 
         className="nav-link">
             <button>
@@ -28,10 +28,10 @@ const ItemList = ({ list }) => {
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Role</th>
-                <th scope="col">Nbre Collaborateur</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Rôle</th>
+                <th scope="col">Nbre Collaborateurs</th>
                 <th scope="col">Profil</th>
                 </tr>
             </thead>

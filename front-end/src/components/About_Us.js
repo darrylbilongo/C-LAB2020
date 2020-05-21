@@ -57,7 +57,7 @@ class About_Us extends Component{
                         href="mailto:sou_sou_azzouz@hotmail.com"
                         data-toggle="tooltip"
                         data-placement="left"
-                        title="Login with your account">Ou envoyer-nous un email</a>
+                        title="Login with your account">Ou envoyez-nous un email</a>
                 </div>
             </div>
         )

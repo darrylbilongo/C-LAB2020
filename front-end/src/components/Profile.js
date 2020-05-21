@@ -43,7 +43,6 @@ class Profile extends Component{
         await axios.post('http://localhost:8080/contents/get', {
             UserId : id
         }).then(res => {
-            console.log(this.states.liens);
             this.setState({
                 contents : res.data
             })
@@ -250,51 +249,6 @@ class Profile extends Component{
                         <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                         <li className="list-group-item">Role : {this.state.user.role}</li>
                         <li className="list-group-item">Description :</li>
-                        {
-                        this.state.hideCollab?
-                         <div>
-                            <button
-                                onClick={this.collabore} 
-                                type="submit"
-                                className= "btn btn-block btn-lg btn-primary"
-                                >
-                                Clique-ici pour écrire un avis sur cet artiste     
-                            </button>
-                        </div>
-                        :null
-                        }
-                        {
-                        this.state.showAlert?
-                        <div>
-                            <li className="list-group-item list-group-item-dark">
-                                Vous avez parfaitement émis votre avis sur cet artiste!
-                            </li>
-                        </div>
-                        :null
-                        }
-                        
-                        {
-                        this.state.showAvis?
-                        <div>
-                            <li className="list-group-item">
-                                <form>
-                                    <label>
-                                        <input 
-                                            name= "contenu"
-                                            type="text" 
-                                            value={this.state.contenu} 
-                                            onChange={this.handleChange} 
-                                            rows="5"
-                                            placeholder="Entrez un avis"/>
-                                    </label>
-                                    <button onClick={(e) => {this.handleSubmit(e)}} className="btn btn-block btn-lg btn-danger" type="submit">
-                                        Envoyer
-                                    </button>
-                                </form>
-                            </li>
-                        </div>
-                        :null
-                        }
                     </ul>
                     {Chat()}
                     <label htmlFor="youtube"><a href={this.state.liens.lienYoutube}><img src={Youtube} width="60" height="60"></img></a></label>
