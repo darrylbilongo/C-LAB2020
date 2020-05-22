@@ -1,9 +1,11 @@
 import React from "react";
 import { link } from './UserFonctions';
+import {update} from './UserFonctions';
 import jwt_decode from 'jwt-decode';
 import Youtube from '../images/youtube.png'
 import Insta from '../images/Insta.png'
 import Twitter from '../images/Twitter_Logo.png'
+import axios from 'axios';
 
 class Link extends React.Component {
     constructor(props) {
@@ -17,8 +19,13 @@ class Link extends React.Component {
         lienYoutube: '',
         lienInsta: '',
         lienAutre: '',
-        user: ''
+        user: '',
+        newName: '',
+        newSurname: '',
+        newDescription: '',
+        newRole: ''
     };
+
     onChange(event) {
       let nam = event.target.name;
       let val = event.target.value;
@@ -29,23 +36,32 @@ class Link extends React.Component {
     async componentDidMount() {
             const token = await localStorage.getItem('usertoken');
             const decoded = jwt_decode(token);
-
             this.setState({
                 user: decoded,
             })
-            console.log(this.state.user);
+
     }
     
   
     onSubmit(event) {
+        const token = localStorage.getItem('usertoken');
+            const decoded = jwt_decode(token);
+
+            this.setState({
+                user: decoded,
+            })
       event.preventDefault();
-      const newLink = {
-          lienYoutube: this.state.lienYoutube,
-          lienInsta: this.state.lienInsta,
-          lienAutre: this.state.lienAutre,
-          UserId: this.state.user.id
-      }
-      link(newLink)
+     axios.put('http://localhost:8080/users/' + decoded.id, {
+            description: this.state.newDescription,
+            first_name: this.state.newSurname,
+            last_name: this.state.newName,
+            role: this.state.newRole
+        })
+    axios.put('http://localhost:8080/links/' + decoded.id, {
+            lienYoutube: this.state.lienYoutube,
+            lienInsta: this.state.lienInsta,
+            lienAutre: this.state.lienAutre,
+    }) 
     }
 
     render() {
@@ -93,29 +109,30 @@ class Link extends React.Component {
                             <div className="form-group">
                                 <label className="inscrip"><h6>Nom </h6></label>
                                 <input type="text"
-                                    name="last_name"
+                                    name="newName"
                                     className="form-control"
                                     placeholder="Entrez votre nom"
-                                    value={this.state.last_name}
+                                    value={this.state.newName}
                                     onChange={this.onChange}
                                 />
                             </div>
                             <div className="form-group">
                                 <label className="inscrip"><h6>Prénom</h6> </label>
                                 <input type="text"
-                                    name="first_name"
+                                    name="newSurname"
                                     className="form-control"
                                     placeholder="Entrez votre prénom"
-                                    value={this.state.first_name}
+                                    value={this.state.newSurname}
                                     onChange={this.onChange}
                                 />
                             </div>
                             <div className="form-group">
-                                <label className="inscrip"><h6>Email</h6> </label>
-                                <input type="email"
-                                    name="email"
+                                <label className="inscrip"><h6>Description</h6> </label>
+                                <input type="description"
+                                    name="newDescription"
                                     className="form-control"
-                                    placeholder="Entrez votre email"
+                                    placeholder="Entrez votre description"
+                                    value={this.state.newDescription}
                                     onChange={this.onChange}
                                 />
                             </div>
@@ -125,7 +142,8 @@ class Link extends React.Component {
                               <select class="form-control form-control-lg"
                                   onSelect={this.onChange}
                                   onChange={this.onChange}
-                                  name="role"
+                                  name="newRole"
+                                  value={this.newRole}
                               required>
                                 <option>Rappeur</option>
                                 <option>Bass</option>
