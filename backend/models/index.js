@@ -30,6 +30,7 @@ db.avis = require("./avis.model.js")(sequelize, Sequelize);
 // Relations
 db.users.hasOne(db.links);
 db.contents.belongsTo(db.users);
+db.links.belongsTo(db.users);
 
 
 module.exports = db;

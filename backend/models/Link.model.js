@@ -1,18 +1,17 @@
-
 /**
  * @swagger
  * definitions:
- *  post:
+ *  Link:
  *    type: object
  *    properties:
  *      id:
  *        type: integer
- *      lienYoutube:
+ *      contenu:
  *        type: string
- *      lienInsta:
+ *      categorie:
  *        type: string
- *      lienAutre:
- *        type: string
+ *      UserId:
+ *        type: integer
  * 
  */
 module.exports = (sequelize, Sequelize) => {
@@ -22,9 +21,8 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true
           },
-        lienYoutube: Sequelize.STRING,
-        lienInsta: Sequelize.STRING,
-        lienAutre: Sequelize.STRING,
+        contenu: Sequelize.STRING,
+        categorie: Sequelize.STRING,
         },
         {timestamps: false})
     return Link;

@@ -1,3 +1,22 @@
+/**
+ * @swagger
+ * definitions:
+ *  Message:
+ *    type: object
+ *    properties:
+ *      id:
+ *        type: integer
+ *      authorId:
+ *        type: string
+ *      message:
+ *        type: boolean
+ *      destinationId:
+ *        type: integer
+ *      date:
+ *        type: date
+ * 
+ */
+
 module.exports = (sequelize, Sequelize) => {
     const Message = sequelize.define("message", {
       id: {
