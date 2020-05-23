@@ -248,7 +248,7 @@ class Profile extends Component{
                         <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
                         <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                         <li className="list-group-item">Role : {this.state.user.role}</li>
-                        <li className="list-group-item">Description :</li>
+                        <li className="list-group-item">Description : {this.state.user.description}</li>
                     </ul>
                     {Chat()}
                     <label htmlFor="youtube"><a href={this.state.liens.lienYoutube}><img src={Youtube} width="60" height="60"></img></a></label>
