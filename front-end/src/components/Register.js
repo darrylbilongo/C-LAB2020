@@ -1,6 +1,5 @@
 import React from "react";
 import { register } from './UserFonctions';
-import { link } from './UserFonctions';
 
 class Register extends React.Component {
     constructor(props) {
@@ -35,12 +34,7 @@ class Register extends React.Component {
           role: this.state.role
       }
 
-      const newLinks = {
-        lienYoutube: this.state.rien,
-        lienInsta: this.state.rien,
-        lienAutre: this.state.rien,
-      }
-      link(newLinks) 
+       
       register(user).then(res => {
           if(res){
               this.props.history.push('/login')

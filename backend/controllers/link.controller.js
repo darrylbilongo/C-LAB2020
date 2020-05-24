@@ -3,10 +3,9 @@ const Link = db.links;
 
 exports.registerLink = (req, res) => {
     const link = {
-        lienYoutube: req.body.lienYoutube,
-        lienInsta: req.body.lienInsta,
-        lienAutre: req.body.lienAutre,
-        UserId: req.body.UserId
+      contenu: req.body.contenu,
+      categorie: req.body.categorie,
+      UserId: req.body.UserId
     }
     Link.create(link)
     .then(data => {
@@ -34,12 +33,13 @@ exports.findAll = (req, res) => {
 };
 
 
-exports.getLink = (req, res) => {
+exports.getLinkY = (req, res) => {
   const id = req.params.id 
 
   Link.findOne({
     where: {
-      UserId: id
+      UserId: id,
+      categorie: "youtube"
     }
   })
       .then(data => {
@@ -51,6 +51,45 @@ exports.getLink = (req, res) => {
           })
       });
 };
+
+exports.getLinkI = (req, res) => {
+  const id = req.params.id 
+
+  Link.findOne({
+    where: {
+      UserId: id,
+      categorie: "instagram"
+    }
+  })
+      .then(data => {
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Impossible d'avoir le lien avec l'id" + id
+          })
+      });
+};
+
+exports.getLinkT = (req, res) => {
+  const id = req.params.id 
+
+  Link.findOne({
+    where: {
+      UserId: id,
+      categorie: "twitter"
+    }
+  })
+      .then(data => {
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Impossible d'avoir le lien avec l'id" + id
+          })
+      });
+};
+
 
 exports.update = (req, res) => {
   const id = req.params.id;

@@ -57,12 +57,23 @@ class Link extends React.Component {
             last_name: this.state.newName,
             role: this.state.newRole
         })
-    axios.put('http://localhost:8080/links/' + decoded.id, {
-            lienYoutube: this.state.lienYoutube,
-            lienInsta: this.state.lienInsta,
-            lienAutre: this.state.lienAutre,
-    }) 
+        axios.post('http://localhost:8080/links/compte',{
+            contenu: this.state.lienYoutube,
+            categorie :"youtube",
+            UserId: decoded.id
+        })
+        axios.post('http://localhost:8080/links/compte',{
+            contenu: this.state.lienAutre,
+            categorie :"twitter",
+            UserId: decoded.id
+        })
+        axios.post('http://localhost:8080/links/compte',{
+            contenu: this.state.lienInsta,
+            categorie :"instagram",
+            UserId: decoded.id
+        })
     }
+
 
     render() {
         return (
@@ -78,6 +89,10 @@ class Link extends React.Component {
                                       value={this.state.lienYoutube}
                                       onChange={this.onChange}
                                   />
+                                  <button onclick="onsubmit1()"
+                              className="btn btn-block btn-lg btn-light">
+                                  Envoyer
+                              </button>
                               </div>
                               <div className="form-group">
                                   <label htmlFor="first_name">Instagram <a href="https://www.instagram.com/"><img src={Insta} width="30" height="30"></img></a></label>
@@ -88,6 +103,10 @@ class Link extends React.Component {
                                       value={this.state.lienInsta}
                                       onChange={this.onChange}
                                   />
+                                  <button onclick="onsubmit2()"
+                              className="btn btn-block btn-lg btn-light">
+                                  Envoyer
+                              </button>
                               </div>
                               <div className="form-group">
                                   <label htmlFor="email">Twitter <a href="https://twitter.com/home"><img src={Twitter} width="30" height="30"></img></a></label>
@@ -98,11 +117,11 @@ class Link extends React.Component {
                                       value={this.state.lienAutre}
                                       onChange={this.onChange}
                                   />
-                              </div>
-                              <button type="submit"
+                                  <button onclick="onsubmit3()"
                               className="btn btn-block btn-lg btn-light">
                                   Envoyer
                               </button>
+                              </div>
                           </form>
                           <form className= "formulaire4" noValidate onSubmit={this.onSubmit}>
                           <h3 class="text-dark">Modifier vos données</h3>

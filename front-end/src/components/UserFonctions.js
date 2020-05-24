@@ -23,10 +23,9 @@ export const link = async newUser => {
     try {
         return axios
             .post('http://localhost:8080/links/compte', {
-                lienYoutube: newUser.lienYoutube,
-                lienInsta: newUser.lienInsta,
-                lienAutre: newUser.lienAutre,
-                UserId: newUser.UserId
+                contenu: newUser.contenu,
+                categorie: newUser.categorie,
+                UserId: newUser
             });
     }
     catch (err) {

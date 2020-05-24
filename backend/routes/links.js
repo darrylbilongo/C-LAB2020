@@ -7,8 +7,9 @@ const Link = db.links;
 let links = require('../controllers/link.controller');
 
 router.post('/compte', links.registerLink);
-router.get('/profil', links.findAll);
-router.get('/:id', links.getLink);
-router.put('/:id', links.update);
+router.get('/youtube/:id', links.getLinkY);
+router.get('/insta/:id', links.getLinkI);
+router.get('/twitter/:id', links.getLinkT);
+
 
 module.exports = router;

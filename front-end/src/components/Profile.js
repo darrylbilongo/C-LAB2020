@@ -26,7 +26,9 @@ class Profile extends Component{
           loaded: 0,
           contents: [],
           contenu: '',
-          liens: []
+          youtube: [],
+          twitter: [],
+          insta: []
         };
       
         this.collabore=this.collabore.bind(this);
@@ -62,11 +64,27 @@ class Profile extends Component{
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/' + id)
+            axios.get('http://localhost:8080/links/youtube/' + id)
             .then((res) => {
-                console.log(res.data)
                 this.setState({
-                    liens: res.data
+                    youtube: res.data
+                })
+                console.log(this.state.youtube)
+            })
+            .catch(err => console.log(err));
+
+            axios.get('http://localhost:8080/links/insta/' + id)
+            .then((res) => {
+                this.setState({
+                    insta: res.data
+                })
+            })
+            .catch(err => console.log(err));
+
+            axios.get('http://localhost:8080/links/twitter/' + id)
+            .then((res) => {
+                this.setState({
+                    twitter: res.data
                 })
             })
             .catch(err => console.log(err));
@@ -251,9 +269,10 @@ class Profile extends Component{
                         <li className="list-group-item">Description : {this.state.user.description}</li>
                     </ul>
                     {Chat()}
-                    <label htmlFor="youtube"><a href={this.state.liens.lienYoutube}><img src={Youtube} width="60" height="60"></img></a></label>
-                            <label htmlFor="insta"><a href={this.state.liens.lienInsta}><img src={Insta} width="60" height="60"></img></a></label>
-                            <label htmlFor="twitter"><a href={this.state.liens.lienAutre}><img src={Twitter} width="60" height="60"></img></a></label>
+                    <label htmlFor="youtube"><a href={this.state.youtube.contenu}><img src={Youtube} width="60" height="60"></img></a></label>
+                    <label htmlFor="insta"><a href={this.state.insta.contenu}><img src={Insta} width="60" height="60"></img></a></label>
+                    <label htmlFor="twitter"><a href={this.state.twitter.contenu}><img src={Twitter} width="60" height="60"></img></a></label>
+                           
                     </div>
                     
                 </div>
