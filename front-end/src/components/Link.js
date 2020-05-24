@@ -73,6 +73,7 @@ class Link extends React.Component {
             UserId: decoded.id
         })
     }
+    
 
 
     render() {
@@ -89,10 +90,6 @@ class Link extends React.Component {
                                       value={this.state.lienYoutube}
                                       onChange={this.onChange}
                                   />
-                                  <button onclick="onsubmit1()"
-                              className="btn btn-block btn-lg btn-light">
-                                  Envoyer
-                              </button>
                               </div>
                               <div className="form-group">
                                   <label htmlFor="first_name">Instagram <a href="https://www.instagram.com/"><img src={Insta} width="30" height="30"></img></a></label>
@@ -103,10 +100,6 @@ class Link extends React.Component {
                                       value={this.state.lienInsta}
                                       onChange={this.onChange}
                                   />
-                                  <button onclick="onsubmit2()"
-                              className="btn btn-block btn-lg btn-light">
-                                  Envoyer
-                              </button>
                               </div>
                               <div className="form-group">
                                   <label htmlFor="email">Twitter <a href="https://twitter.com/home"><img src={Twitter} width="30" height="30"></img></a></label>
@@ -117,11 +110,11 @@ class Link extends React.Component {
                                       value={this.state.lienAutre}
                                       onChange={this.onChange}
                                   />
-                                  <button onclick="onsubmit3()"
-                              className="btn btn-block btn-lg btn-light">
-                                  Envoyer
-                              </button>
                               </div>
+                              <button type="submit"
+                            className="btn btn-block btn-lg btn-light">
+                                Envoyer
+                            </button>
                           </form>
                           <form className= "formulaire4" noValidate onSubmit={this.onSubmit}>
                           <h3 class="text-dark">Modifier vos données</h3>
