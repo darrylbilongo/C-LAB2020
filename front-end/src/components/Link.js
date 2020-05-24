@@ -9,12 +9,11 @@ import axios from 'axios';
 
 class Link extends React.Component {
     constructor(props) {
-      super(props);
-      
-  
-      this.onChange = this.onChange.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
+        super(props);
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
+    
     state = {
         lienYoutube: '',
         lienInsta: '',
@@ -23,7 +22,10 @@ class Link extends React.Component {
         newName: '',
         newSurname: '',
         newDescription: '',
-        newRole: ''
+        newRole: '',
+        YoutOf: [],
+        InstaOf: [],
+        TwitOf: []
     };
 
     onChange(event) {
@@ -39,7 +41,30 @@ class Link extends React.Component {
             this.setState({
                 user: decoded,
             })
+            axios.get('http://localhost:8080/links/youtube/' + decoded.id)
+            .then((res) => {
+                this.setState({
+                    YoutOf: res.data
+                })
+                console.log(this.state.youtube)
+            })
+            .catch(err => console.log(err));
 
+            axios.get('http://localhost:8080/links/insta/' + decoded.id)
+            .then((res) => {
+                this.setState({
+                    InstaOf: res.data
+                })
+            })
+            .catch(err => console.log(err));
+
+            axios.get('http://localhost:8080/links/twitter/' + decoded.id)
+            .then((res) => {
+                this.setState({
+                    TwitOf: res.data
+                })
+            })
+            .catch(err => console.log(err));
     }
     
   
@@ -51,6 +76,29 @@ class Link extends React.Component {
                 user: decoded,
             })
       event.preventDefault();
+    if(this.state.description == ''){
+        this.state.description = decoded.description
+      }
+    if(this.state.newName == ''){
+        this.state.last_name = decoded.last_name
+    }
+    if(this.state.newSurname == ''){
+        this.state.newSurname = decoded.first_name
+    }
+    if(this.state.newRole == ''){
+        this.state.newRole = decoded.role
+    }
+    if(this.state.lienYoutube == ''){
+        this.state.lienYoutube = this.state.YoutOf.contenu
+    }
+    if(this.state.lienInsta == ''){
+        this.state.lienInsta = this.state.InstaOf.contenu
+    }
+    if(this.state.lienAutre == ''){
+        this.state.lienAutre = this.state.TwitOf.contenu
+    }
+
+
      axios.put('http://localhost:8080/users/' + decoded.id, {
             description: this.state.newDescription,
             first_name: this.state.newSurname,
