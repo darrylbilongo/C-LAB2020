@@ -1,7 +1,7 @@
 /**
  * @swagger
  * definitions:
- *  content:
+ *  Content:
  *    type: object
  *    properties:
  *      id:
