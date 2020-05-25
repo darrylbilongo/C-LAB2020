@@ -15,6 +15,8 @@ import Entete from './components/Entete';
 import ProfilVisiteur from './components/ProfilVisiteur'
 import Chat from './components/Chat'
 import About_Us from './components/About_Us';
+import Avis from './components/Avis';
+
 
 class App extends Component {
 
@@ -34,6 +36,7 @@ class App extends Component {
               <Route exact path="/settings" component={Link}/>
               <Route exact path="/profilVisiteur/:id" component={ProfilVisiteur}/>
               <Route exact path="/about_us" component={About_Us}/>
+              <Route exact path="/avis/:id" component={Avis}/>
             </div>
         </Router>
     );

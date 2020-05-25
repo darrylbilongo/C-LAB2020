@@ -104,9 +104,8 @@ class Navigation extends Component{
                 </Link>
             </li>
         </div>
-    ) 
-
-    
+    )
+ 
 
       return(
           <div>

@@ -118,7 +118,7 @@ router.get('/:id', users.getUser)
 
 router.put('/:id', users.update)
 
-router.get('/avis', users.getAvis)
+router.get('/avis/:id', users.getAvis)
 
 router.post('/avis', users.registerAvis)
 
