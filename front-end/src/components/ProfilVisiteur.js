@@ -243,7 +243,7 @@ class Profile extends Component{
                     {/*<ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>*/}
                      </div>
                      <div className="details">
-                    <h2>Votre description</h2>
+                    <h2>Profil de {this.state.user.first_name}</h2>
                     <ul className="list-group">
                         <li className="list-group-item">Nom : {this.state.user.last_name}</li>
                         <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
@@ -263,6 +263,15 @@ class Profile extends Component{
                         </div>
                         :null
                         }
+                        <div>
+                            <button
+                                onClick={this.collabore} 
+                                type="submit"
+                                className= "btn btn-block btn-lg btn-success"
+                                >
+                                Voir les avis de cet artiste     
+                            </button>
+                        </div>
                         {
                         this.state.showAlert?
                         <div>
