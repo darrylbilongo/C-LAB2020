@@ -126,6 +126,7 @@ class Profile extends Component{
     
 
     collabore (){
+
         this.setState({
             showAvis: true,
             hideCollab: false,
@@ -161,6 +162,7 @@ class Profile extends Component{
             auteurId: this.state.currentUser.id,
             contenu: this.state.contenu,
             artisteId: this.props.match.params.id,
+            pseudoId: this.state.currentUser.first_name,
         }
 
         avis(newAvis)
@@ -206,6 +208,28 @@ class Profile extends Component{
             )
         }
 
+        const Avis = () => {
+            const { id } = this.props.match.params
+
+            if (this.state.currentUser.id === this.state.user.id) {
+                return null;
+            }
+
+            return (
+                    <div>
+                    <Link to={{
+                        pathname: `/avis/` + id
+                            }} 
+                        className="nav-link">
+                        <button className="btn btn-success btn-block btn-lg">
+                            Voir les avis de cet artiste
+                        </button>
+                    </Link>
+                    </div>
+            )
+        }
+
+
         const Vote = () => { 
 
             if (this.state.currentUser.id === this.state.user.id) {
@@ -243,7 +267,7 @@ class Profile extends Component{
                     {/*<ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>*/}
                      </div>
                      <div className="details">
-                    <h2>Votre description</h2>
+                    <h2>Profil de {this.state.user.first_name}</h2>
                     <ul className="list-group">
                         <li className="list-group-item">Nom : {this.state.user.last_name}</li>
                         <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
@@ -272,7 +296,6 @@ class Profile extends Component{
                         </div>
                         :null
                         }
-                        
                         {
                         this.state.showAvis?
                         <div>
@@ -295,6 +318,7 @@ class Profile extends Component{
                         </div>
                         :null
                         }
+                        {Avis()}
                     </ul>
                     {Chat()}
                     <label htmlFor="youtube"><a href={this.state.liens.lienYoutube}><img src={Youtube} width="60" height="60"></img></a></label>

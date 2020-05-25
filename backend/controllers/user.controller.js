@@ -158,6 +158,7 @@ exports.registerAvis = (req, res) => {
     auteurId: req.body.auteurId,
     contenu: req.body.contenu,
     artisteId: req.body.artisteId,
+    pseudoId: req.body.pseudoId,
   }
 
   Avis.create(avis)
@@ -173,12 +174,9 @@ exports.registerAvis = (req, res) => {
 }
 
 exports.getAvis = (req, res) => {
-  const id = req.query.artisteId
-  var condition = {
-    artisteId: id 
-  }
+  const id = req.params.id
 
-  Avis.findAll({ where: condition })
+  Avis.findAll({ where: {artisteId: id }})
     .then(data => {
       res.send(data);
     })

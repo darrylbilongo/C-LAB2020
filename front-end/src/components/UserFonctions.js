@@ -91,6 +91,7 @@ export const avis = async newUser => {
                 auteurId: newUser.auteurId,
                 contenu: newUser.contenu,
                 artisteId: newUser.artisteId,
+                pseudoId: newUser.pseudoId,
             });
     }
     catch (err) {
