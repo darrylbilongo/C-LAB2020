@@ -286,7 +286,7 @@ ul#menu li a
 }
 
 .basabout{
-  margin-top: 8%;
+  margin-top: 0%;
 }
 
 .inscrip{
@@ -296,6 +296,15 @@ ul#menu li a
 .container2{
   width: 30%;
   margin-left: 10%;
+}
+
+.contact{
+  margin-top: 8%
+}
+
+.navigationbarre{
+  width: 60%;
+  margin-left: 40%
 }
 
 .audio{

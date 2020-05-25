@@ -100,7 +100,7 @@ class Navigation extends Component{
         <div className="aboutus">
             <li className="nav-item">
                 <Link to="/about_us" className="nav-link">
-                    About us
+                    Support
                 </Link>
             </li>
         </div>
@@ -108,7 +108,7 @@ class Navigation extends Component{
  
 
       return(
-          <div>
+          <div className="navigationbarre">
               <nav>
                 <ul id="menu">
                 {localStorage.usertoken ? null : loginLink}
