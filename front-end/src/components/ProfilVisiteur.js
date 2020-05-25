@@ -162,7 +162,6 @@ class Profile extends Component{
             auteurId: this.state.currentUser.id,
             contenu: this.state.contenu,
             artisteId: this.props.match.params.id,
-            pseudoId: this.state.currentUser.first_name,
         }
 
         avis(newAvis)
