@@ -158,7 +158,6 @@ exports.registerAvis = (req, res) => {
     auteurId: req.body.auteurId,
     contenu: req.body.contenu,
     artisteId: req.body.artisteId,
-    pseudoId: req.body.pseudoId,
   }
 
   Avis.create(avis)

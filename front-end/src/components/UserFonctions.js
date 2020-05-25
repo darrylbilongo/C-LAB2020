@@ -87,11 +87,10 @@ export const avis = async newUser => {
 
     try {
         return axios
-            .post('http://localhost:8080/users/avis', {
+            .post('http://localhost:8080/users/avis/', {
                 auteurId: newUser.auteurId,
                 contenu: newUser.contenu,
                 artisteId: newUser.artisteId,
-                pseudoId: newUser.pseudoId,
             });
     }
     catch (err) {

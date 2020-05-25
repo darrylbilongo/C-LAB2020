@@ -30,9 +30,6 @@ module.exports = (sequelize, Sequelize) => {
       artisteId: {
         type: Sequelize.INTEGER
       },
-      pseudoId: {
-        type: Sequelize.INTEGER
-      },
     });
   
     return Avis;
