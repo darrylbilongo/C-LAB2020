@@ -112,6 +112,12 @@ form {
 .titre{
   background-color:rgba(203,56,203, 0.4);
   color: white;
+  display: inline-flex;
+  width: 100%;
+}
+
+.titree{
+  margin-left: 41%
 }
 
 ul#menu
@@ -270,14 +276,47 @@ ul#menu li a
 .formulaire4{
   background-color: rgba(255,255,255, 0.6);
   text-decoration-color: black;
-  margin-top: 3%;
+  margin-top: 1%;
   border-radius: 15px;
-  margin-left: 19%;
-  width: 30%;
+  margin-left: 25%;
+  width: 50%;
+  height: 100%;
 }
 
 .inscrip{
   color: black;
 }
 
+.container2{
+  width: 30%;
+  margin-left: 10%;
+}
 
+.audio{
+  width: 100%;
+}
+
+.container3{
+  background-color: rgba(0,0,0, 0.7);
+  border-radius: 15px;
+  width: 35%;
+  margin-left: 10%;
+}
+
+.buttoon{
+  display: inline-flex;
+  width: 90%;
+}
+
+.baslist{
+  display: inline-flex
+}
+
+.nowa{
+  margin-top:7%;
+  color: white;
+}
+
+.blanco{
+  color: white;
+}

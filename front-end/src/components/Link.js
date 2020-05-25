@@ -22,7 +22,7 @@ class Link extends React.Component {
         newName: '',
         newSurname: '',
         newDescription: '',
-        newRole: '',
+        newRole: 'Rappeur',
         YoutOf: [],
         InstaOf: [],
         TwitOf: []
@@ -76,24 +76,30 @@ class Link extends React.Component {
                 user: decoded,
             })
       event.preventDefault();
-    if(this.state.description == ''){
-        this.state.description = decoded.description
+    if(this.state.newDescription == ''){
+        this.state.newDescription = decoded.description
       }
+
     if(this.state.newName == ''){
-        this.state.last_name = decoded.last_name
+        this.state.newName = decoded.last_name
     }
+
     if(this.state.newSurname == ''){
         this.state.newSurname = decoded.first_name
     }
+
     if(this.state.newRole == ''){
         this.state.newRole = decoded.role
     }
+
     if(this.state.lienYoutube == ''){
         this.state.lienYoutube = this.state.YoutOf.contenu
     }
+
     if(this.state.lienInsta == ''){
         this.state.lienInsta = this.state.InstaOf.contenu
     }
+
     if(this.state.lienAutre == ''){
         this.state.lienAutre = this.state.TwitOf.contenu
     }
@@ -127,45 +133,8 @@ class Link extends React.Component {
     render() {
         return (
                 <div className="setting">
-                        <form className= "formulaire3" noValidate onSubmit={this.onSubmit}>
-                              <h1 className="h3 mn-3">Enregistrer vos réseaux!</h1>
-                              <div className="form-group">
-                                  <label htmlFor="youtube">Youtube <a href="https://www.youtube.com/"><img src={Youtube} width="30" height="30"></img></a></label>
-                                  <input type="text"
-                                      name="lienYoutube"
-                                      className="form-control"
-                                      placeholder="Entrez votre lien youtube"
-                                      value={this.state.lienYoutube}
-                                      onChange={this.onChange}
-                                  />
-                              </div>
-                              <div className="form-group">
-                                  <label htmlFor="first_name">Instagram <a href="https://www.instagram.com/"><img src={Insta} width="30" height="30"></img></a></label>
-                                  <input type="text"
-                                      name="lienInsta"
-                                      className="form-control"
-                                      placeholder="Entrez votre lien instagram"
-                                      value={this.state.lienInsta}
-                                      onChange={this.onChange}
-                                  />
-                              </div>
-                              <div className="form-group">
-                                  <label htmlFor="email">Twitter <a href="https://twitter.com/home"><img src={Twitter} width="30" height="30"></img></a></label>
-                                  <input type="email"
-                                      name="lienAutre"
-                                      className="form-control"
-                                      placeholder="Entrez votre lien twitter"
-                                      value={this.state.lienAutre}
-                                      onChange={this.onChange}
-                                  />
-                              </div>
-                              <button type="submit"
-                            className="btn btn-block btn-lg btn-light">
-                                Envoyer
-                            </button>
-                          </form>
                           <form className= "formulaire4" noValidate onSubmit={this.onSubmit}>
-                          <h3 class="text-dark">Modifier vos données</h3>
+                          <h3 class="text-dark">Modifiez ou complétez vos données</h3>
                             <div className="form-group">
                                 <label className="inscrip"><h6>Nom </h6></label>
                                 <input type="text"
@@ -210,6 +179,36 @@ class Link extends React.Component {
                                 <option>Producteur</option>
                               </select>
                             </div>
+                            <div className="form-group">
+                                  <label className="inscrip">Youtube <a href="https://www.youtube.com/"><img src={Youtube} width="30" height="30"></img></a></label>
+                                  <input type="text"
+                                      name="lienYoutube"
+                                      className="form-control"
+                                      placeholder="Entrez votre lien youtube"
+                                      value={this.state.lienYoutube}
+                                      onChange={this.onChange}
+                                  />
+                              </div>
+                              <div className="form-group">
+                                  <label className="inscrip">Instagram <a href="https://www.instagram.com/"><img src={Insta} width="30" height="30"></img></a></label>
+                                  <input type="text"
+                                      name="lienInsta"
+                                      className="form-control"
+                                      placeholder="Entrez votre lien instagram"
+                                      value={this.state.lienInsta}
+                                      onChange={this.onChange}
+                                  />
+                              </div>
+                              <div className="form-group">
+                                  <label className="inscrip">Twitter <a href="https://twitter.com/home"><img src={Twitter} width="30" height="30"></img></a></label>
+                                  <input type="email"
+                                      name="lienAutre"
+                                      className="form-control"
+                                      placeholder="Entrez votre lien twitter"
+                                      value={this.state.lienAutre}
+                                      onChange={this.onChange}
+                                  />
+                              </div>
                             <button type="submit"
                             className="btn btn-block btn-lg btn-light">
                                 Envoyer

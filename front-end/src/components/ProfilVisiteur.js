@@ -7,6 +7,7 @@ import {avis} from './UserFonctions';
 import Youtube from '../images/youtube.png'
 import Insta from '../images/Insta.png'
 import Twitter from '../images/Twitter_Logo.png'
+import Logo from './Double_Diamond.png'
 
 class Profile extends Component{
 
@@ -302,15 +303,24 @@ class Profile extends Component{
                     </div>
                     
                 </div>
-                <div className="container">
+                <div className="container3" onSubmit={this.handleImport}>
+                    <h1 className="blanco">Oeuvres de l'artiste</h1>
+                    <ul className="list-group"> 
+                    <li className="list-group-item">
                     {this.state.contents.map(content => {
                         return <ReactAudioPlayer
                         src={'http://localhost:8080/' + content.link}
-                        controls
+                        controls className="audio"
                       />
                     })}
+                    </li>
+                    </ul>
+                    <div className="baslist">
+                        <img src={Logo} width="60" height="60"></img>
+                    </div>
                 </div>
             </div>
+
         )
     }
 }

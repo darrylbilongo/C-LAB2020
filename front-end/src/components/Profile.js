@@ -7,6 +7,7 @@ import {avis} from './UserFonctions';
 import Youtube from '../images/youtube.png'
 import Insta from '../images/Insta.png'
 import Twitter from '../images/Twitter_Logo.png'
+import Logo from './Double_Diamond.png'
 
 class Profile extends Component{
 
@@ -276,28 +277,38 @@ class Profile extends Component{
                     </div>
                     
                 </div>
-                <div className="container" onSubmit={this.handleImport}>
+                <div className="container3" onSubmit={this.handleImport}>
                     <div className="row">
-                        <div className="offset-md-3">
-                            <label>Importez une de vos oeuvres: </label> 
-                            <input type="file" className="form-control-file" onChange={this.onChangeHandler}></input>
+                        <div className="import">
+                            <label><h3>Importez une de vos oeuvres:</h3> </label>
+                            <div className='buttoon'>
+                                <input type="file" className="form-control-file" onChange={this.onChangeHandler}></input>
+                                <button type="button"
+                                    onClick={this.onClickHandler}
+                                    className="btn-lg"> Importer 
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <button type="button"
-                            onClick={this.onClickHandler}
-                            className="btn-lg"> Importer 
-                    </button>
+                    
                     <div className="form-group">
         {/*<Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>*/}
                     </div>
-                </div>
-                <div className="container">
+               
+                    <ul className="list-group"> 
+                    <li className="list-group-item">
                     {this.state.contents.map(content => {
                         return <ReactAudioPlayer
                         src={'http://localhost:8080/' + content.link}
-                        controls
+                        controls className="audio"
                       />
                     })}
+                    </li>
+                    </ul>
+                    <div className="baslist">
+                        <img src={Logo} width="60" height="60"></img>
+                        <h4 className="nowa">Vos musiques</h4>
+                    </div>
                 </div>
             </div>
         )
