@@ -28,8 +28,6 @@ class Avis extends Component{
   
     constructor(props) {
         super(props);
-
-
     }
 
     async componentDidMount(){
@@ -37,10 +35,7 @@ class Avis extends Component{
 
         axios.get('http://localhost:8080/users/avis/'+ id)
         .then((res) =>{this.setState({avis:res.data});
-            ;
-        });
-        
-
+        });  
     }
 
     render(){

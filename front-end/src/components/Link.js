@@ -180,7 +180,7 @@ class Link extends React.Component {
                               </select>
                             </div>
                             <div className="form-group">
-                                  <label className="inscrip">Youtube <a href="https://www.youtube.com/"><img src={Youtube} width="30" height="30"></img></a></label>
+                                  <label className="inscrip">Youtube <a href="https://www.youtube.com/"><img src={Youtube} width="25" height="25"></img></a></label>
                                   <input type="text"
                                       name="lienYoutube"
                                       className="form-control"
@@ -190,7 +190,7 @@ class Link extends React.Component {
                                   />
                               </div>
                               <div className="form-group">
-                                  <label className="inscrip">Instagram <a href="https://www.instagram.com/"><img src={Insta} width="30" height="30"></img></a></label>
+                                  <label className="inscrip">Instagram <a href="https://www.instagram.com/"><img src={Insta} width="25" height="25"></img></a></label>
                                   <input type="text"
                                       name="lienInsta"
                                       className="form-control"
@@ -200,7 +200,7 @@ class Link extends React.Component {
                                   />
                               </div>
                               <div className="form-group">
-                                  <label className="inscrip">Twitter <a href="https://twitter.com/home"><img src={Twitter} width="30" height="30"></img></a></label>
+                                  <label className="inscrip">Twitter <a href="https://twitter.com/home"><img src={Twitter} width="25" height="25"></img></a></label>
                                   <input type="email"
                                       name="lienAutre"
                                       className="form-control"
