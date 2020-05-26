@@ -4,7 +4,7 @@ import axios from 'axios';
 const Item = function ({item}) {
     return <tr>
     <th scope="row">{item.contenu}</th>
-    <th scope="row">{item.auteurId}</th>
+    <th scope="row">{item.auteurName}</th>
     </tr>;
 }
 

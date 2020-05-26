@@ -55,7 +55,6 @@ class Profile extends Component{
     
   async componentDidMount(){
         const { id } = this.props.match.params
-
         axios.get('http://localhost:8080/users/' + id)
             .then((res) => {
                 console.log(res.data)
@@ -105,7 +104,7 @@ class Profile extends Component{
                 contents : res.data
             })
         })*/
-
+        console.log(this.state.currentUser)
         axios.get('http://localhost:8080/contents/', {
             UserId : id
         }).then(res => {
@@ -174,13 +173,13 @@ class Profile extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-
+        console.log(this.state.currentUser.first_name)
         const newAvis = {
-            auteurId: this.state.currentUser.id,
+            auteurName: this.state.currentUser.first_name,
             contenu: this.state.contenu,
             artisteId: this.props.match.params.id,
         }
-
+ 
         avis(newAvis)
 
         this.setState({

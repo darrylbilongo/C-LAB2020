@@ -155,7 +155,7 @@ exports.getFiles = (req, res) => {
 
 exports.registerAvis = (req, res) => {
   const avis = {
-    auteurId: req.body.auteurId,
+    auteurName: req.body.auteurName,
     contenu: req.body.contenu,
     artisteId: req.body.artisteId,
   }

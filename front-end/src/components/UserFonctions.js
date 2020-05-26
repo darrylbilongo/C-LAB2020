@@ -88,7 +88,7 @@ export const avis = async newUser => {
     try {
         return axios
             .post('http://localhost:8080/users/avis/', {
-                auteurId: newUser.auteurId,
+                auteurName: newUser.auteurName,
                 contenu: newUser.contenu,
                 artisteId: newUser.artisteId,
             });
