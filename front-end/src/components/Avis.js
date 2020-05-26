@@ -22,7 +22,8 @@ const List = ({ list }) => {
 
 class Avis extends Component{
     state = {
-        avis : []
+        avis : [],
+        user: [],
     };
   
     constructor(props) {
@@ -36,8 +37,10 @@ class Avis extends Component{
 
         axios.get('http://localhost:8080/users/avis/'+ id)
         .then((res) =>{this.setState({avis:res.data});
-            console.log(this.state.avis);
+            ;
         });
+        
+
     }
 
     render(){
