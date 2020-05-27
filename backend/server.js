@@ -166,19 +166,11 @@ app.use('/links', linkRouter);
 app.use('/contents', contentRouter)
 app.use('/messages', messageRouter)
 
-<<<<<<< HEAD
 app.use(express.static(path.join(__dirname, 'build')))
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
-=======
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
-
->>>>>>> ac22eee410c8f7eb7a0b442782f3d57e8a70f56e
 
 // Lancement du serveur
 /*app.listen(port, () => {
