@@ -70,7 +70,7 @@ class Link extends React.Component {
   
     onSubmit(event) {
         const token = localStorage.getItem('usertoken');
-            const decoded = jwt_decode(token);
+        const decoded = jwt_decode(token);
 
             this.setState({
                 user: decoded,
