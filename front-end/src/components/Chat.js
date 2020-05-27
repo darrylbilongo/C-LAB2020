@@ -53,7 +53,7 @@ class Chat extends Component{
         }).then(res => {
             console.log(res)
             this.setState({
-                messages: [...this.state.messages, res.data]
+                messages: this.state.messages.concat(res.data)
             })
         })
 
@@ -106,14 +106,14 @@ class Chat extends Component{
                     <ul className="list-group">
                         <li class="list-group-item active">Chat avec {this.state.user.first_name}</li>
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
-                            if(msg.id === this.state.currentUser.id) {
+                            if(msg.authorId === this.state.currentUser.id) {
                                 return (
                                     <li key={msg.id} className="list-group-item">{msg.message}</li>
                                 )  
                             }
                             else {
                                 return (
-                                <li key={msg.id} className="list-group-item">{this.state.user.first_name} : {msg.message}</li>
+                                    <li key={msg.id} className="list-group-item">{this.state.user.first_name} : {msg.message}</li>
                                 ) 
                             }
                                          
