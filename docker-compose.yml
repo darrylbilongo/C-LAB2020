@@ -1,61 +1,25 @@
-version: "3.4"
-
-x-common-variables: &common-variables
-  MYSQL_USER: sampleuser
-  MYSQL_PASSWORD: samplepassword
-  MYSQL_DATABASE: sampledb
-  REACT_APP_SERVER_PORT: 8080
-
+version: '2'
 services:
+  client:
+    build: ./ui
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+  server:
+    build: ./api
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mysql
   mysql:
     image: mysql:5.7
     environment:
       <<: *common-variables
       MYSQL_HOST: localhost
-      MYSQL_ROOT_PASSWORD: secretsauce
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - 3306:3306
     restart: unless-stopped
     volumes:
       - ./db/sample.sql:/docker-entrypoint-initdb.d/sample.sql
-  phpmyadmin:
-    depends_on:
-      - mysql
-    image: phpmyadmin/phpmyadmin
-    environment:
-      PMA_HOST: mysql
-    links:
-      - mysql:mysql
-    ports:
-      - 8080:80
-    restart: always
-  server:
-    build: ./backend
-    depends_on:
-      - mysql
-    expose:
-      - 8080
-    environment:
-      <<: *common-variables
-      MYSQL_HOST_IP: mysql
-    ports:
-      - 8080:8080
-    volumes:
-      - ./server:/app
-    links:
-      - mysql
-    command: yarn start
-  client:
-    build: ./front-end
-    environment:
-      <<: *common-variables
-      NODE_PATH: src
-    expose:
-      - 3000
-    ports:
-      - 3000:3000
-    volumes:
-      - ./front-end/src:/app/src
-    links:
-      - server
-    command: npm start
