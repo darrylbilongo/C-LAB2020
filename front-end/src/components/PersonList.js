@@ -14,7 +14,7 @@ const Item = function ({item}) {
                 }} 
                 className="nav-link">
                 <button className="btn btn-success btn-block btn-lg">
-                    Voir les avis de cet artiste
+                    <div className="voirav">Voir les avis </div>
                 </button>
         </Link>
     </td>

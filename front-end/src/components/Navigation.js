@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link, withRouter} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
+import Logo from './Clab.png'
 
 class Navigation extends Component{
 
@@ -34,7 +35,7 @@ class Navigation extends Component{
       const loginLink = (
         <li className="nav-item">
                     <Link to="/login" className="nav-link">
-                        Login
+                        <h3>Login</h3>
                     </Link>
         </li>
     )
@@ -42,14 +43,14 @@ class Navigation extends Component{
      const regLink = (
         <li className="nav-item">
                     <Link to="/register" className="nav-link">
-                        Register
+                        <h3>Register</h3>
                     </Link>
                 </li>
     ) 
     const homeLink = (
         <li className="nav-item">
                         <Link to="/home" className="nav-link">
-                            Home
+                            <h3>Home</h3>
                         </Link>
             </li>
     )
@@ -57,7 +58,7 @@ class Navigation extends Component{
     const homeLink2 = (
         <li className="nav-item">
                         <Link to="/" className="nav-link">
-                            Home
+                            <h3>Home</h3>
                         </Link>
             </li>
     )
@@ -68,14 +69,14 @@ class Navigation extends Component{
                     pathname: `/profile/${this.state.user.id}`
                 }} 
                 className="nav-link">
-                    Profile
+                    <h3>Profile</h3>
                 </Link>
         </li>
     )
     const logoutLink = (
         <li className="nav-item">
                 <a href="#" onClick={this.logOut.bind(this)} className="nav-link">
-                   Logout
+                   <h3>Logout</h3>
                 </a>
         </li>
     )
@@ -83,7 +84,7 @@ class Navigation extends Component{
     const catalogueLink = (
         <li className="nav-item">
                         <Link to="/catalogue" className="nav-link">
-                            Catalog
+                            <h3>Catalog</h3>
                         </Link>
             </li>
     )
@@ -91,7 +92,7 @@ class Navigation extends Component{
     const compteLink = (
         <li className="nav-item">
                     <Link to="/settings" className="nav-link">
-                        Settings
+                        <h3>Settings</h3>
                     </Link>
                 </li>
     ) 
@@ -100,7 +101,7 @@ class Navigation extends Component{
         <div className="aboutus">
             <li className="nav-item">
                 <Link to="/about_us" className="nav-link">
-                    Support
+                    <h3>Support</h3>
                 </Link>
             </li>
         </div>
@@ -108,26 +109,25 @@ class Navigation extends Component{
  
 
       return(
-          <div className="navigationbarre">
-              <nav>
-                <ul id="menu">
-                {localStorage.usertoken ? null : loginLink}
-                {localStorage.usertoken ? null : regLink}
-                {localStorage.usertoken ? logoutLink : null}
-                {localStorage.usertoken ? aPropos : null}
-                {localStorage.usertoken ? compteLink : null}
-                {localStorage.usertoken ? profileLink : null}
-                {localStorage.usertoken ? catalogueLink : null}
-                {localStorage.usertoken ? homeLink : null}
-                {localStorage.usertoken ? null : homeLink2}
-                </ul>
-                {/*<p className="description">C-LAB est une plateforme visant à réunir les différents artistes afin
-                  de leur permettre de créer des projets à plusieurs. Fini l'époque où tu étais
-                  le seul à faire de la musique parmis tout ton entourage! Désormais, de nombreux
-                  artistes t'attendent et souhaite collaborer eux-aussi.
-      </p>*/}
-              </nav>
-          </div> 
+          <div className="navi">
+            <nav class="navbar navbar-expand-sm navbar-dark">
+                <div class="container-fluid">
+                    <img src={Logo} width="3%"></img>
+                    <ul className="navbar-nav">
+                        {localStorage.usertoken ? null : homeLink2}                        
+                        {localStorage.usertoken ? null : regLink}
+                        {localStorage.usertoken ? null : loginLink}
+                        {localStorage.usertoken ? homeLink : null}
+                        {localStorage.usertoken ? catalogueLink : null}
+                        {localStorage.usertoken ? profileLink : null}
+                        {localStorage.usertoken ? compteLink : null}             
+                        {localStorage.usertoken ? aPropos : null}
+                        {localStorage.usertoken ? logoutLink : null}
+                        
+                    </ul>
+                </div>
+            </nav>
+            </div>
       )
     }
 }

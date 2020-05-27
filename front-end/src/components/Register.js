@@ -49,8 +49,6 @@ class Register extends React.Component {
     render() {
       return (
         <div>
-        <div className="row">
-                    <div className="col-md-6 mt-5 mx-auto">
                         <form className= "formulaire" noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mn-3">Nouveau ? enregistrez vous !</h1>
                             <div className="form-group">
@@ -109,8 +107,6 @@ class Register extends React.Component {
                             </button>
                         </form>
                     </div>
-                </div>
-      </div>
       );
     }
   }
