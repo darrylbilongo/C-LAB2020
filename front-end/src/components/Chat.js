@@ -47,7 +47,7 @@ class Chat extends Component{
                 messages: res.data
             })
         })
-
+        console.log(this.state.messages)
         await axios.post('http://localhost:8080/messages/get/' + decoded.id, {
             authorId : id
         }).then(res => {
@@ -101,8 +101,8 @@ class Chat extends Component{
 
     render() {
         return (
-            <div>
-                <div className="container">
+            <div className="chattotal">
+                <div className="chat1">
                     <ul className="list-group">
                         <li class="list-group-item active">Chat avec {this.state.user.first_name}</li>
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
@@ -111,9 +111,9 @@ class Chat extends Component{
                                     <li key={msg.id} className="list-group-item">{msg.message}</li>
                                 )  
                             }
-                            else {
+                            else if (msg.destinationId == this.state.currentUser.id){
                                 return (
-                                    <li key={msg.id} className="list-group-item">{this.state.user.first_name} : {msg.message}</li>
+                                    <li key={msg.id} className="list-group-item"><b>{this.state.user.first_name}</b> : {msg.message}</li>
                                 ) 
                             }
                                          
@@ -121,8 +121,8 @@ class Chat extends Component{
                     </ul>
                     
                 </div>
-                <div>
-                    <input value={this.state.message} name="message" onChange={this.onChange}></input>
+                <div className="BouttonEnvoyer">
+                    <input value={this.state.message} name="message" onChange={this.onChange} className="envoichat"></input>
                     <button className='btn btn-primary' onClick={() => this.onClick()}> Envoyer !</button>
                 </div>
             </div>

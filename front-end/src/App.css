@@ -120,6 +120,28 @@ form {
   margin-left: 41%;
 }
 
+.chat1{
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 1%;
+}
+
+.chattotal{
+  width: 100%;
+}
+
+.envoichat{
+  width: 100%;
+}
+
+.BouttonEnvoyer{
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 0.3%;
+  height: 25%;
+  background-color: rgba(0, 123, 255, 0.829);
+  border-radius: 20px;
+}
 
 ul#menu
 {
