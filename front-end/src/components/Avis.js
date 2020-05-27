@@ -53,10 +53,8 @@ class Avis extends Component{
     render(){
         return(
             <div className="backgroundAvis">
-                <div>
                     <h2 className="titreAvis">Avis de {this.state.user.last_name} {this.state.user.first_name}</h2>
-                    <List list={this.state.avis}/>
-                </div>
+                    <List className="tableAvis" list={this.state.avis}/>
             </div>
         )            
 
