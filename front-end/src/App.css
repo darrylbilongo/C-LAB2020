@@ -358,3 +358,53 @@ ul#menu li a
   border-radius: 5px;
   margin-left: 25%;
 }
+
+.enteteAvis{
+  color: black;
+  background-color: rgb(153,50,204);
+  opacity: 1;
+  text-align: right;
+  font: 1.4em Impact, fantasy;
+  border-radius: 10px 0px 0px 10px;
+  width: 100px;
+}
+
+
+.contenuAvis{
+  color: black;
+  background-color: white;
+  font: 1em Verdana, sans-serif;
+  text-align: center;
+  border-radius: 0px 10px 10px 0px;
+  width: 400px;
+}
+
+.list-avis{
+  border-collapse:separate; 
+  border-spacing:0 10px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 500px;
+  vertical-align: middle;
+}
+.list-avis1{
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 500px;
+  vertical-align: middle;
+  width: 100%;
+  border: 1px;
+  min-width: 100%;
+  position: relative;
+}
+.backgroundAvis{
+  background-color: rgb(255, 255, 255) transparent;
+  text-decoration-color: black;
+  margin-top: 1%;
+  border-radius: 15px;
+  margin-left: 25%;
+  width: 50%;
+  height: 100%;
+}
