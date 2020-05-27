@@ -53,7 +53,7 @@ class Chat extends Component{
         }).then(res => {
             console.log(res)
             this.setState({
-                messages: [...this.state.messages, res.data]
+                messages: this.state.messages.concat(res.data)
             })
         })
 
@@ -101,19 +101,19 @@ class Chat extends Component{
 
     render() {
         return (
-            <div>
-                <div className="container">
+            <div className="chattotal">
+                <div className="chat1">
                     <ul className="list-group">
                         <li class="list-group-item active">Chat avec {this.state.user.first_name}</li>
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
-                            if(msg.authorId == this.state.currentUser.id) {
+                            if(msg.authorId === this.state.currentUser.id) {
                                 return (
                                     <li key={msg.id} className="list-group-item">{msg.message}</li>
                                 )  
                             }
                             else if (msg.destinationId == this.state.currentUser.id){
                                 return (
-                                    <li key={msg.id} className="list-group-item">{this.state.user.first_name} : {msg.message}</li>
+                                    <li key={msg.id} className="list-group-item"><b>{this.state.user.first_name}</b> : {msg.message}</li>
                                 ) 
                             }
                                          
@@ -121,8 +121,8 @@ class Chat extends Component{
                     </ul>
                     
                 </div>
-                <div>
-                    <input value={this.state.message} name="message" onChange={this.onChange}></input>
+                <div className="BouttonEnvoyer">
+                    <input value={this.state.message} name="message" onChange={this.onChange} className="envoichat"></input>
                     <button className='btn btn-primary' onClick={() => this.onClick()}> Envoyer !</button>
                 </div>
             </div>

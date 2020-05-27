@@ -5,7 +5,7 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - api
+      - server
   server:
     build: ./api
     ports:
@@ -15,9 +15,8 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      <<: *common-variables
       MYSQL_HOST: localhost
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: secretsauce
     ports:
       - 3306:3306
     restart: unless-stopped
