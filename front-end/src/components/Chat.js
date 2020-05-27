@@ -47,7 +47,7 @@ class Chat extends Component{
                 messages: res.data
             })
         })
-
+        console.log(this.state.messages)
         await axios.post('http://localhost:8080/messages/get/' + decoded.id, {
             authorId : id
         }).then(res => {
@@ -106,14 +106,14 @@ class Chat extends Component{
                     <ul className="list-group">
                         <li class="list-group-item active">Chat avec {this.state.user.first_name}</li>
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
-                            if(msg.id == this.state.currentUser.id) {
+                            if(msg.authorId == this.state.currentUser.id) {
                                 return (
                                     <li key={msg.id} className="list-group-item">{msg.message}</li>
                                 )  
                             }
-                            else {
+                            else if (msg.destinationId == this.state.currentUser.id){
                                 return (
-                                <li key={msg.id} className="list-group-item">{this.state.user.first_name} : {msg.message}</li>
+                                    <li key={msg.id} className="list-group-item">{this.state.user.first_name} : {msg.message}</li>
                                 ) 
                             }
                                          
