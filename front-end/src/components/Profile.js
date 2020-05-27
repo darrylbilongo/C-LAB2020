@@ -171,6 +171,7 @@ class Profile extends Component{
         this.setState({[nam]: val});
     }
 
+    
     handleSubmit(event){
         event.preventDefault();
         console.log(this.state.currentUser.first_name)
@@ -186,16 +187,8 @@ class Profile extends Component{
             showAvis: false,
             showAlert: true,
         });
-        
-
       }
 
-    render(){
-
-        axios.put('http://localhost:8080/users/' + this.state.user.id, {
-            note :  this.state.user.note - 1
-        })
-    }
 
     
 
@@ -223,34 +216,6 @@ class Profile extends Component{
             )
         }
 
-        const Vote = () => { 
-
-            if (this.state.currentUser.id === this.state.user.id) {
-                return null;
-            }
-
-            return (
-                    <li className="list-group-item">
-                        As-tu apprécié cet artiste? {this.state.like ? "Tu as aimé ce profil" : "Tu n'as pas aimé"}
-                        <button
-                            onClick={this.voteAime} 
-                            type="submit"
-                            className= "btn btn-block btn-lg btn-success"
-                        >
-                        J'aime      
-                        </button>
-                        <button
-                            onClick={this.voteAimePas} 
-                            type="submit"
-                            className= "btn btn-block btn-lg btn-danger"
-                        >       
-                        Je n'aime pas     
-                        </button>
-                    </li>
-                    
-            )
-
-        }
 
 
         return(
@@ -267,6 +232,16 @@ class Profile extends Component{
                             <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
                             <li className="list-group-item">Role : {this.state.user.role}</li>
                             <li className="list-group-item">Description : {this.state.user.description}</li>
+                            <li className="list-group-item">
+                                <Link to={{
+                                    pathname: `/avis/` + this.state.currentUser.id
+                                        }} 
+                                    className="nav-link">
+                                    <button className="btn btn-success btn-block btn-lg">
+                                        Voir les avis de cet artiste
+                                    </button>
+                                </Link>
+                             </li>
                         </ul>
                         {Chat()}
                         <label htmlFor="youtube"><a href={this.state.youtube.contenu}><img src={Youtube} width="60" height="60"></img></a></label>
@@ -303,6 +278,7 @@ class Profile extends Component{
                       />
                     })}
                     </li>
+                    
                     </ul>
                     <div className="baslist">
                         <img src={Logo} width="60" height="60"></img>

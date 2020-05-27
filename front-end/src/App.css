@@ -213,7 +213,7 @@ ul#menu li a
 .details{
   color: white;
   background-color: rgba(203,56,203, 0.6);
-  width: 45%;
+  width: 40%;
   float: left;
   border-radius: 20px;
 }
@@ -348,7 +348,7 @@ ul#menu li a
 .container3{
   background-color: rgba(0,0,0, 0.7);
   border-radius: 15px;
-  width: 35%;
+  width: 50%;
   float: right;
   margin-right: 5%;
 }
