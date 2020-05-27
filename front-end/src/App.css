@@ -400,6 +400,15 @@ ul#menu li a
   width: 100%;
 }
 
+.boutonCata{
+  width: 18%;
+}
+
+
+.catalogueEnt{
+  margin-top: 1%;
+}
+
 .list-avis{
   border-collapse:separate; 
   border-spacing:0 10px;
