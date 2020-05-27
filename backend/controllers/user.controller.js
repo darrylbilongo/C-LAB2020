@@ -57,7 +57,7 @@ exports.login = (req, res) => {
     })
         .then(user => {
             if(user) {
-                if(bcrypt.compare(req.body.password, user.password)){
+                if(bcrypt.compareSync(req.body.password, user.password)){
                     // Mots de Passe compatibles
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                         expiresIn: 1440
