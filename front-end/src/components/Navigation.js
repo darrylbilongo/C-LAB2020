@@ -84,13 +84,13 @@ class Navigation extends Component{
     const catalogueLink = (
         <li className="nav-item">
                         <Link to="/catalogue" className="nav-link">
-                            <h3>Catalog</h3>
+                            <h3 className="ecriture">Catalog</h3>
                         </Link>
             </li>
     )
 
     const compteLink = (
-        <li className="nav-item">
+                <li className="nav-item">
                     <Link to="/settings" className="nav-link">
                         <h3>Settings</h3>
                     </Link>
@@ -123,7 +123,6 @@ class Navigation extends Component{
                         {localStorage.usertoken ? compteLink : null}             
                         {localStorage.usertoken ? aPropos : null}
                         {localStorage.usertoken ? logoutLink : null}
-                        
                     </ul>
                 </div>
             </nav>
