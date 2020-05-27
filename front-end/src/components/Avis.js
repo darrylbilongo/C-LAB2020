@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Item = function ({item}) {
     return<tr className="list-avis1">
-            <th className="enteteAvis" scope="row">{item.auteurId}</th>
+            <th className="enteteAvis" scope="row">{item.auteurName}</th>
             <th className="contenuAvis" scope="row">{item.contenu}</th>
         </tr>;
 }
