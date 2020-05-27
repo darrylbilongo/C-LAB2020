@@ -42,8 +42,18 @@ class Chat extends Component{
         await axios.post('http://localhost:8080/messages/get/' + id, {
             authorId : decoded.id
         }).then(res => {
+            console.log(res)
             this.setState({
                 messages: res.data
+            })
+        })
+
+        await axios.post('http://localhost:8080/messages/get/' + decoded.id, {
+            authorId : id
+        }).then(res => {
+            console.log(res)
+            this.setState({
+                messages: [...this.state.messages, res.data]
             })
         })
 
@@ -52,6 +62,17 @@ class Chat extends Component{
         })
 
     }
+
+    renderChat() {
+        const chat  = this.state.messages;
+        return chat.map(chatMessage => (
+          <div key={chatMessage.id}>
+            <span style={{ color: "green" }}>texte </span>
+    
+            <span>{chatMessage.message}</span>
+          </div>
+        ));
+      }
 
     onChange (event) {
         this.setState({
@@ -85,9 +106,17 @@ class Chat extends Component{
                     <ul className="list-group">
                         <li class="list-group-item active">Chat avec {this.state.user.first_name}</li>
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
-                            return (
-                                <li key={msg.id} className="list-group-item">{msg.message}</li>
-                            )               
+                            if(msg.id == this.state.currentUser.id) {
+                                return (
+                                    <li key={msg.id} className="list-group-item">{msg.message}</li>
+                                )  
+                            }
+                            else {
+                                return (
+                                <li key={msg.id} className="list-group-item">{this.state.user.first_name} : {msg.message}</li>
+                                ) 
+                            }
+                                         
                         })}
                     </ul>
                     
@@ -96,7 +125,6 @@ class Chat extends Component{
                     <input value={this.state.message} name="message" onChange={this.onChange}></input>
                     <button className='btn btn-primary' onClick={() => this.onClick()}> Envoyer !</button>
                 </div>
-                
             </div>
         );
     }

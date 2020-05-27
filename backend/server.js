@@ -26,7 +26,8 @@ const io = require('socket.io')(server);
 let interval;
 
 io.on('connection', (socket) => {
-  console.log('new user connected')
+  const { id } = socket.client;
+  console.log(`new user ${id} connected`)
 
   if (interval) {
     clearInterval(interval);
