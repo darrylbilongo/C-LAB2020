@@ -21,8 +21,8 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         autoIncrement: true
       },
-      auteurId: {
-        type: Sequelize.INTEGER
+      auteurName: {
+        type: Sequelize.STRING
       },
       contenu: {
         type: Sequelize.STRING

@@ -5,8 +5,7 @@ const Item = function ({item}) {
     return<tr className="list-avis1">
             <th className="enteteAvis" scope="row">{item.auteurId}</th>
             <th className="contenuAvis" scope="row">{item.contenu}</th>
-        </tr>
-
+        </tr>;
 }
 
 const List = ({ list }) => {

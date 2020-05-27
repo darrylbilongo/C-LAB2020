@@ -159,7 +159,7 @@ class Profile extends Component{
         event.preventDefault();
 
         const newAvis = {
-            auteurId: this.state.currentUser.id,
+            auteurName: this.state.currentUser.first_name,
             contenu: this.state.contenu,
             artisteId: this.props.match.params.id,
         }
