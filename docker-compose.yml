@@ -1,13 +1,14 @@
 version: '2'
 services:
   client:
-    build: ./ui
+    build: ./front-end
     ports:
       - '3000:3000'
     depends_on:
       - server
   server:
-    build: ./api
+    restart: on-failure
+    build: ./backend
     ports:
       - '8080:8080'
     depends_on:

@@ -10,5 +10,7 @@ RUN npm install
 COPY . /api/
 # Make port 80 available to the world outside this container
 EXPOSE 8080
+# Install nodemon
+RUN npm install nodemon -g
 # Run the app when the container launches
-CMD ["node", "server"]
+CMD ["nodemon", "server"]
