@@ -40,10 +40,18 @@ h1 {
 
 .formulaire{
   background-color: rgba(203,56,203, 0.2);
-  position:absolute;
-   top:50%;
-   left:60%;
-   border-radius: 10px;
+  width: 70%;
+  border-radius: 10px;
+  margin-left: 15%;
+  margin-top: 3%;
+}
+
+.formulaireLogin{
+  background-color: rgba(203,56,203, 0.3);
+  width: 60%;
+  border-radius: 10px;
+  margin-left: 20%;
+  margin-top: 5%
 }
 
 .inscription{
@@ -205,8 +213,8 @@ ul#menu li a
 .details{
   color: white;
   background-color: rgba(203,56,203, 0.6);
-  width: 40%;
-  float: right;
+  width: 45%;
+  float: left;
   border-radius: 20px;
 }
 
@@ -341,7 +349,8 @@ ul#menu li a
   background-color: rgba(0,0,0, 0.7);
   border-radius: 15px;
   width: 35%;
-  margin-left: 10%;
+  float: right;
+  margin-right: 5%;
 }
 
 .buttoon{
@@ -398,6 +407,19 @@ ul#menu li a
   text-align: center;
   border-radius: 0px 10px 10px 0px;
   width: 100%;
+}
+
+.boutonCata{
+  width: 18%;
+}
+
+.navi{
+  background-color: rgba(203,56,203, 0.4);
+}
+
+
+.catalogueEnt{
+  margin-top: 1%;
 }
 
 .list-avis{

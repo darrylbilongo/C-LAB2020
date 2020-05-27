@@ -257,21 +257,21 @@ class Profile extends Component{
             <div>
                 <div className="videode">
                     <div className="video">
-                    {/*<ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>*/}
-                     </div>
-                     <div className="details">
-                    <h2>Votre description</h2>
-                    <ul className="list-group">
-                        <li className="list-group-item">Nom : {this.state.user.last_name}</li>
-                        <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
-                        <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
-                        <li className="list-group-item">Role : {this.state.user.role}</li>
-                        <li className="list-group-item">Description : {this.state.user.description}</li>
-                    </ul>
-                    {Chat()}
-                    <label htmlFor="youtube"><a href={this.state.youtube.contenu}><img src={Youtube} width="60" height="60"></img></a></label>
-                    <label htmlFor="insta"><a href={this.state.insta.contenu}><img src={Insta} width="60" height="60"></img></a></label>
-                    <label htmlFor="twitter"><a href={this.state.twitter.contenu}><img src={Twitter} width="60" height="60"></img></a></label>
+                        {/*<ReactPlayer width="100%" url='https://www.youtube.com/watch?v=xPfP-bB3X_k' controls/>*/}
+                    </div>
+                    <div className="details">
+                        <h2>Votre description</h2>
+                        <ul className="list-group">
+                            <li className="list-group-item">Nom : {this.state.user.last_name}</li>
+                            <li className="list-group-item">Prénom : {this.state.user.first_name}</li>
+                            <li className="list-group-item">Adresse Mail : {this.state.user.email}</li>
+                            <li className="list-group-item">Role : {this.state.user.role}</li>
+                            <li className="list-group-item">Description : {this.state.user.description}</li>
+                        </ul>
+                        {Chat()}
+                        <label htmlFor="youtube"><a href={this.state.youtube.contenu}><img src={Youtube} width="60" height="60"></img></a></label>
+                        <label htmlFor="insta"><a href={this.state.insta.contenu}><img src={Insta} width="54" height="54"></img></a></label>
+                        <label htmlFor="twitter"><a href={this.state.twitter.contenu}><img src={Twitter} width="50" height="50"></img></a></label>
                            
                     </div>
                     

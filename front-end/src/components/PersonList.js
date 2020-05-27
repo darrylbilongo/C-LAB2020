@@ -8,13 +8,22 @@ const Item = function ({item}) {
     <td>{item.first_name}</td>
     <td>{item.last_name}</td>
     <td>{item.role}</td>
-    <td>{item.note}</td>
-    <td>
+    <td className="boutonCata">
+        <Link to={{
+                    pathname: `/avis/` + item.id
+                }} 
+                className="nav-link">
+                <button className="btn btn-success btn-block btn-lg">
+                    <div className="voirav">Voir les avis </div>
+                </button>
+        </Link>
+    </td>
+    <td className="boutonCata">
         <Link to={{
                     pathname: `/profilVisiteur/` + item.id
                 }} 
         className="nav-link">
-            <button>
+            <button className="btn btn-info btn-block btn-lg">
                 Voir profil
             </button>
         </Link>
@@ -24,14 +33,15 @@ const Item = function ({item}) {
 
 const ItemList = ({ list }) => {
     return (
+        <div class="table-responsive-md">
         <table className="table table-striped table-dark">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                 <th scope="col">#</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Rôle</th>
-                <th scope="col">Nbre Collaborateurs</th>
+                <th scope="col">Avis émis sur l'artiste</th>
                 <th scope="col">Profil</th>
                 </tr>
             </thead>
@@ -41,6 +51,7 @@ const ItemList = ({ list }) => {
                 })}
             </tbody>
         </table>
+        </div>
     );
 }
 
@@ -89,10 +100,7 @@ export default class Filter extends React.Component {
 
     render() {
         return (
-        <div className="">
-            <div className="col-auto">
-                    <h1> Catalogue </h1>
-            </div>
+        <div className="catalogueEnt">
             <div className="form-row">
                 <div className="col-auto">
                         <label> Affinez votre recherche: </label>
