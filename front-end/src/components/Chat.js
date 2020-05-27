@@ -106,7 +106,7 @@ class Chat extends Component{
                     <ul className="list-group">
                         <li class="list-group-item active">Chat avec {this.state.user.first_name}</li>
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
-                            if(msg.id == this.state.currentUser.id) {
+                            if(msg.id === this.state.currentUser.id) {
                                 return (
                                     <li key={msg.id} className="list-group-item">{msg.message}</li>
                                 )  
