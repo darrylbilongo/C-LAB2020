@@ -14,12 +14,13 @@ class About_Us extends Component{
                     <h1 className="blanco2">Nos membres</h1>
                     <Carousel >
                         <Carousel.Item>
-                        <a href='https://www.linkedin.com/in/souha%C3%AFb-azzouz-a92b67198/' target="_blank">
+                       
                             <img
                                 className="img-carousel"
                                 src={Souhaib}
                                 alt="Azzouz Souhaïb"
-                            />
+                            /> 
+                        <a href='https://www.linkedin.com/in/souha%C3%AFb-azzouz-a92b67198/' target="_blank">
                             <Carousel.Caption>
                                 <h3>Azzouz Souhaïb</h3>
                                 <p>Designer et communication</p>
@@ -27,12 +28,13 @@ class About_Us extends Component{
                         </a>
                             </Carousel.Item>
                         <Carousel.Item>
-                        <a href='https://www.linkedin.com/in/darrylbilongo/' target="_blank">
+                        
                             <img
                                 className="img-carousel"
                                 src={Darryl}
                                 alt="Bilongo Darryl"
                             />
+                            <a href='https://www.linkedin.com/in/darrylbilongo/' target="_blank">
 
                             <Carousel.Caption>
                                 <h3>Bilongo Darryl</h3>
@@ -41,13 +43,13 @@ class About_Us extends Component{
                         </a>
                         </Carousel.Item>
                         <Carousel.Item>
-                        <a href='https://www.linkedin.com/in/bilel-bouquoyoue-700763134/' target="_blank">
+                        
                             <img
                                 className="img-carousel"
                                 src={Bilel}
                                 alt="Bouquoyoue Bilel"
                             />
-
+                            <a href='https://www.linkedin.com/in/bilel-bouquoyoue-700763134/' target="_blank">
                             <Carousel.Caption>
                                 <h3>Bouquoyoue Bilel</h3>
                                 <p>L'expert Musical</p>
@@ -58,7 +60,7 @@ class About_Us extends Component{
                     </Carousel>
                 </div>
                 <div className="contact">
-                    <h5 className="text-white">Si vous souhaitez prendre contact avec un membre du projet pour une amélioration ou un retour, choisissez votre interlocuteur en cliquant sur sa photo</h5>
+                    <h5 className="text-white">Si vous souhaitez prendre contact avec un membre du projet pour une amélioration ou un retour, choisissez votre interlocuteur en cliquant sur son nom</h5>
                 </div>
                 <div className="basabout">
                     <a className="btn btn-primary btn-block btn-lg"

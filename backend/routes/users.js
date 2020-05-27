@@ -114,12 +114,12 @@ router.post('/login', users.login);
 
 router.post('/register', users.register);
 
-router.get('/:id', users.getUser)
+router.get('/:id', users.getUser);
 
-router.put('/:id', users.update)
+router.put('/:id', users.update);
 
-router.get('/avis/:id', users.getAvis)
+router.get('/avis/:id', users.getAvis);
 
-router.post('/avis', users.registerAvis)
+router.post('/avis', users.registerAvis);
 
 module.exports = router;

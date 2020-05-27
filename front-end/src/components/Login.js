@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {login} from './UserFonctions';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -10,11 +11,12 @@ class Login extends Component {
             password: '',
             errors: {}
         }
-
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangeMDP = this.handleChangeMDP.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+
 
     handleChangeEmail(e) {
         this.setState({   
@@ -25,7 +27,9 @@ class Login extends Component {
     handleChangeMDP(e) {
         this.setState({
            password: e.target.value
+           
         });
+        console.log(this.state.password)
     }
 
     handleSubmit(e) {
@@ -36,7 +40,6 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        
         login(user).then(res => {
             if(res){
                 this.props.history.push('/home')
