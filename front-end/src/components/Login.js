@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {login} from './UserFonctions';
-import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -51,9 +50,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <div className="row">
-                    <div className="col-md-6 mt-5 mx-auto">
-                        <form className="formulaire" noValidate onSubmit={this.handleSubmit}>
+                        <form className="formulaireLogin" noValidate onSubmit={this.handleSubmit}>
                             <h1 className="h3">Connectez vous!</h1>
                             <div className="form-group">
                                 <label htmlFor="email">Email: </label>
@@ -80,9 +77,7 @@ class Login extends Component {
                                 Se connecter
                             </button>
                         </form>
-                    </div>
-                </div> 
-            </div>   
+                    </div> 
         );
     }
 }

@@ -166,11 +166,11 @@ app.use('/links', linkRouter);
 app.use('/contents', contentRouter)
 app.use('/messages', messageRouter)
 
+app.use(express.static(path.join(__dirname, 'build')))
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
-
+});
 
 // Lancement du serveur
 /*app.listen(port, () => {
