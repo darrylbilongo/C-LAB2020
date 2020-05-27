@@ -10,7 +10,7 @@ const Item = function ({item}) {
 
 const List = ({ list }) => {
     return (
-        <table className="table table-striped table-dark">
+        <table >
             <tbody>
                 {list.map(listitem => {
                     return <Item key={listitem.id} item={listitem} />
