@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 const Item = function ({item}) {
     return <tr>
@@ -62,7 +63,8 @@ export default class Filter extends React.Component {
         this.state = {
             selected: '',
             persons: [],
-            selectedPersons : []
+            selectedPersons : [],
+            currentUser:''
         };
 
         this.handleOnChange = this.handleOnChange.bind(this)
@@ -71,12 +73,13 @@ export default class Filter extends React.Component {
 
     handlesubmit () {
         if (this.state.selected === "Tous") {
+            const result = this.state.persons.filter(user => user.id != this.state.currentUser.id) 
             this.setState({
-                selectedPersons: this.state.persons
+                selectedPersons: result
             })
         }
         else {
-            const result = this.state.persons.filter(user => user.role === this.state.selected) 
+            const result = this.state.persons.filter(user => user.role === this.state.selected && user.id != this.state.currentUser.id) 
             this.setState({
                 selectedPersons: result
             })
@@ -89,13 +92,19 @@ export default class Filter extends React.Component {
         this.setState({ selected: val})
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         axios.get('http://localhost:8080/users').then(res => {
             this.setState({ 
                 persons: res.data,
                 selectedPersons: res.data,
              });
         })
+        const token =  await localStorage.getItem('usertoken');
+        const decoded = jwt_decode(token);
+            this.setState({
+                currentUser: decoded,
+            })
+            console.log(this.state.currentUser)
     }
 
     render() {
