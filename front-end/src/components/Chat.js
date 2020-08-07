@@ -12,7 +12,9 @@ class Chat extends Component{
           message: '',
           messages: [],
           currentUser: '',
-          user: ''
+          user: '',
+          date: [],
+          heure: ''
         };
 
         this.onChange = this.onChange.bind(this)
@@ -44,16 +46,18 @@ class Chat extends Component{
         }).then(res => {
             console.log(res)
             this.setState({
-                messages: res.data
+                messages: res.data,
+                /*date: this.state.messages.date.substr(0, 10)*/
             })
         })
         console.log(this.state.messages)
+        console.log(this.state.messages.date)
         await axios.post('http://localhost:8080/messages/get/' + decoded.id, {
             authorId : id
         }).then(res => {
             console.log(res)
             this.setState({
-                messages: this.state.messages.concat(res.data)
+                messages: this.state.messages.concat(res.data),
             })
         })
 
@@ -108,12 +112,12 @@ class Chat extends Component{
                         {this.state.messages.length > 0 && this.state.messages.map(msg => {
                             if(msg.authorId === this.state.currentUser.id) {
                                 return (
-                                    <li key={msg.id} className="list-group-item">{msg.message}</li>
+                                    <li key={msg.id} className="list-group-item">{msg.message} <div className="infoMess">(envoyé le {msg.date.substr(0,10)} à {msg.date.substr(11, 8)})</div></li>
                                 )  
                             }
                             else if (msg.destinationId == this.state.currentUser.id){
                                 return (
-                                    <li key={msg.id} className="list-group-item"><b>{this.state.user.first_name}</b> : {msg.message}</li>
+                                    <li key={msg.id} className="list-group-item"><b>{this.state.user.first_name}</b> : {msg.message} <div className="infoMess">(envoyé le {msg.date.substr(0,10)} à {msg.date.substr(11, 8)})</div></li>
                                 ) 
                             }
                                          

@@ -231,6 +231,11 @@ ul#menu li a
   color: white;
 }
 
+.infoMess{
+  color: gray;
+  font-size: 60%;
+}
+
 .aproposImg{
   max-width: 100%;
   max-height: 100%;
