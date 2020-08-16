@@ -10,7 +10,8 @@ class Register extends React.Component {
         password: '',
         email: '',
         role: 'Rappeur',
-        rien: ''
+        rien: '',
+        messageError: ''
       };
   
       this.onChange = this.onChange.bind(this);
@@ -25,7 +26,7 @@ class Register extends React.Component {
   
     onSubmit(event) {
       event.preventDefault();
-
+      let verifMdp = new RegExp("[A-Z]");
       const user = {
           email: this.state.email,
           password: this.state.password,
@@ -33,14 +34,20 @@ class Register extends React.Component {
           last_name: this.state.last_name,
           role: this.state.role
       }
-
-       
+     if(this.state.password.length >= 8 && verifMdp.test(this.state.password)){
       register(user).then(res => {
           if(res){
               this.props.history.push('/login')
           }
       })
-    }
+      }
+      else{
+        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir une majuscule'
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} </h6>
+        this.setState({ state: this.state });
+      }
+
+  }
   handlemdp = () => {
     // eslint-disable-next-line
     {document.getElementById('mdp').value === document.getElementById('confmdp').value ? alert("bon") : alert("mauvais")}
@@ -51,6 +58,7 @@ class Register extends React.Component {
         <div>
                         <form className= "formulaire" noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mn-3">Nouveau ? enregistrez vous !</h1>
+                            {this.state.messageError}
                             <div className="form-group">
                                 <label htmlFor="last_name">Nom: </label>
                                 <input type="text"
