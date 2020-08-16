@@ -11,7 +11,8 @@ class Register extends React.Component {
         email: '',
         role: 'Rappeur',
         rien: '',
-        messageError: ''
+        messageError: '',
+        messageMail: 'Votre mail est incorrect'
       };
   
       this.onChange = this.onChange.bind(this);
@@ -27,6 +28,8 @@ class Register extends React.Component {
     onSubmit(event) {
       event.preventDefault();
       let verifMdp = new RegExp("[A-Z]");
+      let verifMdp2 = new RegExp("[0-9]");
+      let verifMail= new RegExp("@")
       const user = {
           email: this.state.email,
           password: this.state.password,
@@ -34,16 +37,26 @@ class Register extends React.Component {
           last_name: this.state.last_name,
           role: this.state.role
       }
-     if(this.state.password.length >= 8 && verifMdp.test(this.state.password)){
+     if(this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password) && verifMail.test(this.state.email)){
       register(user).then(res => {
           if(res){
               this.props.history.push('/login')
           }
       })
       }
-      else{
-        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir une majuscule'
+      else if(this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password)){
+        this.state.messageError = 'Votre mail est incorrect'
         this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} </h6>
+        this.setState({ state: this.state });
+      }
+      else if(verifMail.test(this.state.email)){
+        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir minimum un chiffre et une majuscule'
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} </h6>
+        this.setState({ state: this.state });
+      }
+      else{
+        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir minimum un chiffre et une majuscule'
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} <br/> {this.state.messageMail} </h6>
         this.setState({ state: this.state });
       }
 
