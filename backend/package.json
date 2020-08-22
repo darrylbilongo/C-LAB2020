@@ -1,6 +1,7 @@
 {
   "name": "clab-backend",
   "version": "1.0.0",
+  "homepage": "https://clab.be",
   "description": "Backend pour l'application C-LAB",
   "main": "index.js",
   "scripts": {
@@ -29,6 +30,6 @@
     "uuid": "^7.0.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.4"
   }
 }

@@ -36,20 +36,6 @@ class PageAccueil extends Component{
                      <div className="row">
                             <div className= "col justify-content-md-right">
                                 <div className="form-row">
-                                    <div className="col">
-                                        <a className="btn btn-primary btn-block btn-lg"
-                                        href="/login"
-                                        data-toggle="tooltip"
-                                        data-placement="left"
-                                        title="Login with your account">Login</a>
-                                    </div>
-                                    <div className="col">
-                                        <a className="right btn btn-secondary btn-block btn-lg" 
-                                        href="/register"
-                                        data-toggle="tooltip"
-                                        data-placement="right"
-                                        title="Create an account">Register</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
