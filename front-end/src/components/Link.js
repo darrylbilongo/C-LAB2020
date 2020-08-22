@@ -46,7 +46,6 @@ class Link extends React.Component {
                 this.setState({
                     YoutOf: res.data
                 })
-                console.log(this.state.youtube)
             })
             .catch(err => console.log(err));
 

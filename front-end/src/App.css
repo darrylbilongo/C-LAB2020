@@ -218,11 +218,22 @@ ul#menu li a
   border-radius: 20px;
 }
 
+.blanche{
+  color: white;
+}
+
 .apropos{
   text-align: center;
   color: white;
   height: 100%;
   margin-top: 2.3%;
+}
+
+.taillebo{
+  color:rgba(255,255,220, 1);
+  width: 100%;
+  background-color: rgba(0,0,0, 0.4); 
+  margin-bottom: 2%;
 }
 
 .apropos2{
@@ -247,6 +258,13 @@ ul#menu li a
   top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.bienvenue{
+  background-color: honeydew;
+  margin-left: 27%;
+  border-radius: 20px;
+  width: 46%;
 }
 
 .description2{
@@ -297,7 +315,7 @@ ul#menu li a
 }
 
 .homepage1{
-  margin-top: 2%;
+  margin-top: 0%;
 }
 
 .aboutus{
@@ -345,6 +363,7 @@ ul#menu li a
 .audio{
   width: 100%;
 }
+
 
 .aproposTot{
   height: 100%;

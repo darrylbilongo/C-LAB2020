@@ -1,12 +1,9 @@
-import React, { Component } from "react";
-import Logo_CLAB from "./Logo_CLAB.png";
+import React from "react";
 
-class logo extends Component{
-    render(){
+function logo({source}){
         return(
-            <img className= "logoClab" src={Logo_CLAB} alt="Logo"/>
+            <div data-testid="img" >{source}</div>
         )
-    }
 }
 
 export default logo;

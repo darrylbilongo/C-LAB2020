@@ -3,6 +3,7 @@ import {Link, withRouter} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import Logo from './Clab.png'
 
+
 class Navigation extends Component{
 
     state = {
@@ -124,7 +125,7 @@ class Navigation extends Component{
                         {localStorage.usertoken ? aPropos : null}
                         {localStorage.usertoken ? logoutLink : null}
                     </ul>
-                </div>
+                    </div>
             </nav>
             </div>
       )

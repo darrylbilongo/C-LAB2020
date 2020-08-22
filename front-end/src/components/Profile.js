@@ -188,8 +188,6 @@ class Profile extends Component{
             showAlert: true,
         });
       }
-
-
     
 
     render(){

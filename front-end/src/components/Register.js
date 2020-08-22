@@ -12,7 +12,8 @@ class Register extends React.Component {
         role: 'Rappeur',
         rien: '',
         messageError: '',
-        messageMail: 'Votre mail est incorrect'
+        messageMail: 'Votre mail est incorrect',
+        confirmation: ''
       };
   
       this.onChange = this.onChange.bind(this);
@@ -107,6 +108,15 @@ class Register extends React.Component {
                                     className="form-control"
                                     name="password"
                                     placeholder="Entrez votre mot de passe"
+                                    onChange={this.onChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="confirmation">Confirmation: </label>
+                                <input type="confirmation"
+                                    className="form-control"
+                                    name="confirmation"
+                                    placeholder="Confirmez votre mot de passe"
                                     onChange={this.onChange}
                                 />
                             </div>
