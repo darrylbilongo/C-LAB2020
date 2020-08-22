@@ -11,6 +11,7 @@ const path = require('path')
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../front-end/build')));
 
 app.use(express.static('public'));
 app.use(cors());
@@ -96,6 +97,9 @@ app.get('/swagger.json', (req,res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 })
+app.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, '../front-end/build/index.html'));
+});
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
