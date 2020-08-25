@@ -18,10 +18,8 @@ class Login extends Component {
     }
 
     validation() {
-        console.log("Hey")
         const {userEmail, userPassword} = this.state;
         if(verifierDonnees(userEmail, userPassword)){
-        this.login();
         if(!this.state.responseAPI.message)
             return;
         if(this.state.responseAPI.utilisateur){
