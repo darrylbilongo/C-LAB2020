@@ -18,18 +18,7 @@ class Login extends Component {
     }
 
     validation() {
-        const {userEmail, userPassword} = this.state;
-        if(verifierDonnees(userEmail, userPassword)){
-        if(!this.state.responseAPI.message)
-            return;
-        if(this.state.responseAPI.utilisateur){
-            this.state.userPassword = '';
-            this.state.userEmail = '';
-        } 
-        }
-        else
-            this.state.responseAPI.message = "Veuillez remplir votre mail et votre mot de passe"; 
-            Alert.alert(this.state.responseAPI.message);
+        console.log("a")
     }
 
 
