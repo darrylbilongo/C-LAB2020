@@ -6,7 +6,7 @@ export const register = async newUser => {
 
     try {
         return axios
-            .post('https://clab/users/register', {
+            .post('https://clab.be/users/register', {
                 first_name: newUser.first_name,
                 last_name: newUser.last_name,
                 email: newUser.email,
@@ -24,7 +24,7 @@ export const link = async newUser => {
 
     try {
         return axios
-            .post('https://clab/links/compte', {
+            .post('https://clab.be/links/compte', {
                 contenu: newUser.contenu,
                 categorie: newUser.categorie,
                 UserId: newUser
@@ -38,7 +38,7 @@ export const link = async newUser => {
 
 export const login = user => {
     return axios
-        .post('https://clab/users/login', {
+        .post('https://clab.be/users/login', {
             email: user.email,
             password: user.password
         })
