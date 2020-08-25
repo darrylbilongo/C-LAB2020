@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import {login} from './UserFonctions';
 
+import verifierDonnees from './verification' 
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +17,23 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    validation() {
+        console.log("Hey")
+        const {userEmail, userPassword} = this.state;
+        if(verifierDonnees(userEmail, userPassword)){
+        this.login();
+        if(!this.state.responseAPI.message)
+            return;
+        if(this.state.responseAPI.utilisateur){
+            this.state.userPassword = '';
+            this.state.userEmail = '';
+        } 
+        }
+        else
+            this.state.responseAPI.message = "Veuillez remplir votre mail et votre mot de passe"; 
+            Alert.alert(this.state.responseAPI.message);
+    }
+
 
 
     handleChangeEmail(e) {
@@ -26,9 +45,7 @@ class Login extends Component {
     handleChangeMDP(e) {
         this.setState({
            password: e.target.value
-           
         });
-        console.log(this.state.password)
     }
 
     handleSubmit(e) {
