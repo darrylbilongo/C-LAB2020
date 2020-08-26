@@ -25,11 +25,6 @@ class Avis extends Component{
         avis : [],
         user: [],
     };
-  
-    constructor(props) {
-        super(props);
-        
-    }
 
     async componentDidMount(){
         const { id } = this.props.match.params

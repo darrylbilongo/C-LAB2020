@@ -16,7 +16,6 @@ class Navigation extends Component{
       this.props.history.push('/');
     }
 
-
     componentDidUpdate() {
         try {
             const token = localStorage.getItem('usertoken');

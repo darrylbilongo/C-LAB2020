@@ -83,23 +83,23 @@ class Link extends React.Component {
         this.state.newName = decoded.last_name
     }
 
-    if(this.state.newSurname == ''){
+    if(this.state.newSurname === ''){
         this.state.newSurname = decoded.first_name
     }
 
-    if(this.state.newRole == ''){
+    if(this.state.newRole === ''){
         this.state.newRole = decoded.role
     }
 
-    if(this.state.lienYoutube == ''){
+    if(this.state.lienYoutube === ''){
         this.state.lienYoutube = this.state.YoutOf.contenu
     }
 
-    if(this.state.lienInsta == ''){
+    if(this.state.lienInsta === ''){
         this.state.lienInsta = this.state.InstaOf.contenu
     }
 
-    if(this.state.lienAutre == ''){
+    if(this.state.lienAutre === ''){
         this.state.lienAutre = this.state.TwitOf.contenu
     }
 

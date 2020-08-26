@@ -73,13 +73,13 @@ export default class Filter extends React.Component {
 
     handlesubmit () {
         if (this.state.selected === "Tous") {
-            const result = this.state.persons.filter(user => user.id != this.state.currentUser.id) 
+            const result = this.state.persons.filter(user => user.id !== this.state.currentUser.id) 
             this.setState({
                 selectedPersons: result
             })
         }
         else {
-            const result = this.state.persons.filter(user => user.role === this.state.selected && user.id != this.state.currentUser.id) 
+            const result = this.state.persons.filter(user => user.role === this.state.selected && user.id !== this.state.currentUser.id) 
             this.setState({
                 selectedPersons: result
             })

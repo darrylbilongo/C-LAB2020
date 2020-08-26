@@ -11,7 +11,6 @@ import './App.css';
 import PersonList from './components/PersonList';
 import Home from './components/Home'
 import Navigation from './components/Navigation';
-import Entete from './components/Entete';
 import ProfilVisiteur from './components/ProfilVisiteur'
 import Chat from './components/Chat'
 import About_Us from './components/About_Us';

@@ -115,7 +115,7 @@ class Chat extends Component{
                                     <li key={msg.id} className="list-group-item">{msg.message} <div className="infoMess">(envoyé le {msg.date.substr(0,10)} à {msg.date.substr(11, 8)})</div></li>
                                 )  
                             }
-                            else if (msg.destinationId == this.state.currentUser.id){
+                            else if (msg.destinationId === this.state.currentUser.id){
                                 return (
                                     <li key={msg.id} className="list-group-item"><b>{this.state.user.first_name}</b> : {msg.message} <div className="infoMess">(envoyé le {msg.date.substr(0,10)} à {msg.date.substr(11, 8)})</div></li>
                                 ) 

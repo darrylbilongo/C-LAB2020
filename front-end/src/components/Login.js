@@ -15,13 +15,23 @@ class Login extends Component {
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangeMDP = this.handleChangeMDP.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.validation = this.validation(this)
     }
 
     validation() {
-        console.log("a")
+        const {email, password} = this.state;
+        if(verifierDonnees(email, password)){
+            const user = {
+                email: email,
+                password: password
+            }
+            login(user).then(res => {
+                if(res){
+                    this.props.history.push('/home')
+                }
+            })
+        }
     }
-
-
 
     handleChangeEmail(e) {
         this.setState({   
@@ -37,6 +47,8 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        //this.validation()
 
         const user = {
             id: this.state.id,

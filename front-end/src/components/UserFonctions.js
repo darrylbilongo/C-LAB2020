@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const API_URL = 'https://clab.be'
+const API_URL = 'http://localhost:8080'
 
 export const register = async newUser => {
 
     try {
         return axios
-            .post('https://clab.be/users/register', {
+            .post(`${API_URL}/users/register`, {
                 first_name: newUser.first_name,
                 last_name: newUser.last_name,
                 email: newUser.email,
@@ -24,7 +24,7 @@ export const link = async newUser => {
 
     try {
         return axios
-            .post('https://clab.be/links/compte', {
+            .post(`${API_URL}/links/compte`, {
                 contenu: newUser.contenu,
                 categorie: newUser.categorie,
                 UserId: newUser
@@ -38,7 +38,7 @@ export const link = async newUser => {
 
 export const login = user => {
     return axios
-        .post('https://clab.be/users/login', {
+        .post(`${API_URL}/users/login`, {
             email: user.email,
             password: user.password
         })
@@ -55,7 +55,7 @@ export const update = async newUser => {
 
     try {
         return axios
-            .put('https://clab.be/users/:id', {
+            .put(`${API_URL}/users/:id`, {
                 first_name: newUser.first_name,
                 last_name: newUser.last_name,
                 email: newUser.email,
@@ -72,7 +72,7 @@ export const updateLink = async newLink => {
 
     try {
         return axios
-            .put('https://clab.be/links/:id', {
+            .put(`${API_URL}/links/:id`, {
                 lienInsta: newLink.first_name,
                 lienYoutube: newLink.last_name,
                 lienAutre: newLink.email,
@@ -89,7 +89,7 @@ export const avis = async newUser => {
 
     try {
         return axios
-            .post('https://clab.be/users/avis/', {
+            .post(`${API_URL}/users/avis/`, {
                 auteurName: newUser.auteurName,
                 contenu: newUser.contenu,
                 artisteId: newUser.artisteId,
