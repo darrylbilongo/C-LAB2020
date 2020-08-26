@@ -129,7 +129,7 @@ var storage = multer.diskStorage({
     //cb(null, idUser + Date.now() + '-' +file.originalname )
     cb(null, idUser + '-' +file.originalname )
 
-    axios.post('http://localhost:8080/contents/', {
+    axios.post('http://localhost/contents/', {
       link : DIR + idUser + '-' +file.originalname,
       published: false,
       UserId: idUser
@@ -175,11 +175,6 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
-
-// Lancement du serveur
-/*app.listen(port, () => {
-  console.log('Example app listening on port ' + port + '!')
-});*/
 
 server.listen(port, () => {
   console.log('listening on *:3000');
