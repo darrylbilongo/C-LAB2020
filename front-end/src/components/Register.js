@@ -13,7 +13,8 @@ class Register extends React.Component {
         rien: '',
         messageError: '',
         messageMail: 'Votre mail est incorrect',
-        confirmation: ''
+        confirmation: '',
+        messageConfirmation: ''
       };
   
       this.onChange = this.onChange.bind(this);
@@ -24,13 +25,14 @@ class Register extends React.Component {
       let nam = event.target.name;
       let val = event.target.value;
       this.setState({[nam]: val});
+      console.log(this.state.confirmation);
     }
   
     onSubmit(event) {
       event.preventDefault();
       let verifMdp = new RegExp("[A-Z]");
       let verifMdp2 = new RegExp("[0-9]");
-      let verifMail= new RegExp("@")
+      let verifMail= new RegExp("@");
       const user = {
           email: this.state.email,
           password: this.state.password,
@@ -38,29 +40,50 @@ class Register extends React.Component {
           last_name: this.state.last_name,
           role: this.state.role
       }
-     if(this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password) && verifMail.test(this.state.email)){
+     if(this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password) && verifMail.test(this.state.email) && this.state.password == this.state.confirmation){
       register(user).then(res => {
           if(res){
               this.props.history.push('/login')
           }
       })
       }
-      else if(this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password)){
+      else if(this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password) && this.state.password == this.state.confirmation){
         this.state.messageError = 'Votre mail est incorrect'
         this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} </h6>
         this.setState({ state: this.state });
       }
-      else if(verifMail.test(this.state.email)){
+      else if(verifMail.test(this.state.email) && this.state.password == this.state.confirmation){
         this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir minimum un chiffre et une majuscule'
         this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} </h6>
         this.setState({ state: this.state });
       }
-      else{
-        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir minimum un chiffre et une majuscule'
-        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} <br/> {this.state.messageMail} </h6>
+      else if(verifMail.test(this.state.email) && this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password)){
+        this.state.messageConfirmation = 'Les mots de passe ne sont pas identiques';
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageConfirmation} </h6>;
         this.setState({ state: this.state });
       }
-
+      else if(verifMail.test(this.state.email)){
+        this.state.messageConfirmation = 'Les mots de passe ne sont pas identiques';
+        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir minimum un chiffre et une majuscule'
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError}  <br/> {this.state.messageConfirmation}</h6>
+        this.setState({ state: this.state });
+      }
+      else if(this.state.password.length >= 8 && verifMdp.test(this.state.password) && verifMdp2.test(this.state.password)){
+        this.state.messageConfirmation = 'Les mots de passe ne sont pas identiques';
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageMail} <br/> {this.state.messageConfirmation}</h6>
+        this.setState({ state: this.state });
+      }
+      else if(this.state.password == this.state.confirmation){
+        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir minimum un chiffre et une majuscule'
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} <br/> {this.state.messageMail}</h6>
+        this.setState({ state: this.state });
+      }
+      else{
+        this.state.messageConfirmation = 'Les mots de passe ne sont pas identiques';
+        this.state.messageError = 'Votre mot de passe doit faire minimum 8 caractères et contenir minimum un chiffre et une majuscule'
+        this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError} <br/> {this.state.messageMail} <br/> {this.state.messageConfirmation}</h6>
+        this.setState({ state: this.state });
+      }
   }
   handlemdp = () => {
     // eslint-disable-next-line
@@ -113,7 +136,7 @@ class Register extends React.Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="confirmation">Confirmation: </label>
-                                <input type="confirmation"
+                                <input type="password"
                                     className="form-control"
                                     name="confirmation"
                                     placeholder="Confirmez votre mot de passe"
@@ -144,3 +167,4 @@ class Register extends React.Component {
 
 
 export default Register;
+
