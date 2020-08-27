@@ -8,6 +8,7 @@ import Youtube from '../images/youtube.png'
 import Insta from '../images/Insta.png'
 import Twitter from '../images/Twitter_Logo.png'
 import Logo from './Double_Diamond.png'
+import {API_URL} from './UserFonctions'
 
 class Profile extends Component{
 

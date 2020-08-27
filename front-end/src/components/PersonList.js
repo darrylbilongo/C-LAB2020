@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
+import {API_URL} from './UserFonctions'
 
 const Item = function ({item}) {
     return <tr>

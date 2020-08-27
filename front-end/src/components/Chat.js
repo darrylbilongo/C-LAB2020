@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { socket } from '../../src/service/socket';
 import axios from 'axios'
 import jwt_decode from 'jwt-decode';
-import { API_URL } from './UserFonctions'
+import {API_URL} from './UserFonctions'
 
 class Chat extends Component{
 
@@ -28,7 +28,7 @@ class Chat extends Component{
         const { id } = this.props.match.params
 
 
-        axios.get('http://darrylbilongo.site/users/' + id)
+        axios.get(`${API_URL}/users/` + id)
             .then((res) => {
                 this.setState({
                     user: res.data
@@ -42,7 +42,7 @@ class Chat extends Component{
             currentUser: decoded,
         })
 
-        await axios.post('http://darrylbilongo.site/messages/get/' + id, {
+        await axios.post(`${API_URL}/messages/get/` + id, {
             authorId : decoded.id
         }).then(res => {
             console.log(res)
@@ -53,7 +53,7 @@ class Chat extends Component{
         })
         console.log(this.state.messages)
         console.log(this.state.messages.date)
-        await axios.post('https://darrylbilongo.site/messages/get/' + decoded.id, {
+        await axios.post(`${API_URL}/messages/get/` + decoded.id, {
             authorId : id
         }).then(res => {
             console.log(res)
