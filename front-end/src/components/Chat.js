@@ -51,8 +51,7 @@ class Chat extends Component{
                 /*date: this.state.messages.date.substr(0, 10)*/
             })
         })
-        console.log(this.state.messages)
-        console.log(this.state.messages.date)
+        
         await axios.post(`${API_URL}/messages/get/` + decoded.id, {
             authorId : id
         }).then(res => {
@@ -64,6 +63,12 @@ class Chat extends Component{
 
         socket.on("message", msg =>{
             this.setState({messages: [...this.state.messages, msg]})
+        })
+
+        this.setState({
+            messages: this.state.messages.sort(function(a,b){
+                return new Date(a.date) - new Date(b.date);
+              })
         })
 
     }
