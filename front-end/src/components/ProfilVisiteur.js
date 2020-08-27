@@ -41,7 +41,7 @@ class Profile extends Component{
     async componentWillMount() {
         const { id } = this.props.match.params
         
-        await axios.post('http://localhost:8080/contents/get', {
+        await axios.post(`${API_URL}/contents/get`, {
             UserId : id
         }).then(res => {
             this.setState({
@@ -54,7 +54,7 @@ class Profile extends Component{
   async componentDidMount(){
         const { id } = this.props.match.params
 
-        axios.get('http://localhost:8080/users/' + id)
+        axios.get(`${API_URL}/users/` + id)
             .then((res) => {
                 console.log(res.data)
                 this.setState({
@@ -63,7 +63,7 @@ class Profile extends Component{
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/' + id)
+            axios.get(`${API_URL}/links/` + id)
             .then((res) => {
                 console.log(res.data)
                 this.setState({
@@ -79,14 +79,6 @@ class Profile extends Component{
             currentUser: decoded,
         })
         
-        /*axios.get('http://localhost:8080/contents/', {
-            UserId : id
-        }).then(res => {
-            console.log(res)
-            this.setState({
-                contents : res.data
-            })
-        })*/
 
         axios.get('http://localhost:8080/contents/', {
             UserId : id
@@ -104,7 +96,7 @@ class Profile extends Component{
         data.append('id', this.state.user.id)
         data.append('file', this.state.selectedFile)
 
-        axios.post("http://localhost:8080/upload", data, { 
+        axios.post(`${API_URL}/upload`, data, { 
             onUploadProgress: ProgressEvent => {
                 this.setState({
                   loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
@@ -121,12 +113,10 @@ class Profile extends Component{
             selectedFile: event.target.files[0],
             loaded: 0,
         })
-        console.log(event.target.files[0])
     }
     
 
     collabore (){
-
         this.setState({
             showAvis: true,
             hideCollab: false,
@@ -135,18 +125,13 @@ class Profile extends Component{
         axios.put('http://localhost:8080/users/' + this.state.user.id, {
             note : this.state.user.note + 1
         })
-  
     }
 
     avis(){
-
         axios.post('/opinion', {
             firstName: 'Fred',
             lastName: 'Flintstone'
-          })
-          .then(function (response) {
-            console.log(response);
-          })
+        })
     }
 
     handleChange(event){
@@ -176,7 +161,7 @@ class Profile extends Component{
 
     render(){
 
-        axios.put('http://localhost:8080/users/' + this.state.user.id, {
+        axios.put(`${API_URL}/users/` + this.state.user.id, {
             note :  this.state.user.note - 1
         })
     }
@@ -332,7 +317,7 @@ class Profile extends Component{
                     <li className="list-group-item">
                     {this.state.contents.map(content => {
                         return <ReactAudioPlayer
-                        src={'http://localhost:8080/' + content.link}
+                        src={`${API_URL}/` + content.link}
                         controls className="audio"
                       />
                     })}

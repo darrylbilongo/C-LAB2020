@@ -93,7 +93,7 @@ export default class Filter extends React.Component {
     }
 
     async componentDidMount() {
-        axios.get('http://localhost:8080/users').then(res => {
+        axios.get(`${API_URL}/users`).then(res => {
             this.setState({ 
                 persons: res.data,
                 selectedPersons: res.data,
@@ -104,7 +104,6 @@ export default class Filter extends React.Component {
             this.setState({
                 currentUser: decoded,
             })
-            console.log(this.state.currentUser)
     }
 
     render() {

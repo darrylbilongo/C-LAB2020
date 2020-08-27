@@ -47,9 +47,6 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
-        console.log("pressed")
-
         //this.validation()
 
         const user = {

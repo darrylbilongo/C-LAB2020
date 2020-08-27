@@ -43,7 +43,7 @@ class Profile extends Component{
     async componentWillMount() {
         const { id } = this.props.match.params
         
-        await axios.post('http://localhost:8080/contents/get', {
+        await axios.post(`${API_URL}/contents/get`, {
             UserId : id
         }).then(res => {
             this.setState({
@@ -55,25 +55,23 @@ class Profile extends Component{
     
   async componentDidMount(){
         const { id } = this.props.match.params
-        axios.get('http://localhost:8080/users/' + id)
+        axios.get(`${API_URL}/users/` + id)
             .then((res) => {
-                console.log(res.data)
                 this.setState({
                     user: res.data
                 })
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/youtube/' + id)
+            axios.get(`${API_URL}/links/youtube/` + id)
             .then((res) => {
                 this.setState({
                     youtube: res.data
                 })
-                console.log(this.state.youtube)
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/insta/' + id)
+            axios.get(`${API_URL}/links/insta/` + id)
             .then((res) => {
                 this.setState({
                     insta: res.data
@@ -81,7 +79,7 @@ class Profile extends Component{
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/twitter/' + id)
+            axios.get(`${API_URL}/links/twitter/` + id)
             .then((res) => {
                 this.setState({
                     twitter: res.data
@@ -104,8 +102,7 @@ class Profile extends Component{
                 contents : res.data
             })
         })*/
-        console.log(this.state.currentUser)
-        axios.get('http://localhost:8080/contents/', {
+        axios.get(`${API_URL}/contents/`, {
             UserId : id
         }).then(res => {
             console.log(res)
@@ -138,7 +135,6 @@ class Profile extends Component{
             selectedFile: event.target.files[0],
             loaded: 0,
         })
-        console.log(event.target.files[0])
     }
     
 
@@ -148,7 +144,7 @@ class Profile extends Component{
             hideCollab: false,
         });
 
-        axios.put('http://localhost:8080/users/' + this.state.user.id, {
+        axios.put(`${API_URL}/users/` + this.state.user.id, {
             note : this.state.user.note + 1
         })
   
@@ -174,7 +170,6 @@ class Profile extends Component{
     
     handleSubmit(event){
         event.preventDefault();
-        console.log(this.state.currentUser.first_name)
         const newAvis = {
             auteurName: this.state.currentUser.first_name,
             contenu: this.state.contenu,
