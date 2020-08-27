@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode';
 import Logo from './Clab.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
-MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse,
+MDBNavbar, MDBNavbarBrand,  MDBNavbarToggler, MDBCollapse,
 
 } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -22,7 +22,7 @@ class navigation extends Component{
         this.props.history.push('/');
       }
   
-      componentDidUpdate() {
+      componentWillMount() {
           try {
               const token = localStorage.getItem('usertoken');
               const decoded = jwt_decode(token);
@@ -83,11 +83,11 @@ class navigation extends Component{
             </li>
         )
         const logoutLink = (
-            <li className="nav-item" onClick= "this.setState({ state: this.state })">
-                    <a href="#" onClick={this.logOut.bind(this)} className="nav-link">
-                       <h3>Logout</h3>
-                    </a>
-            </li>
+                    <li className="nav-item">
+                        <a href="#" onClick={this.logOut.bind(this)} className="nav-link">
+                            <h3>Logout</h3>
+                        </a>
+                    </li>
         )
     
         const catalogueLink = (

@@ -62,6 +62,8 @@ class Login extends Component {
             }
             else{
                 this.state.messageError = 'Vos identifiants ne sont pas corrects'
+                this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError}</h6>
+                this.setState({ state: this.state });
             }
         })
     }
