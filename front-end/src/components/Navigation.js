@@ -42,7 +42,7 @@ class navigation extends Component{
       
       render() {
         const loginLink = (
-            <li className="nav-item">
+            <li className="nav-item" onClick= "this.setState({ state: this.state })">
                         <Link to="/login" className="nav-link">
                             <h3>Login</h3>
                         </Link>
