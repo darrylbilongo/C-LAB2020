@@ -7,6 +7,8 @@ const cors = require('cors')
 const axios = require('axios')
 const path = require('path')
 
+const API = 'https://darrylbilongo.site/clab'
+
 /* EXPRESS */
 const app = express();
 app.use(express.json());
@@ -129,7 +131,7 @@ var storage = multer.diskStorage({
     //cb(null, idUser + Date.now() + '-' +file.originalname )
     cb(null, idUser + '-' +file.originalname )
 
-    axios.post('http://localhost:8080/contents/', {
+    axios.post(`${API}/contents/`, {
       link : DIR + idUser + '-' +file.originalname,
       published: false,
       UserId: idUser
@@ -176,11 +178,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
 
-// Lancement du serveur
-/*app.listen(port, () => {
-  console.log('Example app listening on port ' + port + '!')
-});*/
-
 server.listen(port, () => {
-  console.log('listening on *:3000');
+  console.log('listening on *:8080');
 });

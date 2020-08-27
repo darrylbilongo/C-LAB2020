@@ -48,8 +48,8 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
         //this.validation()
+        console.log("hello");
 
         const user = {
             id: this.state.id,

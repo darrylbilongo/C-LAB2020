@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
+import {API_URL} from './UserFonctions'
 
 const Item = function ({item}) {
     return <tr>
@@ -93,7 +94,7 @@ export default class Filter extends React.Component {
     }
 
     async componentDidMount() {
-        axios.get('http://localhost:8080/users').then(res => {
+        axios.get(`${API_URL}/users`).then(res => {
             this.setState({ 
                 persons: res.data,
                 selectedPersons: res.data,
@@ -104,7 +105,6 @@ export default class Filter extends React.Component {
             this.setState({
                 currentUser: decoded,
             })
-            console.log(this.state.currentUser)
     }
 
     render() {

@@ -3,6 +3,12 @@ test("TEST1", () =>{
 })
 
 test("TEST2", () =>{
-    expect(false).toBeTruthy();
+    expect(true).toBeTruthy();
 })
+
+const add = (a, b) => a + b;
+test('should add two numbers', () => {
+ const sum = add(3, 4);
+ expect(sum).toBe(7);
+});
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080'
+export const API_URL = 'https://darrylbilongo.site/clab'
 
 export const register = async newUser => {
 
