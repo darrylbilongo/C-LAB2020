@@ -7,6 +7,8 @@ const cors = require('cors')
 const axios = require('axios')
 const path = require('path')
 
+const API = 'https://darrylbilongo.site/clab'
+
 /* EXPRESS */
 const app = express();
 app.use(express.json());
@@ -129,7 +131,7 @@ var storage = multer.diskStorage({
     //cb(null, idUser + Date.now() + '-' +file.originalname )
     cb(null, idUser + '-' +file.originalname )
 
-    axios.post('http://localhost/contents/', {
+    axios.post(`${API}/contents/`, {
       link : DIR + idUser + '-' +file.originalname,
       published: false,
       UserId: idUser
