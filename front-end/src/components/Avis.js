@@ -29,13 +29,13 @@ class Avis extends Component{
     async componentDidMount(){
         const { id } = this.props.match.params
 
-        axios.get('http://localhost:8080/users/avis/'+ id)
+        axios.get('http://darrylbilongo.site/users/avis/'+ id)
         .then((res) =>{this.setState({avis:res.data});
         }); 
         
         console.log(this.state.avis)
 
-        axios.get('http://localhost:8080/users/' + id)
+        axios.get('http://darrylbilongo.site/users/' + id)
             .then((res) => {
                 console.log(res.data)
                 this.setState({

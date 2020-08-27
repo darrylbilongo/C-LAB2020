@@ -107,12 +107,17 @@ class Navigation extends Component{
         </div>
     )
  
-
+	const brand = (
+        <a href="#" class="navbar-brand">
+                <img src={Logo} height="50px" alt="CoolBrand"></img>
+        </a>
+    )
+	
       return(
           <div className="navi">
             <nav class="navbar navbar-expand-sm navbar-dark">
                 <div class="container-fluid">
-                    <img src={Logo} width="3%"></img>
+				{brand}
                     <ul className="navbar-nav">
                         {localStorage.usertoken ? null : homeLink2}                        
                         {localStorage.usertoken ? null : regLink}

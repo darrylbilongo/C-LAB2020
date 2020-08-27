@@ -27,7 +27,7 @@ class Chat extends Component{
         const { id } = this.props.match.params
 
 
-        axios.get('http://localhost:8080/users/' + id)
+        axios.get('http://darrylbilongo.site/users/' + id)
             .then((res) => {
                 this.setState({
                     user: res.data
@@ -41,7 +41,7 @@ class Chat extends Component{
             currentUser: decoded,
         })
 
-        await axios.post('http://localhost:8080/messages/get/' + id, {
+        await axios.post('http://darrylbilongo.site/messages/get/' + id, {
             authorId : decoded.id
         }).then(res => {
             console.log(res)
@@ -52,7 +52,7 @@ class Chat extends Component{
         })
         console.log(this.state.messages)
         console.log(this.state.messages.date)
-        await axios.post('http://localhost:8080/messages/get/' + decoded.id, {
+        await axios.post('http://darrylbilongo.site/messages/get/' + decoded.id, {
             authorId : id
         }).then(res => {
             console.log(res)

@@ -43,7 +43,7 @@ class Profile extends Component{
     async componentWillMount() {
         const { id } = this.props.match.params
         
-        await axios.post('http://localhost:8080/contents/get', {
+        await axios.post('http://darrylbilongo.site/contents/get', {
             UserId : id
         }).then(res => {
             this.setState({
@@ -55,7 +55,7 @@ class Profile extends Component{
     
   async componentDidMount(){
         const { id } = this.props.match.params
-        axios.get('http://localhost:8080/users/' + id)
+        axios.get('http://darrylbilongo.site/users/' + id)
             .then((res) => {
                 console.log(res.data)
                 this.setState({
@@ -64,7 +64,7 @@ class Profile extends Component{
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/youtube/' + id)
+            axios.get('http://darrylbilongo.site/links/youtube/' + id)
             .then((res) => {
                 this.setState({
                     youtube: res.data
@@ -73,7 +73,7 @@ class Profile extends Component{
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/insta/' + id)
+            axios.get('http://darrylbilongo.site/links/insta/' + id)
             .then((res) => {
                 this.setState({
                     insta: res.data
@@ -81,7 +81,7 @@ class Profile extends Component{
             })
             .catch(err => console.log(err));
 
-            axios.get('http://localhost:8080/links/twitter/' + id)
+            axios.get('http://darrylbilongo.site/links/twitter/' + id)
             .then((res) => {
                 this.setState({
                     twitter: res.data
@@ -96,7 +96,7 @@ class Profile extends Component{
             currentUser: decoded,
         })
         
-        /*axios.get('http://localhost:8080/contents/', {
+        /*axios.get('http://darrylbilongo.site/contents/', {
             UserId : id
         }).then(res => {
             console.log(res)
@@ -105,7 +105,7 @@ class Profile extends Component{
             })
         })*/
         console.log(this.state.currentUser)
-        axios.get('http://localhost:8080/contents/', {
+        axios.get('http://darrylbilongo.site/contents/', {
             UserId : id
         }).then(res => {
             console.log(res)
@@ -121,7 +121,7 @@ class Profile extends Component{
         data.append('id', this.state.user.id)
         data.append('file', this.state.selectedFile)
 
-        axios.post("http://localhost:8080/upload", data, { 
+        axios.post("http://darrylbilongo.site/upload", data, { 
             onUploadProgress: ProgressEvent => {
                 this.setState({
                   loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
@@ -148,7 +148,7 @@ class Profile extends Component{
             hideCollab: false,
         });
 
-        axios.put('http://localhost:8080/users/' + this.state.user.id, {
+        axios.put('http://darrylbilongo.site/users/' + this.state.user.id, {
             note : this.state.user.note + 1
         })
   
@@ -271,7 +271,7 @@ class Profile extends Component{
                     <li className="list-group-item">
                     {this.state.contents.map(content => {
                         return <ReactAudioPlayer
-                        src={'http://localhost:8080/' + content.link}
+                        src={'http://darrylbilongo.site/' + content.link}
                         controls className="audio"
                       />
                     })}

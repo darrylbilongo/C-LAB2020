@@ -29,7 +29,7 @@
 
 body{
   background-image: url("Micro_edited.jpg");
-  background-size: cover;
+  background-size: auto;
   font-family:"trebuchet ms",sans-serif;
   font-size:90%;
 }
