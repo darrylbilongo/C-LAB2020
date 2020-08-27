@@ -10,7 +10,8 @@ class Login extends Component {
             id : '',
             email: '',
             password: '',
-            errors: {}
+            errors: {},
+            messageError: ''
         }
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangeMDP = this.handleChangeMDP.bind(this);
@@ -59,6 +60,9 @@ class Login extends Component {
             if(res){
                 this.props.history.push('/home')
             }
+            else{
+                this.state.messageError = 'Vos identifiants ne sont pas corrects'
+            }
         })
     }
 
@@ -68,6 +72,7 @@ class Login extends Component {
             <div>
                         <form className="formulaireLogin" noValidate onSubmit={this.handleSubmit}>
                             <h1 className="h3">Connectez vous!</h1>
+                            {this.state.messageError}
                             <div className="form-group">
                                 <label htmlFor="email">Email: </label>
                                 <input type="email"

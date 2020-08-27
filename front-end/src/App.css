@@ -27,9 +27,10 @@
   }
 }
 
+
 body{
   background-image: url("Micro_edited.jpg");
-  background-size: cover;
+  background-size: auto;
   font-family:"trebuchet ms",sans-serif;
   font-size:90%;
 }
@@ -45,6 +46,7 @@ h1 {
   margin-left: 15%;
   margin-top: 3%;
 }
+
 
 .formulaireLogin{
   background-color: rgba(203,56,203, 0.3);
@@ -355,14 +357,11 @@ ul#menu li a
   margin-top: 8%
 }
 
-.navigationbarre{
-  width: 60%;
-  margin-left: 40%
-}
 
 .audio{
   width: 100%;
 }
+
 
 
 .aproposTot{
@@ -439,7 +438,9 @@ ul#menu li a
 
 .navi{
   background-color: rgba(203,56,203, 0.4);
+  width: auto;
 }
+
 
 
 .catalogueEnt{
