@@ -24,6 +24,7 @@ const models = require("../backend/models");
 /* SOCKET*/
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+io.origins('*:*') // for latest version
 
 // WARNING: app.listen(80) will NOT work here!
 let interval;
