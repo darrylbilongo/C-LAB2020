@@ -47,10 +47,8 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
-        console.log("pressed")
-
         //this.validation()
+        console.log("hello");
 
         const user = {
             id: this.state.id,
