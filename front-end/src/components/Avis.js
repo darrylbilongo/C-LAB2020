@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import { API_URL } from './UserFonctions'
 
 const Item = function ({item}) {
     return<tr className="list-avis1">
@@ -29,13 +30,11 @@ class Avis extends Component{
     async componentDidMount(){
         const { id } = this.props.match.params
 
-        axios.get('http://darrylbilongo.site/users/avis/'+ id)
+        axios.get(`${API_URL}/users/avis/`+ id)
         .then((res) =>{this.setState({avis:res.data});
         }); 
-        
-        console.log(this.state.avis)
 
-        axios.get('http://darrylbilongo.site/users/' + id)
+        axios.get(`${API_URL}/users/` + id)
             .then((res) => {
                 console.log(res.data)
                 this.setState({

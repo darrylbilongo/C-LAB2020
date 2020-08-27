@@ -7,6 +7,8 @@ import Insta from '../images/Insta.png'
 import Twitter from '../images/Twitter_Logo.png'
 import axios from 'axios';
 
+import { API_URL } from './UserFonctions'
+
 class Link extends React.Component {
     constructor(props) {
         super(props);
@@ -41,7 +43,7 @@ class Link extends React.Component {
             this.setState({
                 user: decoded,
             })
-            axios.get('http://darrylbilongo.site/links/youtube/' + decoded.id)
+            axios.get(`${API_URL}/links/youtube/` + decoded.id)
             .then((res) => {
                 this.setState({
                     YoutOf: res.data
@@ -49,7 +51,7 @@ class Link extends React.Component {
             })
             .catch(err => console.log(err));
 
-            axios.get('http://darrylbilongo.site/links/insta/' + decoded.id)
+            axios.get(`${API_URL}/links/insta/` + decoded.id)
             .then((res) => {
                 this.setState({
                     InstaOf: res.data
@@ -57,7 +59,7 @@ class Link extends React.Component {
             })
             .catch(err => console.log(err));
 
-            axios.get('http://darrylbilongo.site/links/twitter/' + decoded.id)
+            axios.get(`${API_URL}/links/twitter/` + decoded.id)
             .then((res) => {
                 this.setState({
                     TwitOf: res.data
@@ -104,23 +106,23 @@ class Link extends React.Component {
     }
 
 
-     axios.put('http://darrylbilongo.site/users/' + decoded.id, {
+     axios.put(`${API_URL}/users/` + decoded.id, {
             description: this.state.newDescription,
             first_name: this.state.newSurname,
             last_name: this.state.newName,
             role: this.state.newRole
         })
-        axios.post('http://darrylbilongo.site/links/compte',{
+        axios.post(`${API_URL}/links/compte`,{
             contenu: this.state.lienYoutube,
             categorie :"youtube",
             UserId: decoded.id
         })
-        axios.post('http://darrylbilongo.site/links/compte',{
+        axios.post(`${API_URL}/links/compte`,{
             contenu: this.state.lienAutre,
             categorie :"twitter",
             UserId: decoded.id
         })
-        axios.post('http://darrylbilongo.site/links/compte',{
+        axios.post(`${API_URL}/links/compte`,{
             contenu: this.state.lienInsta,
             categorie :"instagram",
             UserId: decoded.id
