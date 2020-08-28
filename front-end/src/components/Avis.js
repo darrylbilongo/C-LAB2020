@@ -36,7 +36,6 @@ class Avis extends Component{
 
         axios.get(`${API_URL}/users/` + id)
             .then((res) => {
-                console.log(res.data)
                 this.setState({
                     user: res.data
                 })

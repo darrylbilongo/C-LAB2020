@@ -30,7 +30,7 @@ let interval;
 
 io.on('connection', (socket) => {
   const { id } = socket.client;
-  console.log(`new user ${id} connected`)
+  //console.log(`new user ${id} connected`)
 
   if (interval) {
     clearInterval(interval);
@@ -76,7 +76,7 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'EndPoints to test'
   },
-  host : 'localhost:8080',
+  host : 'clab.be',
   basePath: '/',
   securityDefinitions: {
     bearerAuth: {
