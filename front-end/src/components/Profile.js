@@ -119,7 +119,7 @@ class Profile extends Component{
         data.append('id', this.state.user.id)
         data.append('file', this.state.selectedFile)
 
-        axios.post("http://darrylbilongo.site/upload", data, { 
+        axios.post(`${API_URL}/upload`, data, { 
             onUploadProgress: ProgressEvent => {
                 this.setState({
                   loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
@@ -267,7 +267,7 @@ class Profile extends Component{
                     <li className="list-group-item">
                     {this.state.contents.map(content => {
                         return <ReactAudioPlayer
-                        src={'http://darrylbilongo.site/' + content.link}
+                        src={`${API_URL}/` + content.link}
                         controls className="audio"
                       />
                     })}
