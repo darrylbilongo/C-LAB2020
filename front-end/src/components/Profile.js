@@ -116,7 +116,7 @@ class Profile extends Component{
                 });
             }})
             .then(res => { // then print response status
-                console.log(res.statusText)
+                alert(res.statusText)
             })
             .catch(err => console.log(err))
     }
