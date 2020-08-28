@@ -95,14 +95,6 @@ class Profile extends Component{
             currentUser: decoded,
         })
         
-        /*axios.get('http://darrylbilongo.site/contents/', {
-            UserId : id
-        }).then(res => {
-            console.log(res)
-            this.setState({
-                contents : res.data
-            })
-        })*/
         axios.post(`${API_URL}/contents/`, {
             UserId : id
         }).then(res => {

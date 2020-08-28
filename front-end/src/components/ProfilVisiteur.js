@@ -81,7 +81,7 @@ class Profile extends Component{
         })
         
 
-        axios.get('http://darrylbilongo.site/contents/', {
+        axios.get(`${API_URL}/contents/`, {
             UserId : id
         }).then(res => {
             console.log(res)
@@ -123,7 +123,7 @@ class Profile extends Component{
             hideCollab: false,
         });
 
-        axios.put('http://darrylbilongo.site/users/' + this.state.user.id, {
+        axios.put(`${API_URL}/users/` + this.state.user.id, {
             note : this.state.user.note + 1
         })
     }
