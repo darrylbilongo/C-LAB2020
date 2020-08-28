@@ -42,9 +42,7 @@ class Profile extends Component{
     async componentWillMount() {
         const { id } = this.props.match.params
         
-        await axios.post(`${API_URL}/contents/get`, {
-            UserId : id
-        }).then(res => {
+        await axios.get(`${API_URL}/contents/${id}`).then(res => {
             this.setState({
                 contents : res.data
             })
@@ -57,7 +55,6 @@ class Profile extends Component{
 
         axios.get(`${API_URL}/users/` + id)
             .then((res) => {
-                console.log(res.data)
                 this.setState({
                     user: res.data
                 })
@@ -66,7 +63,6 @@ class Profile extends Component{
 
             axios.get(`${API_URL}/links/` + id)
             .then((res) => {
-                console.log(res.data)
                 this.setState({
                     liens: res.data
                 })
@@ -81,14 +77,14 @@ class Profile extends Component{
         })
         
 
-        axios.get(`${API_URL}/contents/`, {
+        /*axios.get(`${API_URL}/contents/`, {
             UserId : id
         }).then(res => {
             console.log(res)
             this.setState({
                 contents : res.data
             })
-        })
+        })*/
 
     }
 

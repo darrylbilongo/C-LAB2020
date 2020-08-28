@@ -44,9 +44,7 @@ class Profile extends Component{
     async componentWillMount() {
         const { id } = this.props.match.params
         
-        await axios.post(`${API_URL}/contents/get`, {
-            UserId : id
-        }).then(res => {
+        await axios.get(`${API_URL}/contents/${id}`).then(res => {
             this.setState({
                 contents : res.data
             })
@@ -95,14 +93,14 @@ class Profile extends Component{
             currentUser: decoded,
         })
         
-        axios.post(`${API_URL}/contents/`, {
+        /*axios.post(`${API_URL}/contents/`, {
             UserId : id
         }).then(res => {
             console.log(res)
             this.setState({
                 contents : res.data
             })
-        })
+        })*/
 
     }
 
