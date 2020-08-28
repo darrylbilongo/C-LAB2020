@@ -36,8 +36,10 @@ exports.create = (req, res) => {
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
 
+  const id = req.params.id 
+
     Content.findAll({ where : {
-      UserId : req.body.UserId
+      UserId : id
     } })
     .then(data => {
       res.send(data);
