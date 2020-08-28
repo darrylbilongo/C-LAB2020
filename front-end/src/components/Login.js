@@ -16,10 +16,11 @@ class Login extends Component {
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangeMDP = this.handleChangeMDP.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.validation = this.validation(this)
+        this.validation = this.validation.bind(this)
     }
 
-    validation() {
+    validation(e) {
+        e.preventDefault();
         const {email, password} = this.state;
         if(verifierDonnees(email, password)){
             const user = {
@@ -30,7 +31,15 @@ class Login extends Component {
                 if(res){
                     this.props.history.push('/home')
                 }
+                else{
+                    this.state.messageError = 'Vos identifiants ne sont pas corrects'
+                    this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError}</h6>
+                }
             })
+        }
+        else{
+            this.state.messageError = 'Veuillez encoder des données'
+            this.state.messageError=<h6 class="alert alert-danger" role="alert"> {this.state.messageError}</h6>
         }
     }
 
@@ -48,8 +57,6 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        //this.validation()
-        console.log("hello");
 
         const user = {
             id: this.state.id,

@@ -101,6 +101,82 @@ let users = require('../controllers/user.controller');
  *    responses:
  *     '200': 
  *         description: User found and returned
+ * 
+ * put:
+ *    tags:
+ *       - Users
+ *    name: UpdaterUser
+ *    summary: update a user's information
+ *    produces:
+ *      - application/json
+ *    consumes : 
+ *      - application/json
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        schema:
+ *          $ref: '#/definitions/User'
+ *          type: integer
+ *          required: true
+ *          description: Numeric ID of the user to get
+ *    responses:
+ *     '200': 
+ *         description: User updated successfully
+ * 
+ * 
+ * /users/avis/{id}:
+ *  get:
+ *    tags:
+ *       - Users
+ *    name: GetAvis
+ *    summary: Returns reviews with a specific id
+ *    produces:
+ *      - application/json
+ *    consumes : 
+ *      - application/json
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        schema:
+ *          type: integer
+ *          required: true
+ *          description: Numeric ID of the user to get
+ *    responses:
+ *     '200': 
+ *         description: User found and returned
+ * 
+ * /users/avis:
+ *  post:
+ *    tags:
+ *       - Users
+ *    name: RegisterAvis
+ *    summary: Registers a new review
+ *    produces:
+ *      - application/json
+ *    consumes : 
+ *      - application/json
+ *    parameters:
+ *      - name: body
+ *        in: body
+ *        schema:
+ *          $ref: '#/definitions/User'
+ *          type: object
+ *          properties:
+ *            authorId:
+ *              type: integer
+ *            contenu:
+ *              type: string
+ *            artistId: 
+ *              type: string
+ *            required:
+ *              - authorId
+ *              - contenu
+ *              - artistId
+ *    responses:
+ *     '200': 
+ *         description: Review registered successfully
+ * 
+ * 
  */
 router.use(cors())
 
