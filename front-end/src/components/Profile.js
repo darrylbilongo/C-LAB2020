@@ -103,7 +103,7 @@ class Profile extends Component{
                 contents : res.data
             })
         })*/
-        axios.get(`${API_URL}/contents/`, {
+        axios.post(`${API_URL}/contents/`, {
             UserId : id
         }).then(res => {
             console.log(res)
