@@ -180,11 +180,11 @@ let users = require('../controllers/user.controller');
  */
 router.use(cors())
 
-/*router.route('/').get(async (req, res) => {
+router.route('/').get(async (req, res) => {
   User.findAll()
   .then(users => res.json(users))
   .catch(err => res.status(400).json({message: 'Error: ' + err}));
-})*/
+})
 
 router.post('/login', users.login);
 
